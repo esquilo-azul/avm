@@ -6,11 +6,17 @@ module Avm
   module Sources
     class Base
       module Testing
+        DEFAULT_TEST_COMMANDS = {}.freeze
         TEST_KEY = 'test'
         TEST_COMMAND_KEY = "#{TEST_KEY}.command"
 
         def configured_test_command
           read_configuration_as_env_command(TEST_COMMAND_KEY)
+        end
+
+        # @return [Hash<String, EacRubyUtils::Envs::Command>]
+        def default_test_commands
+          DEFAULT_TEST_COMMANDS
         end
 
         # @return [Avm::Sources::Tester]
