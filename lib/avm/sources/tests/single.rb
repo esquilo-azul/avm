@@ -14,7 +14,7 @@ module Avm
         enable_simple_cache
         enable_speaker
 
-        common_constructor :builder, :source
+        common_constructor :builder, :source, :test_name
 
         delegate :logs, :result, to: :tester
         delegate :to_s, to: :id
@@ -25,11 +25,7 @@ module Avm
 
         # @return [String]
         def id
-          if main?
-            MAIN_SOURCE_ID
-          else
-            relative_path_from_main_source.to_s
-          end
+          "#{main? ? MAIN_SOURCE_ID : relative_path_from_main_source}\##{test_name}"
         end
 
         def main?
