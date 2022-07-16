@@ -6,7 +6,8 @@ module Avm
   module Sources
     class Base
       module Testing
-        TEST_COMMAND_KEY = 'test.command'
+        TEST_KEY = 'test'
+        TEST_COMMAND_KEY = "#{TEST_KEY}.command"
 
         def configured_test_command
           read_configuration_as_env_command(TEST_COMMAND_KEY)
