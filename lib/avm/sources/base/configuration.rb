@@ -12,10 +12,15 @@ module Avm
         CONFIGURATION_FILENAMES = %w[.avm.yml .avm.yaml].freeze
 
         # @return [Array<String>, nil]
+        def configuration_value_to_shell_words(value)
+          return nil if value.blank?
+
+          value.is_a?(::Enumerable) ? value.map(&:to_s) : ::Shellwords.split(value.to_s)
+        end
+
+        # @return [Array<String>, nil]
         def read_configuration_as_shell_words(key)
-          configuration.entry(key).value.if_present do |v|
-            v.is_a?(::Enumerable) ? v.map(&:to_s) : ::Shellwords.split(v.to_s)
-          end
+          configuration_value_to_shell_words(configuration.entry(key).value)
         end
 
         # Utility to read a configuration as a [EacRubyUtils::Envs::Command].
