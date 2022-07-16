@@ -16,7 +16,6 @@ module Avm
 
         common_constructor :builder, :source, :test_name, :test_command
 
-        delegate :logs, :result, to: :tester
         delegate :to_s, to: :id
 
         def failed?
@@ -43,8 +42,32 @@ module Avm
 
         private
 
-        def tester_uncached
-          source.tester
+        # @return [EacFs::Logs]
+        def logs_uncached
+          ::EacFs::Logs.new.add(:stdout).add(:stderr)
+        end
+
+        # @return [Avm::Sources::Tests::Result]
+        def result_uncached
+          if test_command.blank?
+            ::Avm::Sources::Tests::Result::NONEXISTENT
+          elsif run_test_command
+            ::Avm::Sources::Tests::Result::SUCESSFUL
+          else
+            ::Avm::Sources::Tests::Result::FAILED
+          end
+        end
+
+        def run_test_command
+          execute_command_and_log(test_command)
+        end
+
+        # @return [true, false]
+        def execute_command_and_log(command)
+          r = command.execute
+          logs[:stdout].write(r[:stdout])
+          logs[:stderr].write(r[:stderr])
+          r[:exit_code].zero?
         end
       end
     end
