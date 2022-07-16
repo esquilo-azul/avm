@@ -44,6 +44,11 @@ module Avm
           create_units(main_source.subs)
         end
 
+        # @return [Array<Avm::Sources::Tests::Single>]
+        def create_source_units(source)
+          [create_unit(source)]
+        end
+
         # @return [Avm::Sources::Tests::Single]
         def create_unit(source)
           ::Avm::Sources::Tests::Single.new(self, source)
@@ -51,7 +56,7 @@ module Avm
 
         # @return [Array<Avm::Sources::Tests::Single>]
         def create_units(sources)
-          sources.map { |a_source| create_unit(a_source) }
+          sources.flat_map { |a_source| create_source_units(a_source) }
         end
 
         # @return [Avm::Sources::Tests::Single]
