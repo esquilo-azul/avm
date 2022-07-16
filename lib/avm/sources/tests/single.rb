@@ -14,7 +14,7 @@ module Avm
         enable_simple_cache
         enable_speaker
 
-        common_constructor :builder, :source, :test_name
+        common_constructor :builder, :source, :test_name, :test_command
 
         delegate :logs, :result, to: :tester
         delegate :to_s, to: :id
