@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils/envs/command'
 
 module Avm
   module Sources
@@ -24,7 +25,7 @@ module Avm
         def configured_value_as_test_commands(value)
           return nil if value.blank?
 
-          [::Hash, ::Enumerable].each do |type|
+          [::EacRubyUtils::Envs::Command, ::Hash, ::Enumerable].each do |type|
             next unless value.is_a?(type)
 
             return send(
@@ -41,6 +42,13 @@ module Avm
           DEFAULT_TEST_COMMANDS
         end
 
+        # @return [Enumerable<EacRubyUtils::Envs::Command>]
+        def test_commands
+          configured_test_commands ||
+            configured_value_as_test_commands(configured_test_command)
+          default_test_commands
+        end
+
         # @return [Avm::Sources::Tester]
         def tester
           tester_class.new(self)
@@ -52,6 +60,10 @@ module Avm
         end
 
         protected
+
+        def configured_command_value_as_test_commands(value)
+          configured_enumerable_value_as_test_commands([value])
+        end
 
         def configured_enumerable_value_as_test_commands(value)
           configured_hash_value_as_test_commands(
