@@ -11,6 +11,11 @@ module Avm
       module Configuration
         CONFIGURATION_FILENAMES = %w[.avm.yml .avm.yaml].freeze
 
+        # @return [EacRubyUtils::Envs::Command, nil]
+        def configuration_value_to_env_command(value)
+          configuration_value_to_shell_words(value).if_present { |v| env.command(v).chdir(path) }
+        end
+
         # @return [Array<String>, nil]
         def configuration_value_to_shell_words(value)
           return nil if value.blank?
@@ -26,9 +31,7 @@ module Avm
         # Utility to read a configuration as a [EacRubyUtils::Envs::Command].
         # @return [EacRubyUtils::Envs::Command]
         def read_configuration_as_env_command(key)
-          read_configuration_as_shell_words(key).if_present do |v|
-            env.command(v).chdir(path)
-          end
+          configuration_value_to_env_command(configuration.entry(key).value)
         end
 
         private
