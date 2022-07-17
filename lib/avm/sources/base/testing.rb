@@ -49,16 +49,6 @@ module Avm
           default_test_commands
         end
 
-        # @return [Avm::Sources::Tester]
-        def tester
-          tester_class.new(self)
-        end
-
-        # @return [Class<Avm::Sources::Tester>
-        def tester_class
-          Avm::Sources::Tester
-        end
-
         protected
 
         def configured_command_value_as_test_commands(value)
