@@ -46,7 +46,9 @@ module Avm
 
         # @return [Array<Avm::Sources::Tests::Single>]
         def create_source_units(source)
-          [create_unit(source)]
+          source.test_commands.map do |_test_name, _test_command|
+            ::Avm::Sources::Tests::Single.new(self, source)
+          end
         end
 
         # @return [Avm::Sources::Tests::Single]
