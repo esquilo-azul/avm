@@ -8,6 +8,8 @@ module Avm
   module Sources
     module Tests
       class Builder
+        NO_TEST_TEST_NAME = 'no_test'
+
         require_sub __FILE__
         enable_immutable
 
@@ -44,9 +46,18 @@ module Avm
           create_units(main_source.subs)
         end
 
+        # @return [Avm::Sources::Tests::Single]
+        def create_source_no_test_unit(source)
+          ::Avm::Sources::Tests::Single.new(self, source, NO_TEST_TEST_NAME,
+                                            source.env.command('true'))
+        end
+
         # @return [Array<Avm::Sources::Tests::Single>]
         def create_source_units(source)
-          source.test_commands.map do |test_name, test_command|
+          tests = source.test_commands
+          return create_source_no_test_unit(source) unless tests.any?
+
+          tests.map do |test_name, test_command|
             ::Avm::Sources::Tests::Single.new(self, source, test_name, test_command)
           end
         end
