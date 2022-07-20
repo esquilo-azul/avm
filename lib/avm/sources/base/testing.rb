@@ -45,8 +45,8 @@ module Avm
         # @return [Enumerable<EacRubyUtils::Envs::Command>]
         def test_commands
           configured_test_commands ||
-            configured_value_as_test_commands(configured_test_command)
-          default_test_commands
+            configured_value_as_test_commands(configured_test_command) ||
+            default_test_commands
         end
 
         protected
