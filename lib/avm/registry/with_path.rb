@@ -13,12 +13,30 @@ module Avm
       end
 
       def detect_by_path_optional(path)
-        current_path = path.to_pathname.expand_path
-        until current_path.root?
-          detect_optional(current_path).if_present { |v| return v }
-          current_path = current_path.parent
+        on_cache do
+          cache.detect_optional(path)
         end
-        nil
+      end
+
+      private
+
+      attr_accessor :cache
+
+      def on_cache(&block)
+        cache.present? ? on_cache_with_cache(&block) : on_cache_with_no_cache(&block)
+      end
+
+      def on_cache_with_cache(&block)
+        block.call
+      end
+
+      def on_cache_with_no_cache(&block)
+        self.cache = ::Avm::Registry::WithPath::Cache.new(self)
+        begin
+          block.call
+        ensure
+          self.cache = nil
+        end
       end
     end
   end
