@@ -9,6 +9,7 @@ module Avm
   module Sources
     class Base
       module Configuration
+        PARENT_CONFIGURATION_SUFFIX = %w[subs at].freeze
         CONFIGURATION_FILENAMES = %w[.avm.yml .avm.yaml].freeze
 
         # @return [EacRubyUtils::Envs::Command, nil]
@@ -42,6 +43,16 @@ module Avm
             configuration_with_filename(filename, true)
           end
           configuration_with_filename(CONFIGURATION_FILENAMES.first, false)
+        end
+
+        # @return [String]
+        def parent_configuration_prefix
+          PARENT_CONFIGURATION_SUFFIX + [relative_path]
+        end
+
+        # @return [EacConfig::PrefixedPathNode]
+        def parent_configuration_uncached
+          parent.configuration.with_prefix(parent_configuration_prefix)
         end
 
         # @return [EacConfig::YamlFileNode, nil]
