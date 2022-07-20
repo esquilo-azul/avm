@@ -6,6 +6,8 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module Registry
     class WithPath < ::Avm::Registry::Base
+      require_sub __FILE__
+
       def detect_by_path(path)
         detect_by_path_optional(path) || raise_not_found(path)
       end
