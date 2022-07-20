@@ -35,7 +35,7 @@ module Avm
         # @return [Array<Avm::Sources::Tests::Single>]
         def available_units
           @available_units ||= ([main_source] + main_source.subs)
-                                 .map { |a_source| create_unit(a_source) }
+                                 .flat_map { |a_source| create_source_units(a_source) }
         end
 
         def available_units_from_main
@@ -62,20 +62,15 @@ module Avm
           end
         end
 
-        # @return [Avm::Sources::Tests::Single]
-        def create_unit(source)
-          ::Avm::Sources::Tests::Single.new(self, source)
-        end
-
         # @return [Array<Avm::Sources::Tests::Single>]
         def create_units(sources)
           sources.flat_map { |a_source| create_source_units(a_source) }
         end
 
         # @return [Avm::Sources::Tests::Single]
-        def create_unit_by_id(source_id)
-          r = available_units.find { |unit| unit.id == source_id }
-          return r if r
+        def create_units_by_id(source_id)
+          r = available_units.select { |unit| unit.source.relative_path.to_path == source_id.to_s }
+          return r if r.any?
 
           raise ::ArgumentError, "Source not found with ID=#{source_id}" \
             "(Available: #{available_units.map(&:id).join(', ')})"
@@ -83,7 +78,7 @@ module Avm
 
         # @return [Array<Avm::Sources::Tests::Single>]
         def select_units_from_ids
-          include_ids.map { |source_id| create_unit_by_id(source_id) }
+          include_ids.flat_map { |source_id| create_units_by_id(source_id) }
         end
 
         # @return [Array<Avm::Sources::Tests::Single>]
