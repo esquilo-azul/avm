@@ -7,11 +7,6 @@ module Avm
     class Base
       module Parent
         # @return [Avm::Sources::Base]
-        def parent
-          parent_by_option || parent_by_search
-        end
-
-        # @return [Avm::Sources::Base]
         def parent_by_option
           options[OPTION_PARENT]
         end
@@ -24,6 +19,13 @@ module Avm
             parent_path = parent_path.parent
           end
           nil
+        end
+
+        private
+
+        # @return [Avm::Sources::Base]
+        def parent_uncached
+          parent_by_option || parent_by_search
         end
       end
     end
