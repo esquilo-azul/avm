@@ -14,7 +14,7 @@ module Avm
         end
 
         def configured_locale
-          configuration.entry(LOCALE_KEY).value
+          configuration_entry(LOCALE_KEY).value
         end
 
         def default_locale

@@ -18,7 +18,7 @@ module Avm
 
         # @return [Hash<String, EacRubyUtils::Envs::Command>, nil]
         def configured_test_commands
-          configured_value_as_test_commands(configuration.entry(TEST_COMMANDS_KEY).value)
+          configured_value_as_test_commands(configuration_entry(TEST_COMMANDS_KEY).value)
         end
 
         # @return [Hash<String, EacRubyUtils::Envs::Command>, nil]

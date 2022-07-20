@@ -12,6 +12,16 @@ module Avm
         PARENT_CONFIGURATION_SUFFIX = %w[subs at].freeze
         CONFIGURATION_FILENAMES = %w[.avm.yml .avm.yaml].freeze
 
+        # @return [EacConfig::NodeEntry]
+        def configuration_entry(*entry_args)
+          parent_configuration.if_present do |v|
+            parent_entry = v.entry(*entry_args)
+            return parent_entry if parent_entry.found?
+          end
+
+          configuration.entry(*entry_args)
+        end
+
         # @return [EacRubyUtils::Envs::Command, nil]
         def configuration_value_to_env_command(value)
           configuration_value_to_shell_words(value).if_present { |v| env.command(v).chdir(path) }
@@ -26,13 +36,13 @@ module Avm
 
         # @return [Array<String>, nil]
         def read_configuration_as_shell_words(key)
-          configuration_value_to_shell_words(configuration.entry(key).value)
+          configuration_value_to_shell_words(configuration_entry(key).value)
         end
 
         # Utility to read a configuration as a [EacRubyUtils::Envs::Command].
         # @return [EacRubyUtils::Envs::Command]
         def read_configuration_as_env_command(key)
-          configuration_value_to_env_command(configuration.entry(key).value)
+          configuration_value_to_env_command(configuration_entry(key).value)
         end
 
         private
@@ -52,7 +62,7 @@ module Avm
 
         # @return [EacConfig::PrefixedPathNode]
         def parent_configuration_uncached
-          parent.configuration.with_prefix(parent_configuration_prefix)
+          parent.if_present { |v| v.configuration.with_prefix(parent_configuration_prefix) }
         end
 
         # @return [EacConfig::YamlFileNode, nil]

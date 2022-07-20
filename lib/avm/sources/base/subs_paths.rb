@@ -22,7 +22,7 @@ module Avm
 
         # @return [Array<String>]
         def configured_paths
-          source.configuration.entry(configuration_key).value.if_present do |v|
+          source.configuration_entry(configuration_key).value.if_present do |v|
             v.split(SUBS_PATH_SEPARATOR)
           end
         end
