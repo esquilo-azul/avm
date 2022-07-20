@@ -23,7 +23,7 @@ module Avm
 
         # @return [Hash<String, EacRubyUtils::Envs::Command>, nil]
         def configured_value_as_test_commands(value)
-          return nil if value.blank?
+          return nil if value.nil?
 
           [::EacRubyUtils::Envs::Command, ::Hash, ::Enumerable].each do |type|
             next unless value.is_a?(type)
