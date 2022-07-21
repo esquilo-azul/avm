@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/with_dynamic_runners'
 require 'eac_ruby_utils/require_sub'
 require 'eac_ruby_utils/simple_cache'
 require 'avm/instances/entries'
@@ -12,6 +13,7 @@ module Avm
       enable_simple_cache
       require_sub __FILE__, include_modules: true
       include ::Avm::Instances::Entries
+      include ::Avm::WithDynamicRunners
 
       lists.add_string :access, :local, :ssh
 
