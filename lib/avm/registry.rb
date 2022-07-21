@@ -28,11 +28,7 @@ module Avm
       end
 
       def registry_class(category)
-        if WITH_PATH.include?(category)
-          ::Avm::Registry::WithPath
-        else
-          ::Avm::Registry::FromGems
-        end
+        ::Avm::Registry.const_get(category.to_s.camelize)
       end
     end
   end
