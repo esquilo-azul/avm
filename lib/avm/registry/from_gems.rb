@@ -6,8 +6,13 @@ require 'eac_ruby_utils/gems_registry'
 module Avm
   module Registry
     class FromGems
+      enable_abstract_methods
       enable_simple_cache
       common_constructor :module_suffix
+
+      def class_detect(_klass, _detect_args)
+        raise_abstract_method __method__
+      end
 
       def detect(*registered_initialize_args)
         detect_optional(*registered_initialize_args) ||
@@ -15,8 +20,8 @@ module Avm
       end
 
       def detect_optional(*registered_initialize_args)
-        registered_modules.reverse.lazy.map { |klass| klass.new(*registered_initialize_args) }
-          .find(&:valid?)
+        registered_modules.reverse.lazy
+          .map { |klass| class_detect(klass, registered_initialize_args) }.find(&:present?)
       end
 
       def provider_module_suffix
