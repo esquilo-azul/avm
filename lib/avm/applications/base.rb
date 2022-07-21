@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/instances/entries'
+require 'avm/registry'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
@@ -32,6 +33,11 @@ module Avm
       # @return [Avm::Instances::Base]
       def local_instance_uncached
         instance(LOCAL_INSTANCE_SUFFIX)
+      end
+
+      # @return [Avm::Sources::Base]
+      def local_source_uncached
+        ::Avm::Registry.sources.detect(local_instance.fs_path)
       end
     end
   end
