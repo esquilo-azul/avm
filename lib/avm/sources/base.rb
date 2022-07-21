@@ -2,6 +2,7 @@
 
 require 'avm/registry'
 require 'avm/scms/null'
+require 'avm/with_dynamic_runners'
 require 'eac_git'
 require 'eac_ruby_utils/core_ext'
 
@@ -9,6 +10,7 @@ module Avm
   module Sources
     class Base
       require_sub __FILE__, include_modules: true
+      include ::Avm::WithDynamicRunners
       compare_by :path
       enable_abstract_methods
       enable_simple_cache
