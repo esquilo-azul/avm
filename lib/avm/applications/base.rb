@@ -8,6 +8,7 @@ module Avm
   module Applications
     class Base
       enable_simple_cache
+      require_sub __FILE__, include_modules: true
       include ::Avm::Instances::Entries
 
       LOCAL_INSTANCE_SUFFIX = 'dev'
