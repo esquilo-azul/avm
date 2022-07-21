@@ -3,8 +3,8 @@
 require 'avm/instances/entries'
 
 module Avm
-  module Instances
-    class Application
+  module Applications
+    class Base
       include ::Avm::Instances::Entries
 
       attr_reader :id

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'avm/instances/application'
+require 'avm/applications/base'
 
-RSpec.describe ::Avm::Instances::Application do
+RSpec.describe ::Avm::Applications::Base do
   let(:instance) { described_class.new('avm-tools') }
 
   ::EacRubyUtils::Rspec
     .default_setup
-    .stub_eac_config_node(self, ::File.join(__dir__, 'application_spec_fixture.yml'))
+    .stub_eac_config_node(self, ::File.join(__dir__, 'base_spec_fixture.yml'))
 
   describe '#id' do
     it { expect(instance.id).to eq('avm-tools') }

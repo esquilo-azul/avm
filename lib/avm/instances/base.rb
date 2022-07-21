@@ -24,8 +24,8 @@ module Avm
       class << self
         def by_id(id)
           application_id, suffix = parse_id(id)
-          require 'avm/instances/application'
-          new(::Avm::Instances::Application.new(application_id), suffix)
+          require 'avm/applications/base'
+          new(::Avm::Applications::Base.new(application_id), suffix)
         end
 
         private

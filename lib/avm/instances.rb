@@ -2,7 +2,7 @@
 
 module Avm
   module Instances
-    require 'avm/instances/application'
+    require 'avm/applications/base'
     require 'avm/instances/entries'
   end
 end

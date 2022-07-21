@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'avm/instances/application'
+require 'avm/applications/base'
 require 'avm/instances/base'
 
 module Avm
@@ -16,7 +16,7 @@ module Avm
         private
 
         def application_uncached
-          ::Avm::Instances::Application.new(path.basename)
+          ::Avm::Applications::Base.new(path.basename)
         end
 
         def instance_uncached
