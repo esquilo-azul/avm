@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/with_application_stereotype'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
@@ -7,6 +8,7 @@ module Avm
     class Base
       enable_abstract_methods
       enable_simple_cache
+      include ::Avm::WithApplicationStereotype
       abstract_methods :update, :valid?
       common_constructor :path do
         self.path = path.to_pathname
