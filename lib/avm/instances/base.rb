@@ -7,6 +7,7 @@ require 'avm/instances/entries'
 module Avm
   module Instances
     class Base
+      enable_abstract_methods
       enable_listable
       enable_simple_cache
       require_sub __FILE__, include_modules: true
