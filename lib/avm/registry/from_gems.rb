@@ -10,6 +10,10 @@ module Avm
       enable_simple_cache
       common_constructor :module_suffix
 
+      def available
+        registered_modules.reject(&:abstract?)
+      end
+
       def class_detect(_klass, _detect_args)
         raise_abstract_method __method__
       end
@@ -20,7 +24,7 @@ module Avm
       end
 
       def detect_optional(*registered_initialize_args)
-        registered_modules.reverse.lazy
+        available.reverse.lazy
           .map { |klass| class_detect(klass, registered_initialize_args) }.find(&:present?)
       end
 
@@ -44,7 +48,7 @@ module Avm
 
       def raise_not_found(*args)
         raise("No registered module valid for #{args}" \
-            " (Module suffix: #{module_suffix}, Available: #{registered_modules.join(', ')})")
+            " (Module suffix: #{module_suffix}, Available: #{available.join(', ')})")
       end
 
       def registered_modules_uncached

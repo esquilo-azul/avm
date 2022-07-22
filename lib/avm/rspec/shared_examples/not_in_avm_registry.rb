@@ -7,7 +7,7 @@ require 'avm/registry'
     .each do |registry|
     context "when registry is #{registry}" do
       it 'is not in the avm registry' do
-        expect(registry.registered_modules).not_to include(described_class)
+        expect(registry.available).not_to include(described_class)
       end
     end
   end
