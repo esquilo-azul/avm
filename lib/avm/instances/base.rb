@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/with_application_stereotype'
 require 'avm/with_dynamic_runners'
 require 'eac_ruby_utils/require_sub'
 require 'eac_ruby_utils/simple_cache'
@@ -14,6 +15,7 @@ module Avm
       require_sub __FILE__, include_modules: true
       include ::Avm::Instances::Entries
       include ::Avm::WithDynamicRunners
+      include ::Avm::WithApplicationStereotype
 
       lists.add_string :access, :local, :ssh
 
