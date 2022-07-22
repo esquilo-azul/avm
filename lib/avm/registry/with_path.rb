@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'avm/registry/base'
+require 'avm/registry/from_gems'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Registry
-    class WithPath < ::Avm::Registry::Base
+    class WithPath < ::Avm::Registry::FromGems
       require_sub __FILE__
 
       def detect_by_path(path)

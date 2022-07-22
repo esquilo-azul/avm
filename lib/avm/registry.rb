@@ -14,7 +14,7 @@ module Avm
     class << self
       enable_simple_cache
 
-      # @return [Array<Avm::Registry::Base>]
+      # @return [Array<Avm::Registry::FromGems>]
       def registries
         lists.category.values.map { |c| send(c) }
       end
@@ -31,7 +31,7 @@ module Avm
         if WITH_PATH.include?(category)
           ::Avm::Registry::WithPath
         else
-          ::Avm::Registry::Base
+          ::Avm::Registry::FromGems
         end
       end
     end

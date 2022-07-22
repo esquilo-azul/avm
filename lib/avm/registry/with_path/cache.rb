@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'avm/registry/base'
+require 'avm/registry/from_gems'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Registry
-    class WithPath < ::Avm::Registry::Base
+    class WithPath < ::Avm::Registry::FromGems
       class Cache
         enable_simple_cache
         common_constructor :owner

@@ -5,7 +5,7 @@ require 'eac_ruby_utils/gems_registry'
 
 module Avm
   module Registry
-    class Base
+    class FromGems
       enable_simple_cache
       common_constructor :module_suffix
 
