@@ -3,16 +3,26 @@
 require 'avm/version'
 require 'eac_ruby_utils/core_ext'
 require 'eac_docker/images/templatized'
+require 'eac_docker/registry'
 
 module Avm
   module Docker
     class Image < ::EacDocker::Images::Templatized
+      DEFAULT_REGISTRY_NAME = 'local'
+
+      class << self
+        # @return [EacDocker::Registry]
+        def default_registry
+          ::EacDocker::Registry.new(DEFAULT_REGISTRY_NAME)
+        end
+      end
+
       attr_reader :registry
       attr_accessor :snapshot
       attr_accessor :version
 
-      def initialize(registry)
-        @registry = registry
+      def initialize(registry = nil)
+        @registry = registry || self.class.default_registry
         self.snapshot = true
         self.version = true
       end
