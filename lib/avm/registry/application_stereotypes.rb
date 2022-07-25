@@ -12,6 +12,10 @@ module Avm
 
       common_constructor :module_suffix
 
+      def detect(obj)
+        detect_optional(obj) || raise_not_found(obj)
+      end
+
       def detect_optional(obj)
         detect_by_instance_class(obj) || detect_by_source_class(obj) || detecy_by_name(obj)
       end
@@ -26,11 +30,6 @@ module Avm
       def class_detect(klass, detect_args)
         r = ::Avm::Instances::Base.by_id(*detect_args)
         r.application.stereotype.instance_class == klass ? r : nil
-      end
-
-      def detect(*registered_initialize_args)
-        detect_optional(*registered_initialize_args) ||
-          raise_not_found(*registered_initialize_args)
       end
 
       def detect_by_instance_class(obj)
@@ -49,6 +48,10 @@ module Avm
         return nil unless obj.is_a?(::Class) && obj < ::Avm::Sources::Base
 
         available.find { |a| a.source_class == obj }
+      end
+
+      def raise_not_found(obj)
+        raise("No registered module valid for #{obj} (Available: #{available.join(', ')})")
       end
     end
   end
