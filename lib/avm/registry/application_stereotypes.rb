@@ -26,12 +26,6 @@ module Avm
         build_available
       end
 
-      # @return [Avm::Instances::Base, nil]
-      def class_detect(klass, detect_args)
-        r = ::Avm::Instances::Base.by_id(*detect_args)
-        r.application.stereotype.instance_class == klass ? r : nil
-      end
-
       def detect_by_instance_class(obj)
         return nil unless obj.is_a?(::Class) && obj < ::Avm::Instances::Base
 
