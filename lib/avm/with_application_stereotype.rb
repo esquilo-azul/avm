@@ -9,6 +9,12 @@ module Avm
     end
 
     module ClassMethods
+      # @return [Avm::ApplicationStereotype::Base]
+      def application_stereotype
+        @application_stereotype ||=
+          ::Avm::Registry.application_stereotypes.detect(application_stereotype_name)
+      end
+
       # @return [String]
       def application_stereotype_name
         stereotype_namespace_module.name.demodulize
