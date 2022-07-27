@@ -7,7 +7,8 @@ module Avm
   module Registry
     require_sub __FILE__
     enable_listable
-    lists.add_symbol :category, :application_stereotypes, :instances, :runners, :scms, :sources
+    lists.add_symbol :category, :application_stereotypes, :instances, :runners, :scms,
+                     :source_generators, :sources
 
     WITH_PATH = [CATEGORY_SCMS, CATEGORY_SOURCES].freeze
 
