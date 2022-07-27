@@ -7,7 +7,9 @@ module Avm
     class Base
       enable_listable
       lists.add_symbol :resource, :instance, :source
-      common_constructor :namespace_module, :instance_class, :source_class
+      common_constructor :namespace_module, :resources do
+        self.resources = self.class.lists.resource.hash_keys_validate!(resources)
+      end
 
       # @return [String]
       def name
@@ -17,6 +19,12 @@ module Avm
       # @return [String]
       def to_s
         name
+      end
+
+      lists.resource.each_value do |resource|
+        define_method "#{resource}_class" do
+          resources[resource]
+        end
       end
     end
   end

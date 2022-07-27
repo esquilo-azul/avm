@@ -19,8 +19,7 @@ module Avm
 
         # @return [Avm::ApplicationStereotypes::Base]
         def build
-          ::Avm::ApplicationStereotypes::Base.new(namespace_module, resources[:instance],
-                                                  resources[:source])
+          ::Avm::ApplicationStereotypes::Base.new(namespace_module, resources)
         end
 
         private
