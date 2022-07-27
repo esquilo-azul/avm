@@ -6,7 +6,7 @@ module Avm
   module ApplicationStereotypes
     class Base
       enable_listable
-      lists.add_symbol :resource, :instance, :source
+      lists.add_symbol :resource, :instance, :source, :source_generator
       common_constructor :namespace_module, :resources do
         self.resources = self.class.lists.resource.hash_keys_validate!(resources)
       end
