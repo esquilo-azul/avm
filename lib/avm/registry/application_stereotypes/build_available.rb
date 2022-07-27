@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/application_stereotypes/base'
 require 'avm/registry/application_stereotypes/stereotype_builder'
 require 'eac_ruby_utils/core_ext'
 
@@ -13,8 +14,7 @@ module Avm
 
         def result
           reset_buffer
-          read_instances_registry
-          read_sources_registry
+          read_registries
           buffer.values.map(&:build)
         end
 
@@ -29,12 +29,15 @@ module Avm
           buffer[object.stereotype_namespace_module].add_object(type, object)
         end
 
-        def read_instances_registry
-          ::Avm::Registry.instances.available.each { |instance| read_object(:instance, instance) }
+        def read_registries
+          ::Avm::ApplicationStereotypes::Base.lists.resource.each_value do |resource|
+            read_registry(resource)
+          end
         end
 
-        def read_sources_registry
-          ::Avm::Registry.sources.available.each { |source| read_object(:source, source) }
+        def read_registry(resource)
+          ::Avm::Registry.send(resource.to_s.pluralize).available
+            .each { |obj| read_object(resource, obj) }
         end
 
         def reset_buffer
