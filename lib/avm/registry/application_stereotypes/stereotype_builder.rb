@@ -10,20 +10,24 @@ module Avm
         common_constructor :namespace_module
 
         def add_object(type, object)
-          attr_method = "#{type}_class"
-          raise "#{attr_method} is already present" if send(attr_method).present?
+          type = type.to_sym
+          raise "#{attr_method} is already present" if resources.key?(type)
 
-          send("#{attr_method}=", object)
+          resources[::Avm::ApplicationStereotypes::Base.lists.resource.value_validate!(type)] =
+            object
         end
 
         # @return [Avm::ApplicationStereotypes::Base]
         def build
-          ::Avm::ApplicationStereotypes::Base.new(namespace_module, instance_class, source_class)
+          ::Avm::ApplicationStereotypes::Base.new(namespace_module, resources[:instance],
+                                                  resources[:source])
         end
 
         private
 
-        attr_accessor :instance_class, :source_class
+        def resources
+          @resources ||= {}
+        end
       end
     end
   end
