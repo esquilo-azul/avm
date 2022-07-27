@@ -9,6 +9,11 @@ module Avm
     end
 
     module ClassMethods
+      # @return [String]
+      def application_stereotype_name
+        stereotype_namespace_module.name.demodulize
+      end
+
       # @return [Module]
       def stereotype_namespace_module
         module_parent.module_parent
