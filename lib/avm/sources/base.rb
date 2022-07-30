@@ -3,7 +3,7 @@
 require 'avm/registry'
 require 'avm/scms/null'
 require 'avm/with/application_stereotype'
-require 'avm/with_dynamic_runners'
+require 'avm/with/extra_subcommands'
 require 'eac_git'
 require 'eac_ruby_utils/core_ext'
 
@@ -12,7 +12,7 @@ module Avm
     class Base
       require_sub __FILE__, include_modules: true
       include ::Avm::With::ApplicationStereotype
-      include ::Avm::WithDynamicRunners
+      include ::Avm::With::ExtraSubcommands
       compare_by :path
       enable_abstract_methods
       enable_simple_cache
