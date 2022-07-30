@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'avm/with_application_stereotype'
+require 'avm/with/application_stereotype'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
   module SourceGenerators
     class Base
-      include ::Avm::WithApplicationStereotype
+      include ::Avm::With::ApplicationStereotype
       common_constructor :target_path do
         self.target_path = target_path.to_pathname
       end
