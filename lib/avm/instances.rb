@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+require 'eac_ruby_utils/core_ext'
+
 module Avm
   module Instances
-    require 'avm/applications/base'
-    require 'avm/instances/entries'
+    require_sub __FILE__
   end
 end
