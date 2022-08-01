@@ -5,6 +5,8 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module Instances
     module EntryKeys
+      URI_FIELDS = %i[fragment hostname password path port query scheme url username].freeze
+
       class << self
         def all
           all_keys.to_a
@@ -43,17 +45,16 @@ module Avm
 
       {
         '' => %w[data_fs_path fs_path host_id name source_instance_id],
-        admin: %w[username password api_key],
-        database: %w[id hostname limit name password port system timeout username extra],
+        admin: URI_FIELDS + %w[api_key],
+        database: URI_FIELDS + %w[id limit name system timeout extra],
         docker: %w[registry],
         fs: %w[url],
         mailer: {
           '' => %w[id from reply_to],
-          smtp: %w[address port domain username password authentication openssl_verify_mode
-                   starttls_auto tls]
+          smtp: URI_FIELDS + %w[address domain authentication openssl_verify_mode starttls_auto tls]
         },
-        ssh: %w[hostname port url username],
-        web: %w[authority hostname path port scheme url userinfo]
+        ssh: URI_FIELDS,
+        web: URI_FIELDS + %w[authority userinfo]
       }.each { |prefix, suffixes| keys_consts_set(prefix, suffixes) }
     end
   end
