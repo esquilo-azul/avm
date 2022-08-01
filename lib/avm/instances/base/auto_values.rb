@@ -10,7 +10,7 @@ module Avm
         extend ::ActiveSupport::Concern
 
         included do
-          %w[Access Admin Data Database Filesystem Mailer Ruby Source System Web]
+          %w[Admin Data Database Filesystem Install Mailer Ruby Source System Web]
             .each do |class_name|
             include const_get(class_name)
           end

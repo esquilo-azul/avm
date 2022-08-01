@@ -4,7 +4,7 @@ module Avm
   module Instances
     class Base
       module AutoValues
-        module Access
+        module Install
           def auto_access
             read_entry_optional('ssh.url').present? ? 'ssh' : 'local'
           end
