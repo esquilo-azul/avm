@@ -49,11 +49,11 @@ module Avm
         database: URI_FIELDS + %w[id limit name system timeout extra],
         docker: %w[registry],
         fs: %w[url],
+        install: URI_FIELDS,
         mailer: {
           '' => %w[id from reply_to],
           smtp: URI_FIELDS + %w[address domain authentication openssl_verify_mode starttls_auto tls]
         },
-        ssh: URI_FIELDS,
         web: URI_FIELDS + %w[authority userinfo]
       }.each { |prefix, suffixes| keys_consts_set(prefix, suffixes) }
     end

@@ -11,7 +11,7 @@ app_1:
     password: pass1
     hostname: database.net
 app_2:
-  ssh:
+  install:
     hostname: myhost.com
     username: myuser
     url: ssh://otheruser@otherhost.com

@@ -1,35 +1,43 @@
 # frozen_string_literal: true
 
+require 'avm/instances/entry_keys'
+
 module Avm
   module Instances
     class Base
       module AutoValues
         module Install
           def auto_access
-            read_entry_optional('ssh.url').present? ? 'ssh' : 'local'
+            read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_URL).present? ? 'ssh' : 'local'
           end
 
-          def auto_ssh_hostname
-            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID, 'ssh.hostname')
+          def auto_install_hostname
+            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID,
+                                  ::Avm::Instances::EntryKeys::INSTALL_HOSTNAME)
           end
 
-          def auto_ssh_port
-            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID, 'ssh.port') || 22
+          def auto_install_port
+            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID,
+                                  ::Avm::Instances::EntryKeys::INSTALL_PORT) || 22
           end
 
-          def auto_ssh_username
-            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID, 'ssh.username')
+          def auto_install_username
+            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID,
+                                  ::Avm::Instances::EntryKeys::INSTALL_USERNAME)
           end
 
-          def auto_ssh_url
-            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID, 'ssh.url') ||
-              auto_ssh_url_by_parts
+          def auto_install_url
+            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID,
+                                  ::Avm::Instances::EntryKeys::INSTALL_URL) ||
+              auto_install_url_by_parts
           end
 
-          def auto_ssh_url_by_parts
-            read_entry_optional('ssh.hostname').if_present do |a|
-              a = read_entry_optional('ssh.username').if_present(a) { |v| "#{v}@#{a}" }
-              a = read_entry_optional('ssh.port').if_present(a) { |v| "#{a}:#{v}" }
+          def auto_install_url_by_parts
+            read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_HOSTNAME).if_present do |a|
+              a = read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
+                    .if_present(a) { |v| "#{v}@#{a}" }
+              a = read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_PORT)
+                    .if_present(a) { |v| "#{a}:#{v}" }
               "ssh://#{a}"
             end
           end
