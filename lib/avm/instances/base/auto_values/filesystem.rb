@@ -22,15 +22,16 @@ module Avm
           end
 
           def auto_fs_url_with_install
-            read_entry_optional('ssh.url').if_present do |ssh_url|
+            read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_URL)
+              .if_present do |install_url|
               read_entry_optional('fs_path').if_present do |fs_path|
-                "#{ssh_url}#{fs_path}"
+                "#{install_url}#{fs_path}"
               end
             end
           end
 
           def auto_fs_url_without_install
-            return nil if read_entry_optional('ssh.url').present?
+            return nil if read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_URL).present?
 
             read_entry_optional('fs_path').if_present do |fs_path|
               "file://#{fs_path}"
