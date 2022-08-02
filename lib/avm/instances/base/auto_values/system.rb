@@ -9,7 +9,7 @@ module Avm
         module System
           def auto_system_username
             inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID, 'system.username') ||
-              read_entry_optional('ssh.username')
+              read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
           end
 
           def auto_system_groupname
