@@ -7,9 +7,8 @@ module Avm
     class Base
       module AutoValues
         require_sub __FILE__
-        extend ::ActiveSupport::Concern
 
-        included do
+        common_concern do
           %w[Admin Data Database Filesystem Install Mailer Ruby Source System Web]
             .each do |class_name|
             include const_get(class_name)
