@@ -8,12 +8,12 @@ module Avm
       module AutoValues
         module Filesystem
           def auto_fs_path
-            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID,
+            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
                                   ::Avm::Instances::EntryKeys::FS_PATH) { |v| v + '/' + id }
           end
 
           def auto_data_fs_path
-            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID,
+            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
                                   ::Avm::Instances::EntryKeys::DATA_FS_PATH) { |v| v + '/' + id }
           end
 

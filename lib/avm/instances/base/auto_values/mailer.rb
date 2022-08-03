@@ -17,9 +17,9 @@ module Avm
           end
 
           def auto_mailer_id
-            inherited_entry_value(::Avm::Instances::EntryKeys::HOST_ID,
+            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
                                   ::Avm::Instances::EntryKeys::MAILER_ID) ||
-              read_entry_optional(::Avm::Instances::EntryKeys::HOST_ID)
+              read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_ID)
           end
 
           private
