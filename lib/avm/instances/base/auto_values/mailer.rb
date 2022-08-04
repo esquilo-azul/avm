@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'avm/instances/entry'
+require 'avm/entries/entry'
 require 'avm/instances/entry_keys'
 
 module Avm
@@ -11,7 +11,7 @@ module Avm
           ::Avm::Instances::EntryKeys.all.select { |c| c.to_s.start_with?('mailer.') }
             .reject { |c| c == ::Avm::Instances::EntryKeys::MAILER_ID }
             .each do |mailer_key|
-            define_method ::Avm::Instances::Entry.auto_value_method_name(mailer_key) do
+            define_method ::Avm::Entries::Entry.auto_value_method_name(mailer_key) do
               mailer_auto_common(mailer_key)
             end
           end

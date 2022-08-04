@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require 'eac_ruby_utils/core_ext'
-require 'avm/instances/entry'
+require 'avm/entries/entry'
 
 module Avm
   module Entries
     module Base
       def entry(suffix, options = {})
-        ::Avm::Instances::Entry.new(self, suffix, options)
+        ::Avm::Entries::Entry.new(self, suffix, options)
       end
 
       def path_prefix
@@ -38,6 +38,6 @@ module Avm
       def other_entry_value(instance_id, entry_suffix)
         ::Avm::Instances::Base.by_id(instance_id).read_entry_optional(entry_suffix)
       end
-      end
+    end
   end
 end

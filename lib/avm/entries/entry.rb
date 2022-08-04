@@ -4,7 +4,7 @@ require 'eac_config/node'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
-  module Instances
+  module Entries
     class Entry
       class << self
         def auto_value_method_name(suffix)
