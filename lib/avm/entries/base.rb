@@ -6,12 +6,16 @@ require 'avm/entries/entry'
 module Avm
   module Entries
     module Base
+      def entries_provider_id
+        id
+      end
+
       def entry(suffix, options = {})
         ::Avm::Entries::Entry.new(self, suffix, options)
       end
 
       def path_prefix
-        @path_prefix ||= [id].freeze
+        @path_prefix ||= [entries_provider_id].freeze
       end
 
       def read_entry(entry_suffix, options = {})
