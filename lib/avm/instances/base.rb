@@ -4,7 +4,7 @@ require 'avm/with/application_stereotype'
 require 'avm/with/extra_subcommands'
 require 'eac_ruby_utils/require_sub'
 require 'eac_ruby_utils/simple_cache'
-require 'avm/instances/entries'
+require 'avm/entries/base'
 
 module Avm
   module Instances
@@ -13,7 +13,7 @@ module Avm
       enable_listable
       enable_simple_cache
       require_sub __FILE__, include_modules: true
-      include ::Avm::Instances::Entries
+      include ::Avm::Entries::Base
       include ::Avm::With::ExtraSubcommands
       include ::Avm::With::ApplicationStereotype
 

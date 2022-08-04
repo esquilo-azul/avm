@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'avm/instances/entries'
+require 'avm/entries/base'
 require 'avm/registry'
 require 'eac_ruby_utils/core_ext'
 
@@ -9,7 +9,7 @@ module Avm
     class Base
       enable_simple_cache
       require_sub __FILE__, include_modules: true
-      include ::Avm::Instances::Entries
+      include ::Avm::Entries::Base
 
       LOCAL_INSTANCE_SUFFIX = 'dev'
 
