@@ -1,25 +1,16 @@
 # frozen_string_literal: true
 
+require 'avm/entries/auto_values/entry'
 require 'eac_config/node'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Entries
     class Entry
-      class << self
-        def auto_value_method_name(suffix)
-          "auto_#{suffix.to_s.gsub('.', '_')}"
-        end
-      end
-
       common_constructor :parent, :suffix, :options
 
       def auto_value
-        parent.respond_to?(auto_value_method, true) ? parent.send(auto_value_method) : nil
-      end
-
-      def auto_value_method
-        self.class.auto_value_method_name(suffix)
+        ::Avm::Entries::AutoValues::Entry.new(parent, suffix).value
       end
 
       def full_path
