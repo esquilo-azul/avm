@@ -16,8 +16,9 @@ module Avm
         end
       end
 
-      common_constructor :target_path do
+      common_constructor :target_path, :options, default: [{}] do
         self.target_path = target_path.to_pathname
+        self.options = option_list.validate(options)
       end
 
       # @return [Avm::SourceGenerators::OptionList]
