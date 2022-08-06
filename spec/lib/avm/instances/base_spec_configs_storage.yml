@@ -22,6 +22,11 @@ app_3:
     id: app_1
   mailer:
     id: mailer_0
+app_4:
+  install:
+    scheme: ssh
+    username: user4
+    hostname: host4.net
 mailer_0:
   mailer:
     from: 'noreply@example.net'

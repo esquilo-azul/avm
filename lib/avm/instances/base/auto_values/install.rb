@@ -29,13 +29,8 @@ module Avm
           end
 
           def auto_install_url_by_parts
-            read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_HOSTNAME).if_present do |a|
-              a = read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
-                    .if_present(a) { |v| "#{v}@#{a}" }
-              a = read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_PORT)
-                    .if_present(a) { |v| "#{a}:#{v}" }
-              "ssh://#{a}"
-            end
+            require 'avm/entries/auto_values/uri_entry'
+            ::Avm::Entries::AutoValues::UriEntry.new(self, 'install').value
           end
         end
       end
