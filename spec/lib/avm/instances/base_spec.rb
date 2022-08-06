@@ -52,6 +52,7 @@ RSpec.describe ::Avm::Instances::Base do
         ::Avm::Instances::EntryKeys::INSTALL_SCHEME => 'ssh',
         ::Avm::Instances::EntryKeys::INSTALL_HOSTNAME => 'host4.net',
         ::Avm::Instances::EntryKeys::INSTALL_USERNAME => 'user4',
+        ::Avm::Instances::EntryKeys::INSTALL_GROUPNAME => 'group4',
         ::Avm::Instances::EntryKeys::INSTALL_URL => 'ssh://user4@host4.net'
       },
       'mailer_0' => {

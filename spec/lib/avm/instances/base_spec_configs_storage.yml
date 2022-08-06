@@ -27,6 +27,7 @@ app_4:
     scheme: ssh
     username: user4
     hostname: host4.net
+    groupname: group4
 mailer_0:
   mailer:
     from: 'noreply@example.net'
