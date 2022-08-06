@@ -62,8 +62,10 @@ RSpec.describe ::Avm::Instances::Base do
     }.each do |instance_id, values|
       values.each do |input, expected|
         context "when a auto value is requested for \"#{instance_id}.#{input}\"" do
+          let(:instance) { described_class.by_id(instance_id) }
+
           it ".read_entry should return \"#{expected}\"" do
-            expect(described_class.by_id(instance_id).read_entry(input)).to eq(expected)
+            expect(instance.read_entry(input)).to eq(expected)
           end
         end
       end
