@@ -24,10 +24,12 @@ RSpec.describe ::Avm::Instances::Base do
         ::Avm::Instances::EntryKeys::DATABASE_PORT => 5432,
         ::Avm::Instances::EntryKeys::INSTALL_HOSTNAME => 'myhost.com',
         ::Avm::Instances::EntryKeys::INSTALL_USERNAME => 'myuser',
+        ::Avm::Instances::EntryKeys::INSTALL_GROUPNAME => 'myuser',
         ::Avm::Instances::EntryKeys::INSTALL_URL => 'ssh://otheruser@otherhost.com'
       },
       'app_2' => {
         ::Avm::Instances::EntryKeys::DATABASE_HOSTNAME => '127.0.0.1',
+        ::Avm::Instances::EntryKeys::INSTALL_GROUPNAME => 'myuser',
         ::Avm::Instances::EntryKeys::SOURCE_INSTANCE_ID => 'app_dev'
       },
       'app_3' => {

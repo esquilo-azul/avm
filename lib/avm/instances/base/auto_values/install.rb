@@ -7,6 +7,12 @@ module Avm
     class Base
       module AutoValues
         module Install
+          def auto_install_groupname
+            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
+                                  ::Avm::Instances::EntryKeys::INSTALL_GROUPNAME) ||
+              read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
+          end
+
           def auto_install_hostname
             inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
                                   ::Avm::Instances::EntryKeys::INSTALL_HOSTNAME)
