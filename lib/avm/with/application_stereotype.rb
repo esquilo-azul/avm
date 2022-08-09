@@ -5,9 +5,7 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module With
     module ApplicationStereotype
-      common_concern do
-        include ClassMethods
-      end
+      common_concern
 
       module ClassMethods
         # @return [Avm::ApplicationStereotype::Base]
