@@ -7,9 +7,11 @@ module Avm
   module Instances
     class Runner < ::Avm::Runners::Base
       class << self
-        def instance_class
-          ::Avm.const_get(stereotype_name).const_get('Instance')
+        def application_stereotype
+          ::Avm::Registry.application_stereotypes.detect(stereotype_name)
         end
+
+        delegate :instance_class, to: :application_stereotype
 
         def stereotype_module
           ::Avm.const_get(stereotype_name)
