@@ -24,6 +24,8 @@ module Avm
 
         # @return [EacRubyUtils::Envs::Command, nil]
         def configuration_value_to_env_command(value)
+          return value if value.is_a?(::EacRubyUtils::Envs::Command)
+
           configuration_value_to_shell_words(value).if_present { |v| env.command(v).chdir(path) }
         end
 
