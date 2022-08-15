@@ -6,6 +6,8 @@ require 'avm/entries/entry'
 module Avm
   module Entries
     module Base
+      require_sub __FILE__, require_dependency: true
+
       def entries_provider_id
         id
       end

@@ -13,19 +13,10 @@ module Avm
               read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
           end
 
-          def auto_install_hostname
-            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
-                                  ::Avm::Instances::EntryKeys::INSTALL_HOSTNAME)
-          end
-
-          def auto_install_port
-            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
-                                  ::Avm::Instances::EntryKeys::INSTALL_PORT)
-          end
-
-          def auto_install_username
-            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
-                                  ::Avm::Instances::EntryKeys::INSTALL_USERNAME)
+          %w[hostname port username].each do |component|
+            define_method "auto_install_#{component}" do
+              uri_component_entry_value("install.#{component}")
+            end
           end
 
           def auto_install_url
