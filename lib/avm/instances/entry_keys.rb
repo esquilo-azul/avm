@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+require 'avm/entries/uri_builder'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Instances
     module EntryKeys
-      URI_FIELDS = %i[fragment hostname password path port query scheme url username].freeze
+      URI_FIELDS = ::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[url]
 
       class << self
         def all
