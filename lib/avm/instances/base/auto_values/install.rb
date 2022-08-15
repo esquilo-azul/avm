@@ -20,7 +20,7 @@ module Avm
 
           def auto_install_port
             inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
-                                  ::Avm::Instances::EntryKeys::INSTALL_PORT) || 22
+                                  ::Avm::Instances::EntryKeys::INSTALL_PORT)
           end
 
           def auto_install_username
