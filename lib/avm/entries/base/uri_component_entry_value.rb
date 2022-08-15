@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/entries/uri_builder'
 require 'eac_config/entry_path'
 require 'eac_ruby_utils/core_ext'
 
@@ -26,12 +27,27 @@ module Avm
 
         # @return [String, nil]
         def result
+          if url_entry.context_found?
+            return ::Avm::Entries::UriBuilder.from_source(url_entry.value.to_uri)
+                     .avm_field_get(component)
+          end
+
           inherited_result
         end
 
         # @return [EacConfig::EntryPath]
         def root_entry_path
           component_entry_path[0..-2]
+        end
+
+        # @return [Avm::Entries::Entry]
+        def url_entry
+          entries_provider.entry((root_entry_path + %w[url]).to_string)
+        end
+
+        # @return [String]
+        def component
+          component_entry_path.last
         end
       end
     end

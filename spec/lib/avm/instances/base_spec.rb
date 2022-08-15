@@ -57,6 +57,11 @@ RSpec.describe ::Avm::Instances::Base do
         ::Avm::Instances::EntryKeys::INSTALL_GROUPNAME => 'group4',
         ::Avm::Instances::EntryKeys::INSTALL_URL => 'ssh://user4@host4.net'
       },
+      'app_5' => {
+        ::Avm::Instances::EntryKeys::INSTALL_HOSTNAME => 'host5.net',
+        ::Avm::Instances::EntryKeys::INSTALL_PORT => '2222',
+        ::Avm::Instances::EntryKeys::INSTALL_USERNAME => 'user5'
+      },
       'mailer_0' => {
         ::Avm::Instances::EntryKeys::MAILER_FROM => 'noreply@example.net',
         ::Avm::Instances::EntryKeys::MAILER_REPLY_TO => '',
