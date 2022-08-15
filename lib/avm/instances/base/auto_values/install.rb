@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/entries/uri_builder'
 require 'avm/instances/entry_keys'
 
 module Avm
@@ -13,7 +14,7 @@ module Avm
               read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
           end
 
-          %w[hostname port username].each do |component|
+          ::Avm::Entries::UriBuilder::ENTRIES_FIELDS.each do |component|
             define_method "auto_install_#{component}" do
               uri_component_entry_value("install.#{component}")
             end

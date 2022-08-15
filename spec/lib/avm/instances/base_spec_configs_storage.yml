@@ -31,6 +31,9 @@ app_4:
 app_5:
   install:
     url: ssh://user5:passwd5@host5.net:2222/path/to/app5
+app_6:
+  install:
+    id: app_5
 mailer_0:
   mailer:
     from: 'noreply@example.net'
