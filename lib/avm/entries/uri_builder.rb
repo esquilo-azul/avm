@@ -42,6 +42,10 @@ module Avm
 
       common_constructor :data, default: [{}]
 
+      def avm_field_get(avm_field)
+        field_get(translate_field(avm_field))
+      end
+
       def field_get(name)
         data[name.to_sym].if_present(&:to_s)
       end
