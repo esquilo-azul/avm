@@ -45,12 +45,12 @@ module Avm
       end
 
       {
-        '' => %w[data_fs_path fs_path name source_instance_id],
+        '' => %w[fs_path name source_instance_id],
         admin: URI_FIELDS + %w[api_key],
         database: URI_FIELDS + %w[id limit name system timeout extra],
         docker: %w[registry],
         fs: %w[url],
-        install: URI_FIELDS + %w[id groupname],
+        install: URI_FIELDS + %w[id data_path groupname],
         mailer: {
           '' => %w[id from reply_to],
           smtp: URI_FIELDS + %w[address domain authentication openssl_verify_mode starttls_auto tls]

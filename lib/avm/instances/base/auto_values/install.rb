@@ -8,6 +8,13 @@ module Avm
     class Base
       module AutoValues
         module Install
+          def auto_install_data_path
+            uri_component_entry_value(
+              ::Avm::Instances::EntryKeys::INSTALL_DATA_PATH,
+              inherited_value_block: ->(v) { v + '/' + id }
+            )
+          end
+
           def auto_install_groupname
             uri_component_entry_value(
               ::Avm::Instances::EntryKeys::INSTALL_GROUPNAME,

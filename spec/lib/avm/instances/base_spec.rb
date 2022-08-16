@@ -16,7 +16,7 @@ RSpec.describe ::Avm::Instances::Base do
     {
       'app_0' => {
         fs_path: '/fs_root/app_0',
-        data_fs_path: '/data_fs_root/app_0',
+        ::Avm::Instances::EntryKeys::INSTALL_DATA_PATH => '/data_fs_root/app_0',
         ::Avm::Instances::EntryKeys::DATABASE_NAME => 'app_0',
         ::Avm::Instances::EntryKeys::DATABASE_USERNAME => 'user1',
         ::Avm::Instances::EntryKeys::DATABASE_PASSWORD => 'pass1',

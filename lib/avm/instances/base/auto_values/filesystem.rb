@@ -12,11 +12,6 @@ module Avm
                                   ::Avm::Instances::EntryKeys::FS_PATH) { |v| v + '/' + id }
           end
 
-          def auto_data_fs_path
-            inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
-                                  ::Avm::Instances::EntryKeys::DATA_FS_PATH) { |v| v + '/' + id }
-          end
-
           def auto_fs_url
             auto_fs_url_with_install || auto_fs_url_without_install
           end
