@@ -9,8 +9,13 @@ module Avm
     module Base
       class UriComponentEntryValue
         enable_method_class
-        common_constructor :entries_provider, :component_entry_path do
+
+        enable_listable
+        lists.add_symbol :option
+
+        common_constructor :entries_provider, :component_entry_path, :options, default: [{}] do
           self.component_entry_path = ::EacConfig::EntryPath.assert(component_entry_path)
+          self.options = self.class.lists.option.hash_keys_validate!(options)
         end
 
         def inherited_result
