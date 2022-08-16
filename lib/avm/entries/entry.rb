@@ -10,7 +10,11 @@ module Avm
       common_constructor :parent, :suffix, :options
 
       def auto_value
-        ::Avm::Entries::AutoValues::Entry.new(parent, suffix).value
+        auto_value_entry.value
+      end
+
+      def auto_value_entry
+        @auto_value_entry ||= ::Avm::Entries::AutoValues::Entry.new(parent, suffix)
       end
 
       def full_path
