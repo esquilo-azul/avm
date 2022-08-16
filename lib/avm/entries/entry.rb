@@ -17,6 +17,11 @@ module Avm
         @auto_value_entry ||= ::Avm::Entries::AutoValues::Entry.new(parent, suffix)
       end
 
+      # @return [Boolean]
+      def context_found?
+        context_entry.found?
+      end
+
       def full_path
         (parent.path_prefix + suffix_as_array).join('.')
       end
