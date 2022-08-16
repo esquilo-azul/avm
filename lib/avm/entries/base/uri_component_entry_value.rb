@@ -11,7 +11,7 @@ module Avm
         enable_method_class
 
         enable_listable
-        lists.add_symbol :option
+        lists.add_symbol :option, :inherited_value_block
 
         common_constructor :entries_provider, :component_entry_path, :options, default: [{}] do
           self.component_entry_path = ::EacConfig::EntryPath.assert(component_entry_path)
@@ -21,8 +21,13 @@ module Avm
         def inherited_result
           entries_provider.inherited_entry_value(
             id_entry_path.to_string,
-            component_entry_path.to_string
+            component_entry_path.to_string,
+            &inherited_value_block
           )
+        end
+
+        def inherited_value_block
+          options[OPTION_INHERITED_VALUE_BLOCK]
         end
 
         # @return [EacConfig::EntryPath]
