@@ -15,8 +15,11 @@ module Avm
           end
 
           ::Avm::Entries::UriBuilder::ENTRIES_FIELDS.each do |component|
-            define_method "auto_install_#{component}" do
-              uri_component_entry_value("install.#{component}")
+            method_suffix = "install_#{component}"
+            define_method "auto_#{method_suffix}" do
+              uri_component_entry_value(
+                ::Avm::Instances::EntryKeys.const_get(method_suffix.underscore.upcase)
+              )
             end
           end
 
