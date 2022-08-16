@@ -14,12 +14,12 @@ module Avm
 
         def result
           self_entry_value.if_present do |instance_id|
-            other_entry_value(instance_id, target_entry_suffix).if_present(&block)
+            other_entry_value(instance_id).if_present(&block)
           end
         end
 
-        def other_entry_value(instance_id, entry_suffix)
-          ::Avm::Instances::Base.by_id(instance_id).read_entry_optional(entry_suffix)
+        def other_entry_value(instance_id)
+          ::Avm::Instances::Base.by_id(instance_id).read_entry_optional(target_entry_suffix)
         end
 
         def self_entry_value
