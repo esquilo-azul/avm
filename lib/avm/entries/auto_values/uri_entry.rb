@@ -15,7 +15,7 @@ module Avm
 
         def value
           ::Avm::Entries::UriBuilder.from_all_fields do |field_name|
-            entries_provider.entry([suffix, field_name]).value
+            entries_provider.entry([suffix, field_name]).optional_value
           end.to_uri.to_s
         end
       end
