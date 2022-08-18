@@ -11,9 +11,14 @@ module Avm
         class DefaultValue
           enable_method_class
           common_constructor :uri_component_entry_value
+          delegate :component, :entries_provider, to: :uri_component_entry_value
+
+          def default_value_method_name
+            "#{component}_default_value"
+          end
 
           def result
-            uri_component_entry_value.options[OPTION_DEFAULT_VALUE].call_if_proc
+            entries_provider.if_respond(default_value_method_name)
           end
         end
       end

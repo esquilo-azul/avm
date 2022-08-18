@@ -15,16 +15,7 @@ module Avm
             )
           end
 
-          def auto_install_groupname
-            uri_component_entry_value(
-              ::Avm::Instances::EntryKeys::INSTALL_GROUPNAME,
-              default_value: lambda do
-                read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
-              end
-            )
-          end
-
-          ::Avm::Entries::UriBuilder::ENTRIES_FIELDS.each do |component|
+          (::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[groupname]).each do |component|
             method_suffix = "install_#{component}"
             define_method "auto_#{method_suffix}" do
               uri_component_entry_value(
@@ -42,6 +33,10 @@ module Avm
           def auto_install_url_by_parts
             require 'avm/entries/auto_values/uri_entry'
             ::Avm::Entries::AutoValues::UriEntry.new(self, 'install').value
+          end
+
+          def groupname_default_value
+            read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
           end
         end
       end
