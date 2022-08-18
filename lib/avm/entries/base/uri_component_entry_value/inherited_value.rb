@@ -11,7 +11,7 @@ module Avm
         class InheritedValue
           enable_method_class
           common_constructor :uri_component_entry_value
-          delegate :component, :entries_provider, :id_entry_path, :component_entry_path,
+          delegate :entries_provider, :id_entry_path, :component_entry_path,
                    to: :uri_component_entry_value
 
           def result
@@ -29,7 +29,7 @@ module Avm
           end
 
           def inherited_value_block_method_name
-            "#{component}_inherited_value_proc".to_sym
+            "#{component_entry_path.parts.join('_').variableize}_inherited_value_proc".to_sym
           end
         end
       end

@@ -28,7 +28,7 @@ module Avm
             ::Avm::Entries::AutoValues::UriEntry.new(self, 'install').value
           end
 
-          def data_path_inherited_value_proc(value)
+          def install_data_path_inherited_value_proc(value)
             value + '/' + id
           end
 
