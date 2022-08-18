@@ -38,7 +38,7 @@ module Avm
 
       # @return [Avm::Sources::Base]
       def local_source_uncached
-        ::Avm::Registry.sources.detect(local_instance.fs_path)
+        ::Avm::Registry.sources.detect(local_instance.install_path)
       end
     end
   end

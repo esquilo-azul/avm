@@ -15,8 +15,8 @@ RSpec.describe ::Avm::Instances::Base do
   describe '#read_entry' do
     {
       'app_0' => {
-        fs_path: '/fs_root/app_0',
         ::Avm::Instances::EntryKeys::INSTALL_DATA_PATH => '/data_fs_root/app_0',
+        ::Avm::Instances::EntryKeys::INSTALL_PATH => '/fs_root/app_0',
         ::Avm::Instances::EntryKeys::DATABASE_NAME => 'app_0',
         ::Avm::Instances::EntryKeys::DATABASE_USERNAME => 'user1',
         ::Avm::Instances::EntryKeys::DATABASE_PASSWORD => 'pass1',
@@ -71,7 +71,7 @@ RSpec.describe ::Avm::Instances::Base do
         ::Avm::Instances::EntryKeys::INSTALL_PORT => '2222',
         ::Avm::Instances::EntryKeys::INSTALL_USERNAME => 'user5',
         ::Avm::Instances::EntryKeys::INSTALL_PASSWORD => 'passwd5',
-        ::Avm::Instances::EntryKeys::INSTALL_PATH => '/path/to/app5'
+        ::Avm::Instances::EntryKeys::INSTALL_PATH => '/path/to/app5/app_6'
       },
       'mailer_0' => {
         ::Avm::Instances::EntryKeys::MAILER_FROM => 'noreply@example.net',

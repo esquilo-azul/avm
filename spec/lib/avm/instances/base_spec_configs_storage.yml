@@ -3,10 +3,10 @@ app_0:
   install:
     id: app_1
 app_1:
-  fs_path: /fs_root
   install:
     id: app_2
     data_path: /data_fs_root
+    path: /fs_root
   database:
     name: app_1_db
     username: user1

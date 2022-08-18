@@ -45,7 +45,7 @@ module Avm
       end
 
       {
-        '' => %w[fs_path name source_instance_id],
+        '' => %w[name source_instance_id],
         admin: URI_FIELDS + %w[api_key],
         database: URI_FIELDS + %w[id limit name system timeout extra],
         docker: %w[registry],
