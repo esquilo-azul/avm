@@ -9,6 +9,7 @@ module Avm
     module Base
       class UriComponentEntryValue
         enable_method_class
+        require_sub __FILE__, require_dependency: true
 
         enable_listable
         lists.add_symbol :option, :default_value, :inherited_value_block
@@ -16,10 +17,6 @@ module Avm
         common_constructor :entries_provider, :component_entry_path, :options, default: [{}] do
           self.component_entry_path = ::EacConfig::EntryPath.assert(component_entry_path)
           self.options = self.class.lists.option.hash_keys_validate!(options)
-        end
-
-        def default_value
-          options[OPTION_DEFAULT_VALUE].call_if_proc
         end
 
         def inherited_result
