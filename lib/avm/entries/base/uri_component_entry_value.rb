@@ -12,7 +12,7 @@ module Avm
         require_sub __FILE__, require_dependency: true
 
         enable_listable
-        lists.add_symbol :option, :inherited_value_block
+        lists.add_symbol :option
 
         common_constructor :entries_provider, :component_entry_path, :options, default: [{}] do
           self.component_entry_path = ::EacConfig::EntryPath.assert(component_entry_path)

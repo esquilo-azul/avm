@@ -8,14 +8,7 @@ module Avm
     class Base
       module AutoValues
         module Install
-          def auto_install_data_path
-            uri_component_entry_value(
-              ::Avm::Instances::EntryKeys::INSTALL_DATA_PATH,
-              inherited_value_block: ->(v) { v + '/' + id }
-            )
-          end
-
-          (::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[groupname]).each do |component|
+          (::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[data_path groupname]).each do |component|
             method_suffix = "install_#{component}"
             define_method "auto_#{method_suffix}" do
               uri_component_entry_value(
@@ -33,6 +26,10 @@ module Avm
           def auto_install_url_by_parts
             require 'avm/entries/auto_values/uri_entry'
             ::Avm::Entries::AutoValues::UriEntry.new(self, 'install').value
+          end
+
+          def data_path_inherited_value_proc(value)
+            value + '/' + id
           end
 
           def groupname_default_value
