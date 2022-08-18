@@ -19,18 +19,6 @@ module Avm
           self.options = self.class.lists.option.hash_keys_validate!(options)
         end
 
-        def inherited_result
-          entries_provider.inherited_entry_value(
-            id_entry_path.to_string,
-            component_entry_path.to_string,
-            &inherited_value_block
-          )
-        end
-
-        def inherited_value_block
-          options[OPTION_INHERITED_VALUE_BLOCK]
-        end
-
         # @return [EacConfig::EntryPath]
         def id_entry_path
           root_entry_path + %w[id]
@@ -38,7 +26,7 @@ module Avm
 
         # @return [String, nil]
         def result
-          url_entry_value || inherited_result || default_value
+          url_entry_value || inherited_value || default_value
         end
 
         # @return [EacConfig::EntryPath]
