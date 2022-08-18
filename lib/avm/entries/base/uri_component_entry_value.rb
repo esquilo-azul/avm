@@ -34,18 +34,6 @@ module Avm
           component_entry_path[0..-2]
         end
 
-        # @return [Avm::Entries::Entry]
-        def url_entry
-          entries_provider.entry((root_entry_path + %w[url]).to_string)
-        end
-
-        def url_entry_value
-          return unless url_entry.context_found?
-
-          ::Avm::Entries::UriBuilder.from_source(url_entry.value.to_uri)
-            .avm_field_get(component)
-        end
-
         # @return [String]
         def component
           component_entry_path.last
