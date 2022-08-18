@@ -32,7 +32,7 @@ module Avm
             value + '/' + id
           end
 
-          def groupname_default_value
+          def install_groupname_default_value
             read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
           end
         end

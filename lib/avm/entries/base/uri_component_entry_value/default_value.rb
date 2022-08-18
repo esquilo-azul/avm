@@ -11,10 +11,10 @@ module Avm
         class DefaultValue
           enable_method_class
           common_constructor :uri_component_entry_value
-          delegate :component, :entries_provider, to: :uri_component_entry_value
+          delegate :component_entry_path, :entries_provider, to: :uri_component_entry_value
 
           def default_value_method_name
-            "#{component}_default_value"
+            "#{component_entry_path.parts.join('_').variableize}_default_value"
           end
 
           def result
