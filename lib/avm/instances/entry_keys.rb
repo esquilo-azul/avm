@@ -49,7 +49,6 @@ module Avm
         admin: URI_FIELDS + %w[api_key],
         database: URI_FIELDS + %w[id limit name system timeout extra],
         docker: %w[registry],
-        fs: %w[url],
         install: URI_FIELDS + %w[id data_path groupname],
         mailer: {
           '' => %w[id from reply_to],
