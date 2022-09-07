@@ -26,6 +26,10 @@ module Avm
 
       delegate :instance_class, :stereotype_module, :stereotype_name, to: :class
 
+      def extra_available_subcommands
+        instance.if_present({}, &:extra_available_subcommands)
+      end
+
       private
 
       def instance_uncached
