@@ -51,11 +51,10 @@ module Avm
       end
 
       def host_env_uncached
-        install_uri = entry(::Avm::Instances::EntryKeys::INSTALL_URL).value.to_uri
-        case install_uri.scheme
+        case install_scheme
         when 'file' then ::EacRubyUtils::Envs.local
-        when 'ssh' then ::EacRubyUtils::Envs.ssh(install_uri)
-        else raise("Unmapped access value: \"#{install_uri}\"")
+        when 'ssh' then ::EacRubyUtils::Envs.ssh(install_url)
+        else raise("Unmapped access value: \"#{install_scheme}\"")
         end
       end
 
