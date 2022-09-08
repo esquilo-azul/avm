@@ -33,7 +33,7 @@ module Avm
       private
 
       def instance_uncached
-        ::Avm::Registry.instances.detect(parsed.instance_id)
+        parsed.instance_id.if_present { |v| ::Avm::Registry.instances.detect(v) }
       end
     end
   end
