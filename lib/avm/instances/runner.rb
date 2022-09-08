@@ -6,12 +6,6 @@ require 'eac_cli/core_ext'
 module Avm
   module Instances
     class Runner < ::Avm::Runners::Base
-      class << self
-        def stereotype_name
-          name.demodulize
-        end
-      end
-
       runner_with :help, :subcommands do
         desc 'Utilities for a instance.'
         pos_arg 'instance-id'
@@ -27,6 +21,10 @@ module Avm
 
       def stereotype_module
         instance.application.stereotype.namespace_module
+      end
+
+      def stereotype_name
+        stereotype_module.name
       end
 
       private
