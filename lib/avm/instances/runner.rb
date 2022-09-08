@@ -7,8 +7,6 @@ module Avm
   module Instances
     class Runner < ::Avm::Runners::Base
       class << self
-        delegate :instance_class, to: :application_stereotype
-
         def stereotype_module
           ::Avm.const_get(stereotype_name)
         end
@@ -24,7 +22,8 @@ module Avm
         subcommands
       end
 
-      delegate :instance_class, :stereotype_module, :stereotype_name, to: :class
+      delegate :class, to: :instance, prefix: true
+      delegate :stereotype_module, :stereotype_name, to: :class
 
       def extra_available_subcommands
         instance.if_present({}, &:extra_available_subcommands)
