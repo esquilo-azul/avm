@@ -22,9 +22,8 @@ module Avm
         end
       end
 
-      description = "Utilities for #{stereotype_name} instances."
       runner_with :help, :subcommands do
-        desc description
+        desc 'Utilities for a instance.'
         pos_arg 'instance-id'
         subcommands
       end
