@@ -7,10 +7,6 @@ module Avm
   module Instances
     class Runner < ::Avm::Runners::Base
       class << self
-        def stereotype_module
-          ::Avm.const_get(stereotype_name)
-        end
-
         def stereotype_name
           name.demodulize
         end
@@ -27,6 +23,10 @@ module Avm
 
       def extra_available_subcommands
         instance.if_present({}, &:extra_available_subcommands)
+      end
+
+      def stereotype_module
+        instance.application.stereotype.namespace_module
       end
 
       private
