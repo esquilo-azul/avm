@@ -49,7 +49,7 @@ module Avm
         admin: URI_FIELDS + %w[api_key],
         database: URI_FIELDS + %w[id limit name system timeout extra],
         docker: %w[registry],
-        install: URI_FIELDS + %w[id data_path groupname],
+        install: URI_FIELDS + %w[id data_path email groupname],
         mailer: {
           '' => %w[id from reply_to],
           smtp: URI_FIELDS + %w[address domain authentication openssl_verify_mode starttls_auto tls]
