@@ -8,7 +8,8 @@ module Avm
     class Base
       module AutoValues
         module Install
-          (::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[data_path groupname]).each do |component|
+          (::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[data_path email groupname])
+            .each do |component|
             method_suffix = "install_#{component}"
             define_method "auto_#{method_suffix}" do
               uri_component_entry_value(
