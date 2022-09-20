@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/entries/keys_constants_set'
 require 'avm/entries/uri_builder'
 require 'eac_ruby_utils/core_ext'
 
@@ -14,33 +15,13 @@ module Avm
         end
 
         def keys_consts_set(prefix, suffixes)
-          if suffixes.is_a?(::Hash)
-            keys_consts_set_from_hash(prefix, suffixes)
-          elsif suffixes.is_a?(::Enumerable)
-            keys_consts_set_from_enum(prefix, suffixes)
-          else
-            raise "Unmapped suffixes class: #{suffixes.class}"
-          end
-        end
-
-        def key_const_set(prefix, suffix)
-          key = [prefix, suffix].reject(&:blank?).join('.')
-          const_set(key.gsub('.', '_').upcase, key)
-          all_keys << key
+          all_keys.merge(::Avm::Entries::KeysConstantsSet.new(self, prefix, suffixes).result)
         end
 
         private
 
         def all_keys
           @all_keys ||= ::Set.new
-        end
-
-        def keys_consts_set_from_enum(prefix, suffixes)
-          suffixes.each { |suffix| key_const_set(prefix, suffix) }
-        end
-
-        def keys_consts_set_from_hash(prefix, suffixes)
-          suffixes.each { |k, v| keys_consts_set(prefix.to_s + (k.blank? ? '' : ".#{k}"), v) }
         end
       end
 
