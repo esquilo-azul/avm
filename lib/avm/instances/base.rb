@@ -12,8 +12,8 @@ module Avm
       enable_abstract_methods
       enable_listable
       enable_simple_cache
-      require_sub __FILE__, include_modules: true
       include ::Avm::Entries::Base
+      require_sub __FILE__, include_modules: true
       include ::Avm::With::ExtraSubcommands
       include ::Avm::With::ApplicationStereotype
 

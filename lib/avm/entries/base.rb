@@ -7,6 +7,13 @@ module Avm
   module Entries
     module Base
       require_sub __FILE__, require_dependency: true
+      common_concern
+
+      module ClassMethods
+        def uri_components_entries_values(prefix, extra_fields = [])
+          ::Avm::Entries::Base::UriComponentsEntriesValues.new(self, prefix, extra_fields).result
+        end
+      end
 
       def entries_provider_id
         id

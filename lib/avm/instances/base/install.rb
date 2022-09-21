@@ -7,14 +7,8 @@ module Avm
   module Instances
     class Base
       module Install
-        (::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[data_path email groupname])
-          .each do |component|
-          method_suffix = "install_#{component}"
-          define_method "auto_#{method_suffix}" do
-            uri_component_entry_value(
-              ::Avm::Instances::EntryKeys.const_get(method_suffix.underscore.upcase)
-            )
-          end
+        common_concern do
+          uri_components_entries_values 'install', %w[data_path email groupname]
         end
 
         def auto_install_url
