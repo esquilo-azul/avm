@@ -91,7 +91,7 @@ RSpec.describe ::Avm::Instances::Base do
 
           it do
             expect(described_class.ancestors.map(&:name)).to(
-              include('Avm::Instances::Base::AutoValues::Install')
+              include('Avm::Instances::Base::Install')
             )
           end
 
