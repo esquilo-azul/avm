@@ -10,7 +10,7 @@ module Avm
         require_sub __FILE__
         common_constructor :entries_provider_class, :prefix, :extra_fields
 
-        ENTRIES_FIELDS = ::Avm::Entries::UriBuilder::ENTRIES_FIELDS
+        ENTRIES_FIELDS = ::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[url]
 
         def fields
           ENTRIES_FIELDS + extra_fields

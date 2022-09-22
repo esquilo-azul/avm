@@ -11,17 +11,6 @@ module Avm
           uri_components_entries_values 'install', %w[data_path email groupname]
         end
 
-        def auto_install_url
-          inherited_entry_value(::Avm::Instances::EntryKeys::INSTALL_ID,
-                                ::Avm::Instances::EntryKeys::INSTALL_URL) ||
-            auto_install_url_by_parts
-        end
-
-        def auto_install_url_by_parts
-          require 'avm/entries/auto_values/uri_entry'
-          ::Avm::Entries::AutoValues::UriEntry.new(self, 'install').value
-        end
-
         def install_data_path_inherited_value_proc(value)
           value + '/' + id
         end

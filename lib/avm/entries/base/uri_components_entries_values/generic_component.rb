@@ -27,6 +27,10 @@ module Avm
             ::EacConfig::EntryPath.assert([prefix, component])
           end
 
+          def id_component
+            @id_component ||= owner.component_factory('id')
+          end
+
           def setup
             outer_self = self
             define_auto_method do
