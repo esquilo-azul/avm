@@ -23,12 +23,20 @@ module Avm
             entries_provider_class.define_method(auto_method_name, &block)
           end
 
+          def define_inherited_value_proc_method(&block)
+            entries_provider_class.define_method(inherited_value_proc_name, &block)
+          end
+
           def entry_key_path
             ::EacConfig::EntryPath.assert([prefix, component])
           end
 
           def id_component
             @id_component ||= owner.component_factory('id')
+          end
+
+          def inherited_value_proc_name
+            [component_method_name, 'inherited_value_proc'].join('_')
           end
 
           def setup

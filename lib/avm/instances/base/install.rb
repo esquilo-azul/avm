@@ -18,10 +18,6 @@ module Avm
         def install_groupname_default_value
           read_entry_optional(::Avm::Instances::EntryKeys::INSTALL_USERNAME)
         end
-
-        def install_path_inherited_value_proc(value)
-          install_data_path_inherited_value_proc(value)
-        end
       end
     end
   end
