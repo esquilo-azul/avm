@@ -8,6 +8,12 @@ RSpec.describe ::Avm::Instances::Base do
     .default_setup
     .stub_eac_config_node(self, ::File.join(__dir__, 'base_spec_configs_storage.yml'))
 
+  it do
+    expect(described_class.ancestors.map(&:name)).to(
+      include('Avm::Instances::Base::Install')
+    )
+  end
+
   describe '#read_entry' do
     {
       'app_0' => {
@@ -84,12 +90,6 @@ RSpec.describe ::Avm::Instances::Base do
       values.each do |input, expected|
         context "when a auto value is requested for \"#{instance_id}.#{input}\"" do
           let(:instance) { described_class.by_id(instance_id) }
-
-          it do
-            expect(described_class.ancestors.map(&:name)).to(
-              include('Avm::Instances::Base::Install')
-            )
-          end
 
           it ".read_entry should return \"#{expected}\"" do
             expect(instance.read_entry(input)).to eq(expected)
