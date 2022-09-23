@@ -12,18 +12,18 @@ module Avm
           delegate :instance, :job, to: :variables_source
 
           def result
-            entry_from_job || result_from_instance_entry
+            result_from_job || result_from_instance_entry
           end
 
           private
 
-          def entry_from_job
-            method = path.gsub('.', '_').underscore
-            return job.send(method) if job.respond_to?(method, true)
-          end
-
           def result_from_instance_entry
             instance.read_entry(path, options)
+          end
+
+          def result_from_job
+            method = path.gsub('.', '_').underscore
+            return job.send(method) if job.respond_to?(method, true)
           end
         end
       end
