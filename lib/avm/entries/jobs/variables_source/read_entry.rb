@@ -17,13 +17,16 @@ module Avm
 
           private
 
+          def path_method_name
+            path.gsub('.', '_').underscore
+          end
+
           def result_from_instance_entry
             instance.read_entry(path, options)
           end
 
           def result_from_job
-            method = path.gsub('.', '_').underscore
-            return job.send(method) if job.respond_to?(method, true)
+            return job.send(path_method_name) if job.respond_to?(path_method_name, true)
           end
         end
       end
