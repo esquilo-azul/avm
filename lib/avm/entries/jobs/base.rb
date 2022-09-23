@@ -42,7 +42,7 @@ module Avm
           end
 
           def variables_source
-            ::Avm::Entries::Jobs::VariablesSource.new(self, instance)
+            ::Avm::Entries::Jobs::VariablesSource.new(self)
           end
 
           protected

@@ -6,7 +6,8 @@ module Avm
   module Entries
     module Jobs
       class VariablesSource
-        common_constructor :job, :instance
+        common_constructor :job
+        delegate :instance, to: :job
 
         def read_entry(path, options = {})
           entry_from_job(path) || instance.read_entry(path, options)
