@@ -5,7 +5,7 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module Rspec
     module Setup
-      EXAMPLES = %w[in_avm_registry not_in_avm_registry].freeze
+      EXAMPLES = %w[entries_values in_avm_registry not_in_avm_registry].freeze
 
       def self.extended(obj)
         obj.setup_examples
