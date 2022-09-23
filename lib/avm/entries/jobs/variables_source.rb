@@ -6,19 +6,9 @@ module Avm
   module Entries
     module Jobs
       class VariablesSource
+        require_sub __FILE__, require_dependency: true
         common_constructor :job
         delegate :instance, to: :job
-
-        def read_entry(path, options = {})
-          entry_from_job(path) || instance.read_entry(path, options)
-        end
-
-        private
-
-        def entry_from_job(path)
-          method = path.gsub('.', '_').underscore
-          return job.send(method) if job.respond_to?(method, true)
-        end
       end
     end
   end
