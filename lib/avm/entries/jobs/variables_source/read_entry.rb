@@ -12,7 +12,9 @@ module Avm
           delegate :instance, :job, to: :variables_source
 
           def result
-            result_from_job || result_from_instance_entry
+            return result_from_job if result_from_job?
+
+            result_from_instance_entry
           end
 
           private
@@ -26,7 +28,11 @@ module Avm
           end
 
           def result_from_job
-            return job.send(path_method_name) if job.respond_to?(path_method_name, true)
+            job.send(path_method_name)
+          end
+
+          def result_from_job?
+            job.respond_to?(path_method_name, true)
           end
         end
       end
