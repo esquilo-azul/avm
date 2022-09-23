@@ -6,7 +6,7 @@ require 'avm/instances/entry_keys'
 RSpec.describe ::Avm::Instances::Base do
   ::EacRubyUtils::Rspec
     .default_setup
-    .stub_eac_config_node(self, ::File.join(__dir__, 'base_spec_configs_storage.yml'))
+    .stub_eac_config_node(self, ::File.join(__dir__, 'base_spec_files', 'config.yml'))
 
   it do
     expect(described_class.ancestors.map(&:name)).to(
