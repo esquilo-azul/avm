@@ -4,10 +4,6 @@ require 'avm/instances/base'
 require 'avm/instances/entry_keys'
 
 RSpec.describe ::Avm::Instances::Base do
-  let(:app2) { described_class.by_id('app_2') }
-  let(:app1) { described_class.by_id('app_1') }
-  let(:app0) { described_class.by_id('app_0') }
-
   ::EacRubyUtils::Rspec
     .default_setup
     .stub_eac_config_node(self, ::File.join(__dir__, 'base_spec_configs_storage.yml'))
