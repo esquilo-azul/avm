@@ -35,7 +35,7 @@ module Avm
           '' => %w[id from reply_to],
           smtp: URI_FIELDS + %w[address domain authentication openssl_verify_mode starttls_auto tls]
         },
-        web: URI_FIELDS + %w[userinfo]
+        web: URI_FIELDS
       }.each { |prefix, suffixes| keys_consts_set(prefix, suffixes) }
     end
   end
