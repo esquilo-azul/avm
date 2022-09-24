@@ -8,15 +8,22 @@ module Avm
     module AutoValues
       class Entry
         class << self
-          def auto_value_method_name(suffix)
-            "auto_#{suffix.to_s.gsub('.', '_')}"
+          # @param path [EacConfig::EntryPath]
+          # @return String
+          def auto_value_method_name(path)
+            "auto_#{::EacConfig::EntryPath.assert(path).to_string.gsub('.', '_')}"
           end
         end
 
-        common_constructor :entries_provider, :suffix
+        # @!method initialize(entries_provider, path)
+        #   @param entries_provider
+        #   @param path [EacConfig::EntryPath]
+        common_constructor :entries_provider, :path do
+          self.path = ::EacConfig::EntryPath.assert(path)
+        end
 
         def auto_value_method
-          self.class.auto_value_method_name(suffix)
+          self.class.auto_value_method_name(path)
         end
 
         def found?
