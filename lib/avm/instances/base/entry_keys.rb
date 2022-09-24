@@ -13,7 +13,7 @@ module Avm
           end
 
           define_method "#{method_name}_optional" do
-            read_entry(key, required: false)
+            read_entry_optional(key)
           end
         end
       end
