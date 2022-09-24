@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'avm/entries/jobs/variables_source'
+require 'avm/entries/jobs/with_variables_source'
 require 'avm/result'
 require 'eac_cli/core_ext'
 
@@ -10,6 +10,7 @@ module Avm
       module Base
         common_concern do
           include ::ActiveSupport::Callbacks
+          include ::Avm::Entries::Jobs::WithVariablesSource
 
           enable_speaker
           enable_simple_cache
@@ -39,10 +40,6 @@ module Avm
             ::Avm::Result.success('Done!')
           rescue ::Avm::Result::Error => e
             e.to_result
-          end
-
-          def variables_source
-            ::Avm::Entries::Jobs::VariablesSource.new(self)
           end
 
           protected
