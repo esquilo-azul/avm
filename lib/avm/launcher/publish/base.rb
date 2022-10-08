@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 require 'avm/launcher/errors/base'
+require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Launcher
     module Publish
       class Base
-        attr_reader :instance
-
-        def initialize(instance)
-          @instance = instance
-        end
+        common_constructor :instance
 
         def run
           s = check
