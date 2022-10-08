@@ -35,8 +35,6 @@ module Avm
           internal_check
         rescue ::Avm::Launcher::Errors::Base => e
           ::Avm::Launcher::Publish::CheckResult.blocked("Error: #{e}")
-        rescue ::Avm::Launcher::Git::Error => e
-          ::Avm::Launcher::Publish::CheckResult.blocked("Git error: #{e}")
         end
       end
     end
