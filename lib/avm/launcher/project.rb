@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
+require 'eac_ruby_utils/core_ext'
+
 module Avm
   module Launcher
     class Project
-      attr_reader :name, :instances
-
-      def initialize(name, instances)
-        @name = name
-        @instances = instances.to_a
+      common_constructor :name, :instances do
+        self.instances = instances.to_a
       end
 
       def to_s
