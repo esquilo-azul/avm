@@ -2,6 +2,7 @@
 
 require 'avm/projects/stereotypes'
 require 'avm/launcher/paths/real'
+require 'avm/launcher/stereotype'
 
 module Avm
   module Launcher
@@ -61,7 +62,7 @@ module Avm
         private
 
         def stereotypes_uncached
-          ::Avm::Projects::Stereotype.stereotypes.select { |s| s.match?(self) }
+          ::Avm::Launcher::Stereotype.stereotypes.select { |s| s.match?(self) }
         end
 
         def build_child(name)
