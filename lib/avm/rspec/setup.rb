@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/rspec/source_generator'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
@@ -9,6 +10,7 @@ module Avm
 
       def self.extended(obj)
         obj.setup_examples
+        obj.rspec_config.include(::Avm::Rspec::SourceGenerator)
       end
 
       def setup_examples
