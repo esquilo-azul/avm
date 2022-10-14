@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/projects/stereotypes'
 require 'avm/launcher/paths/real'
 require 'avm/launcher/stereotype'
 
