@@ -6,9 +6,9 @@ module Avm
   module Rspec
     module SourceGenerator
       # @return [Avm::Sources::Base]
-      def avm_source(stereotype_name, target_path = nil)
-        target_path ||= temp_dir.join('generated_app')
-        ::Avm::Registry.source_generators.detect(stereotype_name, target_path).perform
+      def avm_source(stereotype_name, options = {})
+        target_path ||= options.delete(:target_path) || temp_dir.join('generated_app')
+        ::Avm::Registry.source_generators.detect(stereotype_name, target_path, options).perform
         ::Avm::Registry.sources.detect(target_path)
       end
     end
