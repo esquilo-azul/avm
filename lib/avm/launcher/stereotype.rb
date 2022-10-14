@@ -7,11 +7,7 @@ module Avm
   module Launcher
     module Stereotype
       class << self
-        attr_reader :stereotypes
-
         def included(base)
-          @stereotypes ||= []
-          @stereotypes << base
           base.extend(ClassMethods)
         end
 
@@ -21,6 +17,10 @@ module Avm
 
         def nogit_stereotypes
           stereotypes - git_stereotypes
+        end
+
+        def stereotypes
+          ::Avm::Registry.launcher_stereotypes.available
         end
       end
 
