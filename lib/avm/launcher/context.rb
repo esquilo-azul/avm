@@ -8,7 +8,6 @@ require 'avm/launcher/context/instance_discovery'
 require 'avm/launcher/context/settings'
 require 'avm/launcher/paths/logical'
 require 'avm/launcher/project'
-require 'avm/tools/self'
 
 module Avm
   module Launcher
@@ -82,7 +81,7 @@ module Avm
       end
 
       def default_settings_file
-        ::Avm::Tools::Self.application.config_dir.join('launcher.yaml')
+        ::File.join(::EacFs::Contexts.config.current.path, 'launcher.yaml')
       end
 
       def projects_uncached
