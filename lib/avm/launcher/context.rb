@@ -43,6 +43,10 @@ module Avm
         @recache = false
       end
 
+      def fs_object_id
+        root.real.variableize
+      end
+
       def instance(name)
         instances.find { |i| i.name == name }
       end
@@ -66,7 +70,7 @@ module Avm
       end
 
       def default_cache_root
-        ::Avm::Tools::Self.application.cache_dir.join('launcher')
+        fs_cache.path
       end
 
       def default_option(key)
