@@ -6,6 +6,8 @@ require 'ostruct'
 module Avm
   module FileFormats
     class Base
+      enable_abstract_methods
+
       def apply(files)
         old_content = Hash[files.map { |f| [f, File.read(f)] }]
         ::Avm::Files::Formatter::Utf8Assert.assert_files(files) { internal_apply(files) }
