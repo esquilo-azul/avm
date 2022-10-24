@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/file_formats/utf8_assert'
 require 'eac_fs/file_info'
 require 'ostruct'
 
@@ -10,7 +11,7 @@ module Avm
 
       def apply(files)
         old_content = Hash[files.map { |f| [f, File.read(f)] }]
-        ::Avm::Files::Formatter::Utf8Assert.assert_files(files) { internal_apply(files) }
+        ::Avm::FileFormats::Utf8Assert.assert_files(files) { internal_apply(files) }
         files.map { |f| build_file_result(f, old_content[f]) }
       end
 
