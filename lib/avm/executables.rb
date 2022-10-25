@@ -14,7 +14,7 @@ module Avm
 
       private
 
-      %w[latex yapf xdg-open].each do |program|
+      %w[latex xdg-open].each do |program|
         define_method(program.underscore + '_uncached') do
           env.executable(program, '--version')
         end
