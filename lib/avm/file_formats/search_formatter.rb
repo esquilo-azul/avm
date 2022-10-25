@@ -38,7 +38,7 @@ module Avm
 
       def traverser_check_file(file)
         format = find_format(file)
-        infov file, format ? format.class : '-' if options[OPTION_VERBOSE]
+        speak(:infov, file, format ? format.class : '-')
         return unless format
 
         @formats_files[format] ||= []
@@ -85,6 +85,12 @@ module Avm
 
       def traverser_recursive
         options[OPTION_RECURSIVE]
+      end
+
+      def speak(method, *method_args)
+        return unless options[OPTION_VERBOSE].to_bool
+
+        send(method, *method_args)
       end
     end
   end
