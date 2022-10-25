@@ -27,9 +27,9 @@ module Avm
       private
 
       def apply
-        infom "Applying #{@formats_files.count} format(s)... "
+        speak(:infom, "Applying #{@formats_files.count} format(s)... ")
         @formats_files.each do |format, files|
-          infom "Applying format #{format.name} (Files matched: #{files.count})..."
+          speak(:infom, "Applying format #{format.name} (Files matched: #{files.count})...")
           next unless options[OPTION_APPLY]
 
           @result += format.apply(files)
@@ -66,9 +66,9 @@ module Avm
       end
 
       def search_files
-        infov 'Directories to search', source_paths.count
+        speak(:infov, 'Directories to search', source_paths.count)
         source_paths.each do |source_path|
-          infom "Searching files on \"#{source_path}\"..."
+          speak(:infom, "Searching files on \"#{source_path}\"...")
           traverser_check_path(source_path)
         end
       end
@@ -76,11 +76,11 @@ module Avm
       def show_results
         changed = @result.select(&:changed)
         changed.each do |h|
-          out h.file.to_s.cyan
-          out " (#{h.format})".yellow
-          puts ' changed'.green
+          speak(:out, h.file.to_s.cyan)
+          speak(:out, " (#{h.format})".yellow)
+          speak(:puts, ' changed'.green)
         end
-        infov('Files changed', "#{changed.count}/#{@result.count}")
+        speak(:infov, 'Files changed', "#{changed.count}/#{@result.count}")
       end
 
       def traverser_recursive
