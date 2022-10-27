@@ -12,6 +12,10 @@ module Avm
         raise_abstract_method __method__
       end
 
+      def deploy_to_env_path(_target_env, _target_path)
+        raise_abstract_method __method__
+      end
+
       # @param other [Avm::Scms::Commit]
       # @return [Avm::Scms::Commit]
       def merge_with(_other)
