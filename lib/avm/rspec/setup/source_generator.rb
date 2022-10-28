@@ -8,6 +8,7 @@ module Avm
       module SourceGenerator
         # @return [Avm::Sources::Base]
         def avm_source(stereotype_name, options = {})
+          options = options.dup
           target_path ||= options.delete(:target_path) || temp_dir.join('generated_app')
           ::Avm::Registry.source_generators.detect(stereotype_name, target_path, options).perform
           ::Avm::Registry.sources.detect(target_path)
