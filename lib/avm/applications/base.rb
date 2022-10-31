@@ -22,7 +22,7 @@ module Avm
       end
 
       def instance(suffix)
-        ::Avm::Instances::Base.new(self, suffix)
+        stereotype.instance_class.new(self, suffix)
       end
 
       def name
