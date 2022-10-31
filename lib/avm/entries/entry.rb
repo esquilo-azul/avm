@@ -46,6 +46,11 @@ module Avm
         optional_value || read
       end
 
+      def value!
+        optional_value.if_present { |v| return v }
+        context_entry.value!
+      end
+
       def write(value)
         context_entry.value = value
       end
