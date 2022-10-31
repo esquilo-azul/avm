@@ -15,10 +15,6 @@ module Avm
 
         private
 
-        def application_uncached
-          ::Avm::Applications::Base.new(path.basename)
-        end
-
         def instance_uncached
           ::Avm::Instances::Base.new(application, DEFAULT_INSTANCE_SUFFIX)
         end
