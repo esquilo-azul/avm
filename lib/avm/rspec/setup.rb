@@ -21,6 +21,14 @@ module Avm
           require "avm/rspec/shared_examples/#{example}"
         end
       end
+
+      # @return [self]
+      def stub_avm_contexts
+        stub_eac_config_node
+        stub_eac_speaker
+
+        self
+      end
     end
   end
 end
