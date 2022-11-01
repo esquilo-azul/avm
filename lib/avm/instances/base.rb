@@ -34,8 +34,9 @@ module Avm
         self.suffix = suffix.to_s
       end
 
+      # @return [String]
       def id
-        "#{application.id}_#{suffix}"
+        ::Avm::Instances::Ids.build(application.id, suffix)
       end
 
       def to_s
