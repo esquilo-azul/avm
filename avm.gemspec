@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'aranha-parsers', '~> 0.14', '>= 0.14.4'
   s.add_dependency 'eac_cli', '~> 0.28'
-  s.add_dependency 'eac_config', '~> 0.11', '>= 0.11.1'
+  s.add_dependency 'eac_config', '~> 0.12'
   s.add_dependency 'eac_docker', '~> 0.5'
   s.add_dependency 'eac_fs', '~> 0.13'
   s.add_dependency 'eac_git', '~> 0.13'
