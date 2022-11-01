@@ -29,11 +29,16 @@ module Avm
         entry(::Avm::Instances::EntryKeys::NAME).read
       end
 
+      # @return [String]
+      def local_instance_suffix
+        LOCAL_INSTANCE_SUFFIX
+      end
+
       private
 
       # @return [Avm::Instances::Base]
       def local_instance_uncached
-        instance(LOCAL_INSTANCE_SUFFIX)
+        instance(local_instance_suffix)
       end
 
       # @return [Avm::Sources::Base]
