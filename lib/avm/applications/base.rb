@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/entries/base'
+require 'avm/instances/ids'
 require 'avm/registry'
 require 'eac_ruby_utils/core_ext'
 
@@ -27,6 +28,11 @@ module Avm
 
       def name
         entry(::Avm::Instances::EntryKeys::NAME).read
+      end
+
+      # @return [String]
+      def local_instance_id
+        ::Avm::Instances::Ids.build(id, local_instance_suffix)
       end
 
       # @return [String]
