@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/instances/ids'
 require 'avm/with/application_stereotype'
 require 'avm/with/extra_subcommands'
 require 'eac_ruby_utils/require_sub'
@@ -23,18 +24,9 @@ module Avm
 
       class << self
         def by_id(id)
-          application_id, suffix = parse_id(id)
+          parsed_id = ::Avm::Instances::Ids.parse!(id)
           require 'avm/applications/base'
-          new(::Avm::Applications::Base.new(application_id), suffix)
-        end
-
-        private
-
-        def parse_id(id)
-          m = ID_PATTERN.match(id)
-          return [m[1], m[2]] if m
-
-          raise "ID Pattern no matched: \"#{id}\""
+          new(::Avm::Applications::Base.new(parsed_id.application_id), parsed_id.instance_suffix)
         end
       end
 
