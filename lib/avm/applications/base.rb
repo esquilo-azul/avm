@@ -35,6 +35,11 @@ module Avm
         ::Avm::Instances::Ids.build(id, local_instance_suffix)
       end
 
+      # @return [Pathname]
+      def local_source_path
+        local_instance.install_path.to_pathname
+      end
+
       # @return [String]
       def local_instance_suffix
         LOCAL_INSTANCE_SUFFIX
@@ -49,7 +54,7 @@ module Avm
 
       # @return [Avm::Sources::Base]
       def local_source_uncached
-        ::Avm::Registry.sources.detect(local_instance.install_path)
+        ::Avm::Registry.sources.detect(local_source_path)
       end
     end
   end
