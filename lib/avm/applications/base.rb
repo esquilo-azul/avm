@@ -37,7 +37,12 @@ module Avm
 
       # @return [Pathname]
       def local_source_path
-        local_instance.install_path.to_pathname
+        local_source_path_entry.value!.to_pathname
+      end
+
+      # @return [EacConfig::Entry]
+      def local_source_path_entry
+        ::EacConfig::Node.context.current.entry([local_instance_id, 'install', 'path'])
       end
 
       # @return [String]
