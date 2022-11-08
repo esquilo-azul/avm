@@ -25,6 +25,7 @@ module Avm
       # @return [self]
       def stub_avm_contexts
         stub_eac_config_node
+        stub_eac_fs_contexts
         stub_eac_speaker
 
         self
