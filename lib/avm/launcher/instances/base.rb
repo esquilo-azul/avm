@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/launcher/errors/non_project'
+require 'avm/registry'
 require 'eac_ruby_utils/speaker/sender'
 
 module Avm
@@ -30,6 +31,11 @@ module Avm
         require_sub __FILE__
 
         attr_accessor :parent
+
+        # @return [Avm::Applications::Base]
+        def application
+          @application ||= ::Avm::Registry.applications.detect(project_name)
+        end
 
         def name
           logical
