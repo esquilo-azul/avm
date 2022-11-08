@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'base/cache'
 require 'avm/launcher/errors/non_project'
 require 'eac_ruby_utils/speaker/sender'
 
@@ -26,6 +25,8 @@ module Avm
             path
           end
         end
+
+        require_sub __FILE__
 
         attr_accessor :parent
 
