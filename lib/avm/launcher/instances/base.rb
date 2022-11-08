@@ -12,6 +12,7 @@ module Avm
             object.extend ::EacRubyUtils::SimpleCache
             object.extend ::EacRubyUtils::Speaker::Sender
             object.extend ::Avm::Launcher::Instances::Base::Cache
+            object.extend ::Avm::Launcher::Instances::Base::Publishing
             super
           end
 
@@ -48,24 +49,6 @@ module Avm
           stereotypes.any?
         end
 
-        def publish_run
-          stereotypes.each do |s|
-            next unless publish?(s)
-
-            infov(name, "publishing #{s.label}")
-            s.publish_class.new(self).run
-          end
-        end
-
-        def publish_check
-          stereotypes.each do |s|
-            next unless publish?(s)
-
-            puts "#{name.to_s.cyan}|#{s.label}|" \
-              "#{s.publish_class.new(self).check}"
-          end
-        end
-
         def project_name
           ::File.basename(logical)
         end
@@ -79,14 +62,6 @@ module Avm
         end
 
         private
-
-        def publish?(stereotype)
-          return false unless stereotype.publish_class
-          return false unless options.stereotype_publishable?(stereotype)
-
-          filter = ::Avm::Launcher::Context.current.publish_options[:stereotype]
-          filter.blank? ? true : filter == stereotype.name.demodulize
-        end
 
         def options_uncached
           ::Avm::Launcher::Context.current.settings.instance_settings(self)
