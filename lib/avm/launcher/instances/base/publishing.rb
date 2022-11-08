@@ -6,10 +6,8 @@ module Avm
       module Base
         module Publishing
           def publish?(stereotype)
-            return false unless stereotype.publish_class
-            return false unless publish_by_application?(stereotype)
-
-            publish_by_context?(stereotype)
+            publish_by_stereotype?(stereotype) && publish_by_application?(stereotype) &&
+              publish_by_context?(stereotype)
           end
 
           # @return [Boolean]
@@ -21,6 +19,11 @@ module Avm
           def publish_by_context?(stereotype)
             filter = ::Avm::Launcher::Context.current.publish_options[:stereotype]
             filter.blank? ? true : filter == stereotype.name.demodulize
+          end
+
+          # @return [Boolean]
+          def publish_by_stereotype?(stereotype)
+            stereotype.publish_class.present?
           end
 
           def publish_check
