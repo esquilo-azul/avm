@@ -26,6 +26,9 @@ module Avm
             stereotype.publish_class.present?
           end
 
+          # @return [Boolean]
+          delegate :publishable?, to: :options
+
           def publish_check
             stereotypes.each do |s|
               next unless publish?(s)
