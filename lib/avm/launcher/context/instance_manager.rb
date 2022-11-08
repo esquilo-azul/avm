@@ -54,6 +54,7 @@ module Avm
         end
 
         def write_cache_file(data)
+          cache_file_path.to_pathname.parent.mkpath
           ::File.write(cache_file_path, data.to_yaml)
         end
 
