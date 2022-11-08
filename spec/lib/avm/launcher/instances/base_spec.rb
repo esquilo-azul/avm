@@ -31,6 +31,10 @@ RSpec.describe ::Avm::Launcher::Instances::Base do
     context 'when instance is "ruby_gem_stub"' do
       let(:instance) { ::Avm::Launcher::Context.current.instance('/ruby_gem_stub') }
 
+      before do
+        instance.application.entry('publishable').write(false)
+      end
+
       it { expect(instance.options.git_current_revision).to eq('git_current_revision_setted') }
       it { expect(instance.options.git_publish_remote).to eq('git_publish_remote_setted') }
       it { expect(instance.publishable?).to eq(false) }

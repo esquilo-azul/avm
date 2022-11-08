@@ -12,7 +12,7 @@ module Avm
 
           # @return [Boolean]
           def publish_by_application?(stereotype)
-            options.stereotype_publishable?(stereotype)
+            application.stereotype_publishable?(stereotype)
           end
 
           # @return [Boolean]
@@ -27,7 +27,7 @@ module Avm
           end
 
           # @return [Boolean]
-          delegate :publishable?, to: :options
+          delegate :publishable?, to: :application
 
           def publish_check
             stereotypes.each do |s|
