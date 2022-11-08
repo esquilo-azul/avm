@@ -2,6 +2,8 @@
 
 require 'active_support/core_ext/hash/indifferent_access'
 require 'avm/launcher/context/instance_manager'
+require 'eac_fs/contexts'
+require 'eac_fs/core_ext'
 require 'eac_ruby_utils/simple_cache'
 require 'eac_cli/speaker'
 require 'avm/launcher/context/instance_discovery'
