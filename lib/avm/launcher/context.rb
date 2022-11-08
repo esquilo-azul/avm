@@ -78,8 +78,9 @@ module Avm
         send("default_#{key}".underscore)
       end
 
+      # @return [String]
       def default_projects_root
-        '.'
+        '.'.to_pathname.expand_path.to_path
       end
 
       def default_settings_file
