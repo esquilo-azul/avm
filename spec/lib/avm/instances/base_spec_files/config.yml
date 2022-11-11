@@ -2,6 +2,8 @@
 app_0:
   install:
     id: app_1
+  web:
+    url: https://app0.net
 app_1:
   install:
     id: app_2

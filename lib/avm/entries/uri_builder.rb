@@ -46,8 +46,10 @@ module Avm
         field_get(translate_field(avm_field))
       end
 
+      # @return [String, nil]
       def field_get(name)
-        data[name.to_sym].if_present(&:to_s)
+        v = data[name.to_sym]
+        v.nil? ? nil : v.to_s
       end
 
       def field_set(field, value)
