@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{lib}/**/*']
 
   s.add_dependency 'aranha-parsers', '~> 0.14', '>= 0.14.4'
-  s.add_dependency 'eac_cli', '~> 0.29'
+  s.add_dependency 'eac_cli', '~> 0.30'
   s.add_dependency 'eac_config', '~> 0.12'
   s.add_dependency 'eac_docker', '~> 0.5'
   s.add_dependency 'eac_fs', '~> 0.15'
