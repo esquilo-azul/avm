@@ -9,7 +9,7 @@ module Avm
         EXTENSION = '.tar.gz'
 
         enable_listable
-        lists.add_symbol :option
+        lists.add_symbol :option, :sudo_user
 
         common_constructor :instance, :fs_path_subpath, :options, default: [{}],
                                                                   super_args: -> { [instance] } do
@@ -41,7 +41,13 @@ module Avm
 
         # @return [EacRubyUtils::Envs::Command]
         def instance_command(*args)
+          args = ['sudo', '-Hu', sudo_user] + args if sudo_user.present?
           instance.host_env.command(*args)
+        end
+
+        # @return [String, nil]
+        def sudo_user
+          options[OPTION_SUDO_USER]
         end
       end
     end
