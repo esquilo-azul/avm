@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-require 'avm/data/package/dump'
-require 'avm/data/package/load'
+require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Data
     class Package
+      require_sub __FILE__
+
       attr_reader :units
 
       def initialize(options)
