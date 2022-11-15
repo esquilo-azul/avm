@@ -8,12 +8,7 @@ module Avm
       class FilesUnit < ::Avm::Instances::Data::Unit
         EXTENSION = '.tar.gz'
 
-        attr_reader :fs_path_subpath
-
-        def initialize(instance, fs_path_subpath)
-          super(instance)
-          @fs_path_subpath = fs_path_subpath
-        end
+        common_constructor :instance, :fs_path_subpath, super_args: -> { [instance] }
 
         before_load :clear_files
 
