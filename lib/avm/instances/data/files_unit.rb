@@ -8,8 +8,13 @@ module Avm
       class FilesUnit < ::Avm::Instances::Data::Unit
         EXTENSION = '.tar.gz'
 
-        common_constructor :instance, :fs_path_subpath, super_args: -> { [instance] } do
+        enable_listable
+        lists.add_symbol :option
+
+        common_constructor :instance, :fs_path_subpath, :options, default: [{}],
+                                                                  super_args: -> { [instance] } do
           self.fs_path_subpath = fs_path_subpath.to_pathname
+          self.options = self.class.lists.option.hash_keys_validate!(options)
         end
 
         before_load :clear_files
