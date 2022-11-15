@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
+require 'avm/data/callbacks'
 require 'eac_ruby_utils/core_ext'
-require 'active_support/callbacks'
 
 module Avm
   module Data
     class Unit
-      include ::ActiveSupport::Callbacks
+      include ::Avm::Data::Callbacks
 
-      define_callbacks :dump, :load
       enable_speaker
 
       %w[dump load].each do |action|
@@ -20,26 +19,6 @@ module Avm
             fail "\\"#{method_name}\\" is a abstract method. Override in #{singleton_class}."
           end
         CODE
-
-        # Callbacks
-        %w[before after].each do |callback|
-          method = "#{callback}_#{action}"
-          class_eval <<~CODE, __FILE__, __LINE__ + 1
-            def self.#{method}(callback_method = nil, &block)
-              if callback_method
-                set_callback :#{action}, :#{callback}, callback_method
-              else
-                set_callback :#{action}, :#{callback}, &block
-              end
-              self
-            end
-
-            def #{method}(callback_method = nil, &block)
-              singleton_class.#{method}(callback_method, &block)
-              self
-            end
-          CODE
-        end
       end
 
       def extension
