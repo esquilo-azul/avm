@@ -3,8 +3,8 @@
 require 'avm/data/unit'
 
 module Avm
-  module Data
-    module Instance
+  module Instances
+    module Data
       class Unit < ::Avm::Data::Unit
         attr_reader :instance
 

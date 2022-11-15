@@ -3,8 +3,8 @@
 require 'avm/data/package'
 
 module Avm
-  module Data
-    module Instance
+  module Instances
+    module Data
       class Package < ::Avm::Data::Package
         attr_reader :instance
 

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'avm/data/instance/unit'
+require 'avm/instances/data/unit'
 
 module Avm
-  module Data
-    module Instance
-      class FilesUnit < ::Avm::Data::Instance::Unit
+  module Instances
+    module Data
+      class FilesUnit < ::Avm::Instances::Data::Unit
         EXTENSION = '.tar.gz'
 
         attr_reader :fs_path_subpath

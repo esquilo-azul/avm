@@ -4,8 +4,8 @@ require 'eac_ruby_utils/require_sub'
 ::EacRubyUtils.require_sub(__FILE__)
 
 module Avm
-  module Data
-    module Instance
+  module Instances
+    module Data
     end
   end
 end

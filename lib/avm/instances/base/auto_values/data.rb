@@ -15,7 +15,7 @@ module Avm
               .if_present do |v|
               ::File.join(
                 v,
-                "#{id}#{::Avm::Data::Instance::Package::Dump::DEFAULT_FILE_EXTENSION}"
+                "#{id}#{::Avm::Instances::Data::Package::Dump::DEFAULT_FILE_EXTENSION}"
               )
             end
           end
