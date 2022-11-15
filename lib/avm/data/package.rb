@@ -7,10 +7,7 @@ module Avm
     class Package
       require_sub __FILE__
 
-      attr_reader :units
-
       def initialize(options)
-        @units = {}
         options = options.to_options_consumer
         units = options.consume(:units)
         options.validate
@@ -20,7 +17,7 @@ module Avm
       end
 
       def add_unit(identifier, unit)
-        @units[identifier.to_sym] = unit
+        units[identifier.to_sym] = unit
       end
 
       def dump(data_path, options = {})
@@ -32,11 +29,15 @@ module Avm
       end
 
       def dump_units_to_directory(directory)
-        @units.each { |identifier, unit| unit.dump_to_directory(directory, identifier) }
+        units.each { |identifier, unit| unit.dump_to_directory(directory, identifier) }
       end
 
       def load_units_from_directory(directory)
-        @units.each { |identifier, unit| unit.load_from_directory(directory, identifier) }
+        units.each { |identifier, unit| unit.load_from_directory(directory, identifier) }
+      end
+
+      def units
+        @units ||= {}
       end
     end
   end
