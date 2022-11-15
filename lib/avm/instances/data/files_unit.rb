@@ -14,9 +14,10 @@ module Avm
 
         before_load :clear_files
 
+        # @return [Pathname]
         def files_path
-          ::File.join(instance.read_entry(::Avm::Instances::EntryKeys::INSTALL_PATH),
-                      fs_path_subpath)
+          instance.read_entry(::Avm::Instances::EntryKeys::INSTALL_PATH).to_pathname
+            .join(fs_path_subpath)
         end
 
         def dump_command
