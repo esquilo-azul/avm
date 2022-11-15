@@ -16,8 +16,8 @@ module Avm
 
         # @return [Pathname]
         def files_path
-          instance.read_entry(::Avm::Instances::EntryKeys::INSTALL_PATH).to_pathname
-            .join(fs_path_subpath)
+          fs_path_subpath
+            .expand_path(instance.read_entry(::Avm::Instances::EntryKeys::INSTALL_PATH))
         end
 
         def dump_command
