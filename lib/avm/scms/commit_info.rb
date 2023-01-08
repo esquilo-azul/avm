@@ -8,6 +8,7 @@ module Avm
       enable_immutable
 
       immutable_accessor :fixup, :message
+      immutable_accessor :path, type: :array
     end
   end
 end
