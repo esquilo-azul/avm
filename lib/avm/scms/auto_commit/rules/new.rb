@@ -10,7 +10,7 @@ module Avm
         class New < ::Avm::Scms::AutoCommit::Rules::Base
           class WithFile < ::Avm::Scms::AutoCommit::Rules::Base::WithFile
             def auto_commit_path
-              ::Avm::Scms::AutoCommit::FileResourceName.new(file.git, file.path)
+              ::Avm::Scms::AutoCommit::FileResourceName.new(file.scm.path, file.path)
             end
 
             def commit_info
