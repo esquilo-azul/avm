@@ -6,17 +6,13 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module Scms
     class Base
+      require_sub __FILE__, include_modules: true
       enable_abstract_methods
       enable_simple_cache
       include ::Avm::With::ApplicationStereotype
       abstract_methods :update, :valid?
       common_constructor :path do
         self.path = path.to_pathname
-      end
-
-      # @return [Avm::Scms::Commit,NilClass]
-      def commit_if_change(_message = nil)
-        raise_abstract_method __method__
       end
 
       # @return [Avm::Scms::Interval]
