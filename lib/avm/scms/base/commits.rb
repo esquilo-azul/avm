@@ -10,6 +10,11 @@ module Avm
         def commit_if_change(_message = nil)
           raise_abstract_method __method__
         end
+
+        # @return [Avm::Scms::Commit]
+        def head_commit
+          raise_abstract_method __method__
+        end
       end
     end
   end
