@@ -7,7 +7,8 @@ module Avm
     module AutoCommit
       class FileResourceName
         require_sub __FILE__, include_modules: true
-        common_constructor :git, :path do
+        common_constructor :source_root, :path do
+          self.source_root = source_root.to_pathname
           self.path = path.to_pathname
         end
 
@@ -22,7 +23,7 @@ module Avm
         end
 
         def relative_path
-          path.expand_path.relative_path_from(git.root_path.expand_path)
+          path.expand_path.relative_path_from(source_root.expand_path)
         end
       end
     end
