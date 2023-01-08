@@ -15,6 +15,12 @@ module Avm
         def head_commit
           raise_abstract_method __method__
         end
+
+        # @param commit_info [Avm::Scms::CommitInfo]
+        # @return [Avm::Scms::Commit]
+        def run_commit(_commit_info)
+          raise_abstract_method __method__
+        end
       end
     end
   end
