@@ -19,6 +19,11 @@ module Avm
         raise_abstract_method __method__
       end
 
+      # @return [Avm::Scms::Interval]
+      def interval(_from, _to)
+        raise_abstract_method __method__
+      end
+
       def name
         self.class.name.demodulize
       end
