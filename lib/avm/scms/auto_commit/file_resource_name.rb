@@ -7,13 +7,14 @@ module Avm
     module AutoCommit
       class FileResourceName
         require_sub __FILE__, include_modules: true
+        enable_simple_cache
         common_constructor :source_root, :path do
           self.source_root = source_root.to_pathname
           self.path = path.to_pathname
         end
 
         def class_name
-          ruby_class_name || relative_path.to_path
+          file_format.file_resource_name(path)
         end
 
         def commit_message
@@ -24,6 +25,13 @@ module Avm
 
         def relative_path
           path.expand_path.relative_path_from(source_root.expand_path)
+        end
+
+        private
+
+        # @return [Avm::FileFormats::Base]
+        def file_format_uncached
+          ::Avm::Registry.file_formats.detect(path)
         end
       end
     end
