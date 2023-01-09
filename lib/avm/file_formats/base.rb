@@ -8,6 +8,7 @@ module Avm
   module FileFormats
     class Base
       enable_abstract_methods
+      compare_by :class
 
       def apply(files)
         old_content = Hash[files.map { |f| [f, File.read(f)] }]
