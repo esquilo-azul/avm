@@ -16,6 +16,12 @@ module Avm
         files.map { |f| build_file_result(f, old_content[f]) }
       end
 
+      # @param path [Pathname]
+      # @return [Avm::FileFormats::FileWith]
+      def file_resource_name(path)
+        path.to_pathname.to_path
+      end
+
       def name
         self.class.name.demodulize
       end
