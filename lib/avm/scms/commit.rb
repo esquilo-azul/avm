@@ -51,6 +51,11 @@ module Avm
       def scm_file?(_path)
         raise_abstract_method __method__
       end
+
+      # @return [String]
+      def subject
+        raise_abstract_method __method__
+      end
     end
   end
 end
