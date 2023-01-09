@@ -50,19 +50,9 @@ module Avm
         @result = []
       end
 
+      # @return [Avm::FileFormats::Base, nil]
       def find_format(file)
-        formats.each do |c|
-          return c if c.match?(file)
-        end
-        nil
-      end
-
-      def formats_uncached
-        formats_from_registry
-      end
-
-      def formats_from_registry
-        ::Avm::Registry.file_formats.available.reverse.map(&:new)
+        ::Avm::Registry.file_formats.detect_optional(file)
       end
 
       def search_files
