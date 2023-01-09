@@ -15,6 +15,11 @@ module Avm
         self.path = path.to_pathname
       end
 
+      # @return [Avm::Scms::ChangedFile]
+      def changed_files
+        raise_abstract_method __method__
+      end
+
       # @return [Avm::Scms::Interval]
       def interval(_from, _to)
         raise_abstract_method __method__
