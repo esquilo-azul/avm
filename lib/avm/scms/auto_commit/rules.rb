@@ -12,6 +12,11 @@ module Avm
                           .map { |key| ::Avm::Scms::AutoCommit::Rules.const_get(key.camelcase) }
 
         class << self
+          # @return [Array<Avm::Scms::AutoCommit::Rules>]
+          def all
+            RULES_CLASSES
+          end
+
           def parse(string)
             parts = string.split(':')
 
