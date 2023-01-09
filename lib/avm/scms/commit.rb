@@ -56,6 +56,11 @@ module Avm
       def subject
         raise_abstract_method __method__
       end
+
+      # @return [String]
+      def to_s
+        "#{subject} [#{id}]"
+      end
     end
   end
 end
