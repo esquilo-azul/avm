@@ -16,6 +16,11 @@ module Avm
         raise_abstract_method __method__
       end
 
+      # @return [Boolean]
+      def fixup?
+        raise_abstract_method __method__
+      end
+
       def id
         raise_abstract_method __method__
       end
