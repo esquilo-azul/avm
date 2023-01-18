@@ -20,6 +20,13 @@ module Avm
         def default_locale
           ::I18n.default_locale
         end
+
+        # @param entry_suffix [String]
+        # @param values [Hash]
+        # @return [String]
+        def i18n_translate(entry_suffix, values = {})
+          self.class.i18n_translate(entry_suffix, values.merge(__locale: locale))
+        end
       end
     end
   end
