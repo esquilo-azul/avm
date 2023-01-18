@@ -16,6 +16,13 @@ module Avm
           raise_abstract_method __method__
         end
 
+        # @param commit_to_reset [Avm::Scms::Commit]
+        # @param commit_info [Avm::Scms::CommitInfo]
+        # @return [Avm::Scms::Commit]
+        def reset_and_commit(_commit_to_reset, _commit_info)
+          raise_abstract_method __method__
+        end
+
         # @param commit_info [Avm::Scms::CommitInfo]
         # @return [Avm::Scms::Commit]
         def run_commit(_commit_info)
