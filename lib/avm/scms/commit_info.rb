@@ -5,6 +5,19 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module Scms
     class CommitInfo
+      class << self
+        # @param source [Avm::Scms::CommitInfo, String]
+        # @return [Avm::Scms::CommitInfo]
+        def assert(source)
+          return source if source.is_a?(self)
+          return new if source.nil?
+          return new.message(source) if source.is_a?(::String)
+          return assert(source.call) if source.is_a?(::Proc)
+
+          raise "Unmapped assertion for #{source.to_debug}"
+        end
+      end
+
       enable_immutable
 
       immutable_accessor :fixup, :message
