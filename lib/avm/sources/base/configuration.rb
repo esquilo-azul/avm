@@ -22,6 +22,13 @@ module Avm
           configuration.entry(*entry_args)
         end
 
+        # The possible absolute paths for configuration files.
+        #
+        # @return [Array<Pathname>]
+        def configuration_paths
+          CONFIGURATION_FILENAMES.map { |filename| path.join(filename) }
+        end
+
         # @return [EacRubyUtils::Envs::Command, nil]
         def configuration_value_to_env_command(value)
           return value if value.is_a?(::EacRubyUtils::Envs::Command)
@@ -51,10 +58,10 @@ module Avm
 
         # @return [EacConfig::YamlFileNode]
         def configuration_uncached
-          CONFIGURATION_FILENAMES.each do |filename|
-            configuration_with_filename(filename, true)
+          configuration_paths.each do |config_path|
+            configuration_with_filename(config_path, true)
           end
-          configuration_with_filename(CONFIGURATION_FILENAMES.first, false)
+          configuration_with_filename(configuration_paths.first, false)
         end
 
         # @return [String]
@@ -68,9 +75,8 @@ module Avm
         end
 
         # @return [EacConfig::YamlFileNode, nil]
-        def configuration_with_filename(filename, needs_exist)
-          file_path = path.join(filename)
-          return ::EacConfig::YamlFileNode.new(file_path) if !needs_exist || file_path.exist?
+        def configuration_with_filename(config_path, needs_exist)
+          return ::EacConfig::YamlFileNode.new(config_path) if !needs_exist || config_path.exist?
 
           nil
         end
