@@ -23,7 +23,7 @@ module Avm
         self.options = ::Avm::Sources::Base.lists.option.hash_keys_validate!(options)
       end
 
-      abstract_methods :update, :valid?
+      abstract_methods :valid?
 
       # @return [EacRubyUtils::Envs::LocalEnv]
       def env
