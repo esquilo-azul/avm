@@ -7,15 +7,11 @@ module Avm
   module Sources
     class Base
       module VersionBump
-        def after_sub_version_bump_do_changes
-          # Do nothing
-        end
-
         # @return [Avm::Scms::Commit, nil]
         def version_bump(target_version)
           scm.commit_if_change(version_bump_commit_message(target_version)) do
             version_bump_do_changes(target_version)
-            parent.if_present(&:after_sub_version_bump_do_changes)
+            parent.if_present(&:on_sub_updated)
           end
         end
 
