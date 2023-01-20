@@ -12,6 +12,11 @@ module Avm
         SUBS_EXCLUDE_PATHS_DEFAULT = [].freeze
         SUBS_INCLUDE_PATHS_DEFAULT = ['sub/*'].freeze
 
+        # @return [Avm::Sources::Base, nil]
+        def sub_for_path(path)
+          subs.lazy.map { |sub| path.expand_path.child_of?(sub.path) ? sub : nil }.find(&:present?)
+        end
+
         # @return [Enumerable<Avm::Sources::Base>]
         def subs
           subs_paths_to_search
