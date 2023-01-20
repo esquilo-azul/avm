@@ -14,7 +14,7 @@ module Avm
         end
 
         def class_name
-          file_format.file_resource_name(path)
+          file_format.file_resource_name(relative_path)
         end
 
         def commit_message
