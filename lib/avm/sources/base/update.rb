@@ -33,10 +33,6 @@ module Avm
         def update_self_commit_message
           i18n_translate(__method__)
         end
-
-        def update_subs
-          subs.each { |sub| update_sub(sub) }
-        end
       end
     end
   end
