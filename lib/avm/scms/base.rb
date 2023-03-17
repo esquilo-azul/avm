@@ -29,6 +29,13 @@ module Avm
         self.class.name.demodulize
       end
 
+      # @return [Pathname]
+      def relative_path_from_parent_scm
+        parent_scm.if_present(nil) do |v|
+          path.relative_path_from(v.path)
+        end
+      end
+
       # @return [Enumerable<Avm::Scms::Base>]
       def subs
         raise_abstract_method __method__
