@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/version'
+require 'avm/entries/jobs/with_variables_source'
 require 'eac_ruby_utils/core_ext'
 require 'eac_docker/images/templatized'
 require 'eac_docker/registry'
@@ -8,6 +9,8 @@ require 'eac_docker/registry'
 module Avm
   module Docker
     class Image < ::EacDocker::Images::Templatized
+      prepend ::Avm::Entries::Jobs::WithVariablesSource
+
       DEFAULT_REGISTRY_NAME = 'local'
 
       class << self
@@ -39,14 +42,6 @@ module Avm
 
       def push
         ::EacDocker::Executables.docker.command.append(['push', tag]).system!
-      end
-
-      def read_entry(path, options = {})
-        method = path.gsub('.', '_')
-        return send(method) if respond_to?(path, true)
-        return instance.read_entry(path, options) if respond_to?(:instance)
-
-        raise "Method \"#{method}\" not found for entry \"#{path}\""
       end
 
       def run(instance)
