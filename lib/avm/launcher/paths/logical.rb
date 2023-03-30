@@ -8,7 +8,6 @@ module Avm
   module Launcher
     module Paths
       class Logical
-        include ::Comparable
         include ::EacRubyUtils::SimpleCache
 
         class << self
@@ -22,9 +21,7 @@ module Avm
           self.real = ::Avm::Launcher::Paths::Real.new(real)
         end
 
-        def <=>(other)
-          [logical, real] <=> [other.logical, other.real]
-        end
+        compare_by :logical, :real
 
         def to_s
           logical
