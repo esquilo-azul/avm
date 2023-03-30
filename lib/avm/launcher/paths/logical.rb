@@ -2,6 +2,7 @@
 
 require 'avm/launcher/paths/real'
 require 'avm/launcher/stereotype'
+require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Launcher
@@ -17,13 +18,8 @@ module Avm
           end
         end
 
-        attr_reader :context, :real, :logical, :parent_path
-
-        def initialize(context, parent_path, real, logical)
-          @context = context
-          @parent_path = parent_path
-          @real = ::Avm::Launcher::Paths::Real.new(real)
-          @logical = logical
+        common_constructor :context, :parent_path, :real, :logical do
+          self.real = ::Avm::Launcher::Paths::Real.new(real)
         end
 
         def <=>(other)
