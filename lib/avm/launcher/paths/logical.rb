@@ -8,7 +8,7 @@ module Avm
   module Launcher
     module Paths
       class Logical
-        include ::EacRubyUtils::SimpleCache
+        enable_simple_cache
 
         class << self
           def from_h(context, hash)
