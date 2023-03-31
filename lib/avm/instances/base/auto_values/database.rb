@@ -20,7 +20,7 @@ module Avm
           DEFAULT_TIMEOUT = 5000
 
           def auto_database_extra
-            database_auto_common('hostname') || DEFAULT_EXTRA
+            database_auto_common('extra') || DEFAULT_EXTRA
           end
 
           def auto_database_name
