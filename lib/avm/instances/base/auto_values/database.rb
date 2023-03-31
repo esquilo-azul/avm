@@ -19,21 +19,15 @@ module Avm
           DEFAULT_SYSTEM = 'postgresql'
           DEFAULT_TIMEOUT = 5000
 
-          def auto_database_extra
-            database_auto_common('extra') || DEFAULT_EXTRA
+          %w[extra hostname limit system timeout].each do |attr|
+            define_method "auto_database_#{attr}" do
+              database_auto_common(attr) || self.class.const_get("default_#{attr}".upcase)
+            end
           end
 
           def auto_database_name
             inherited_entry_value(::Avm::Instances::EntryKeys::DATABASE_ID,
                                   ::Avm::Instances::EntryKeys::DATABASE_NAME) || id
-          end
-
-          def auto_database_hostname
-            database_auto_common('hostname') || DEFAULT_HOSTNAME
-          end
-
-          def auto_database_limit
-            database_auto_common('limit') || DEFAULT_LIMIT
           end
 
           def auto_database_password
@@ -46,14 +40,6 @@ module Avm
 
           def auto_database_username
             database_auto_common('username') || id
-          end
-
-          def auto_database_system
-            database_auto_common('system') || DEFAULT_SYSTEM
-          end
-
-          def auto_database_timeout
-            database_auto_common('timeout') || DEFAULT_TIMEOUT
           end
 
           private
