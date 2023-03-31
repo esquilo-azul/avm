@@ -7,8 +7,9 @@ module Avm
     class Base
       module AutoValues
         module Database
+          LOCAL_ADDRESS = '127.0.0.1'
           DEFAULT_EXTRA = ''
-          DEFAULT_HOSTNAME = '127.0.0.1'
+          DEFAULT_HOSTNAME = LOCAL_ADDRESS
           DEFAULT_LIMIT = 5
           DEFAULT_PORTS = {
             'postgresql' => 5432,
