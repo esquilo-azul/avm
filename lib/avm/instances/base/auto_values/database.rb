@@ -25,21 +25,19 @@ module Avm
             end
           end
 
+          %w[username password].each do |attr|
+            define_method "auto_database_#{attr}" do
+              database_auto_common(attr) || id
+            end
+          end
+
           def auto_database_name
             inherited_entry_value(::Avm::Instances::EntryKeys::DATABASE_ID,
                                   ::Avm::Instances::EntryKeys::DATABASE_NAME) || id
           end
 
-          def auto_database_password
-            database_auto_common('password') || id
-          end
-
           def auto_database_port
             database_auto_common('port') || database_port_by_system
-          end
-
-          def auto_database_username
-            database_auto_common('username') || id
           end
 
           private
