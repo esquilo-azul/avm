@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/file_formats/file_result'
 require 'avm/file_formats/utf8_assert'
 require 'eac_fs/file_info'
 require 'ostruct'
@@ -10,6 +11,8 @@ module Avm
       enable_abstract_methods
       compare_by :class
 
+      # @params files [Enumerable<Pathname>]
+      # @return [Enumerable<Avm::FileFormats::FileResult>]
       def apply(files)
         old_content = Hash[files.map { |f| [f, File.read(f)] }]
         ::Avm::FileFormats::Utf8Assert.assert_files(files) { internal_apply(files) }
@@ -46,9 +49,11 @@ module Avm
         self.class.const_get(name)
       end
 
+      # @param path [Pathname]
+      # @param old_content [String]
+      # @return [Avm::FileFormats::FileResult]
       def build_file_result(file, old_content)
-        ::OpenStruct.new(file: file, format: self.class,
-                         changed: (old_content != File.read(file)))
+        ::Avm::FileFormats::FileResult.new(file, self.class, old_content != File.read(file))
       end
 
       def match_by_filename?(file)
