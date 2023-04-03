@@ -39,7 +39,7 @@ module Avm
 
         # @return [String]
         def error_message(error)
-          error.to_s
+          error.to_s + error.cause.if_present('') { |v| " / Caused by: #{error_message(v)}" }
         end
       end
     end
