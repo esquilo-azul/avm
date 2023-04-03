@@ -34,7 +34,12 @@ module Avm
         def check_with_rescue
           internal_check
         rescue ::Avm::Launcher::Errors::Base => e
-          ::Avm::Launcher::Publish::CheckResult.blocked("Error: #{e}")
+          ::Avm::Launcher::Publish::CheckResult.blocked("Error: #{error_message(e)}")
+        end
+
+        # @return [String]
+        def error_message(error)
+          error.to_s
         end
       end
     end
