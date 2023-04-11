@@ -42,7 +42,7 @@ module Avm
         # @return [EacRubyUtils::Envs::Command]
         def instance_command(*args)
           args = ['sudo', '-Hu', sudo_user] + args if sudo_user.present?
-          instance.host_env.command(*args)
+          instance.host_env.command(*args).chdir('/')
         end
 
         # @return [String, nil]
