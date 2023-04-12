@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/data/package/build_directory'
 require 'avm/data/rotate'
 require 'eac_ruby_utils/core_ext'
 require 'minitar'
@@ -10,6 +11,7 @@ module Avm
       class Dump
         enable_speaker
         enable_listable
+        include ::Avm::Data::Package::BuildDirectory
 
         DEFAULT_EXPIRE_TIME = 1.day
         DEFAULT_FILE_EXTENSION = '.tar'
@@ -45,8 +47,10 @@ module Avm
         def run
           raise "Cannot run: #{cannot_run_reason}" unless runnable?
 
-          build_dir = dump_units_to_build_directory
-          package_file = create_package_file(build_dir)
+          package_file = on_build_directory do
+            dump_units_to_build_directory
+            create_package_file
+          end
           rotate
           move_download_to_final_dest(package_file)
         end
@@ -100,15 +104,13 @@ module Avm
         end
 
         def dump_units_to_build_directory
-          dir = ::Dir.mktmpdir
-          package.dump_units_to_directory(dir)
-          dir
+          package.dump_units_to_directory(build_directory)
         end
 
-        def create_package_file(build_dir)
+        def create_package_file
           package_path = new_build_path
-          infom "Creating package \"#{package_path}\" from \"#{build_dir}\"..."
-          Dir.chdir(build_dir) do
+          infom "Creating package \"#{package_path}\" from \"#{build_directory}\"..."
+          ::Dir.chdir(build_directory.to_path) do
             ::Minitar.pack('.', File.open(::File.expand_path(package_path), 'wb'))
           end
           package_path
