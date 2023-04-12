@@ -39,6 +39,13 @@ module Avm
           instance_command('find', files_path, '-mindepth', 1, '-delete').execute!
         end
 
+        # @return [Struct(:key, :subpath), nil]
+        def installation_files_data
+          return nil unless fs_path_subpath.relative?
+
+          ::Struct.new(:key, :subpath).new(fs_path_subpath.basename.to_path, fs_path_subpath)
+        end
+
         # @return [EacRubyUtils::Envs::Command]
         def instance_command(*args)
           args = ['sudo', '-Hu', sudo_user] + args if sudo_user.present?
