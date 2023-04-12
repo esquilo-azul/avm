@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/data/package/build_directory'
 require 'eac_ruby_utils/core_ext'
 require 'minitar'
 
@@ -8,6 +9,7 @@ module Avm
     class Package
       class Load
         enable_speaker
+        include ::Avm::Data::Package::BuildDirectory
 
         common_constructor :package, :data_file_path
 
@@ -24,8 +26,10 @@ module Avm
         def run
           raise "Cannot run: #{cannot_run_reason}" unless runnable?
 
-          build_dir = extract_packages_to_build_directory
-          package.load_units_from_directory(build_dir)
+          on_build_directory do
+            extract_packages_to_build_directory
+            package.load_units_from_directory(build_directory)
+          end
         end
 
         def data_file_exist?
@@ -33,9 +37,7 @@ module Avm
         end
 
         def extract_packages_to_build_directory
-          dir = ::Dir.mktmpdir
-          ::Minitar.unpack(data_file_path, dir)
-          dir
+          ::Minitar.unpack(data_file_path, build_directory.to_path)
         end
       end
     end
