@@ -9,12 +9,7 @@ module Avm
       class Load
         enable_speaker
 
-        attr_reader :package, :data_file_path
-
-        def initialize(package, data_file_path)
-          @package = package
-          @data_file_path = data_file_path
-        end
+        common_constructor :package, :data_file_path
 
         def runnable?
           cannot_run_reason.blank?
