@@ -46,6 +46,11 @@ module Avm
         end
       end
 
+      # @return [Struct(:key, :subpath), nil]
+      def installation_files_data
+        nil
+      end
+
       def load(data_path)
         run_callbacks :load do
           infom "Loading unit \"#{name}\" from \"#{data_path}\"..."
