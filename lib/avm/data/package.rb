@@ -18,8 +18,11 @@ module Avm
         end
       end
 
+      # @return [Avm::Data::Package] Return +self+.
       def add_unit(identifier, unit)
         units[identifier.to_sym] = unit
+
+        self
       end
 
       def dump(data_path, options = {})
