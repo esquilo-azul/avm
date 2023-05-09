@@ -48,6 +48,11 @@ module Avm
       def units
         @units ||= {}
       end
+
+      # @return [Enumerable<String>]
+      def units_ids
+        units.keys
+      end
     end
   end
 end
