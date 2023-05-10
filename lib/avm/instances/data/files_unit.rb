@@ -17,7 +17,7 @@ module Avm
           self.options = self.class.lists.option.hash_keys_validate!(options)
         end
 
-        before_load :clear_files
+        before_load :clear
 
         # @return [Pathname]
         def files_path
@@ -33,7 +33,7 @@ module Avm
           instance_command('tar', '-xzf', '-', '-C', files_path)
         end
 
-        def clear_files
+        def clear
           infom "Removing all files under #{files_path}..."
           instance_command('mkdir', '-p', files_path).execute!
           instance_command('find', files_path, '-mindepth', 1, '-delete').execute!
