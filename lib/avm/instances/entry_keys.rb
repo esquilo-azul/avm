@@ -28,6 +28,7 @@ module Avm
       {
         '' => %w[name source_instance_id],
         admin: URI_FIELDS + %w[api_key],
+        data: %w[default_dump_path],
         database: URI_FIELDS + %w[id limit name system timeout extra],
         docker: %w[registry],
         install: URI_FIELDS + %w[id data_path email groupname],
