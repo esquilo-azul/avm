@@ -8,18 +8,11 @@ module Avm
     class UnitWithCommands
       include ::Avm::Data::Callbacks
 
+      acts_as_abstract
       enable_speaker
 
-      %w[dump load].each do |action|
-        method_name = "#{action}_command"
-        class_eval <<~CODE, __FILE__, __LINE__ + 1
-          # Should be overrided.
-          # @return [EacRubyUtils::Envs::Command]
-          def #{method_name}
-            fail "\\"#{method_name}\\" is a abstract method. Override in #{singleton_class}."
-          end
-        CODE
-      end
+      abstract_method :dump_command
+      abstract_method :load_command
 
       def extension
         singleton_class.const_get('EXTENSION')
