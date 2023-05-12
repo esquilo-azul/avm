@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'avm/data/unit'
+require 'avm/data/unit_with_commands'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Instances
     module Data
-      class Unit < ::Avm::Data::Unit
+      class Unit < ::Avm::Data::UnitWithCommands
         common_constructor :instance
 
         # @return [Pathname]

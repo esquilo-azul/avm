@@ -46,7 +46,7 @@ module Avm
       end
 
       # @param id [Symbol]
-      # @return [Avm::Data::Unit]
+      # @return [Avm::Data::UnitWithCommands]
       def unit(identifier)
         units[identifier.to_sym] || raise("No unit found with identifier \"#{identifier}\"")
       end

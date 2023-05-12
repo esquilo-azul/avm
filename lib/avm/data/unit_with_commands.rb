@@ -5,7 +5,7 @@ require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Data
-    class Unit
+    class UnitWithCommands
       include ::Avm::Data::Callbacks
 
       enable_speaker
