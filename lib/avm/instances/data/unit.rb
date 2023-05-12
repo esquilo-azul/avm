@@ -8,6 +8,11 @@ module Avm
     module Data
       class Unit < ::Avm::Data::Unit
         common_constructor :instance
+
+        # @return [String]
+        def identifier
+          instance.data_package.units.key(self) || raise("No identifier found for #{self}")
+        end
       end
     end
   end
