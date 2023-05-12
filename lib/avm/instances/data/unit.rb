@@ -12,7 +12,7 @@ module Avm
         # @return [Pathname]
         def data_default_dump_path
           instance.data_default_dump_path.to_pathname.basename_sub('.*') do |b|
-            "#{b}_#{identifier}#{extension}"
+            "#{b}_#{identifier}#{dump_path_extension}"
           end
         end
 
