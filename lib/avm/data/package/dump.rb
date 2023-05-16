@@ -73,15 +73,6 @@ module Avm
 
         private
 
-        def download
-          infom 'Downloading dump...'
-          download_path = find_download_path
-          dump_command.system!(output_file: download_path)
-          fatal_error "File \"#{download_path}\" not saved" unless ::File.exist?(download_path)
-          fatal_error "File \"#{download_path}\" is empty" if ::File.zero?(download_path)
-          download_path
-        end
-
         def move_download_to_final_dest(download_path)
           ::FileUtils.mkdir_p(::File.dirname(data_file_path))
           ::FileUtils.mv(download_path, data_file_path)
