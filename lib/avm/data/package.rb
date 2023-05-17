@@ -6,7 +6,7 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module Data
     class Package
-      require_sub __FILE__
+      require_sub __FILE__, require_mode: :kernel
       include ::Avm::Data::Callbacks
 
       DATA_FILE_EXTENSION = '.tar'
