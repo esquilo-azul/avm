@@ -14,7 +14,6 @@ module Avm
         include ::Avm::Data::Package::BuildDirectory
 
         DEFAULT_EXPIRE_TIME = 1.day
-        DEFAULT_FILE_EXTENSION = '.tar'
 
         attr_reader :package, :data_file_path, :existing
 

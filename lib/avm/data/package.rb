@@ -9,6 +9,8 @@ module Avm
       require_sub __FILE__
       include ::Avm::Data::Callbacks
 
+      DATA_FILE_EXTENSION = '.tar'
+
       def initialize(options)
         options = options.to_options_consumer
         units = options.consume(:units)
