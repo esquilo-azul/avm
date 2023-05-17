@@ -27,6 +27,11 @@ module Avm
         self
       end
 
+      # @return [String]
+      def data_file_extension
+        DATA_FILE_EXTENSION
+      end
+
       def dump(data_path, options = {})
         ::Avm::Data::Package::Dump.new(self, data_path, options)
       end

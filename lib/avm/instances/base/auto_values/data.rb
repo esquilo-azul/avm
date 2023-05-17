@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/package'
 require 'avm/self/instance'
 
 module Avm
@@ -15,7 +14,7 @@ module Avm
               .if_present do |v|
               ::File.join(
                 v,
-                "#{id}#{::Avm::Data::Package::DATA_FILE_EXTENSION}"
+                "#{id}#{data_package.data_file_extension}"
               )
             end
           end
