@@ -34,6 +34,16 @@ module Avm
         self.suffix = suffix.to_s
       end
 
+      # @return [Avm::Instances::Data::Package]
+      def data_package
+        @data_package ||= data_package_create
+      end
+
+      # @return [Avm::Instances::Data::Package]
+      def data_package_create
+        ::Avm::Instances::Data::Package.new(self)
+      end
+
       # @return [String]
       def id
         ::Avm::Instances::Ids.build(application.id, suffix)
