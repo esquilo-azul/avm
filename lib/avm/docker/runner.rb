@@ -116,10 +116,6 @@ module Avm
       def version?
         !parsed.no_version?
       end
-
-      def instance
-        runner_context.call(:instance)
-      end
     end
   end
 end
