@@ -11,6 +11,8 @@ module Avm
         subcommands
       end
 
+      for_context :optional_source, :source
+
       def extra_available_subcommands
         optional_source.if_present({}, &:extra_available_subcommands)
       end
