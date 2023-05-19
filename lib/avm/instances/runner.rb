@@ -13,7 +13,6 @@ module Avm
       end
 
       delegate :class, to: :instance, prefix: true
-      delegate :stereotype_module, :stereotype_name, to: :class
 
       def extra_available_subcommands
         instance.if_present({}, &:extra_available_subcommands)
