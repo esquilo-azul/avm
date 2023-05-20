@@ -28,6 +28,11 @@ module Avm
 
         private
 
+        # @return [Boolean]
+        def changed?
+          scm.changed_files.any? { |cf| cf.path == scm_relative_path }
+        end
+
         def commit_info_uncached
           rules.lazy.map { |rule| rule.with_file(self).commit_info }.find(&:present?)
             .if_present { |v| v.path(path) }
@@ -42,8 +47,13 @@ module Avm
           return false if commit_info.blank?
 
           infov '  Commit info', commit_info
-          scm.run_commit(commit_info)
-          success '  Commited'
+          if changed?
+            scm.run_commit(commit_info)
+            success '  Commited'
+          else
+            warn "  File \"#{path}\" unchanged"
+          end
+
           true
         end
 
