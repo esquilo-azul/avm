@@ -32,17 +32,15 @@ module Avm
         DATA_FILE_EXTENSION
       end
 
-      def dump(data_path, options = {})
-        ::Avm::Data::Package::Dump.new(self, data_path, options)
-      end
-
       def load(data_path)
         ::Avm::Data::Package::Load.new(self, data_path)
       end
 
-      def dump_units_to_directory(directory)
+      def dump_units_to_directory(directory, selected_units = nil)
         run_callbacks :dump do
-          units.each { |identifier, unit| unit.dump_to_directory(directory, identifier) }
+          (selected_units || units).each do |identifier, unit|
+            unit.dump_to_directory(directory, identifier)
+          end
         end
       end
 
