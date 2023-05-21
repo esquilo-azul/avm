@@ -12,6 +12,11 @@ module Avm
           @instance = instance
           super options
         end
+
+        # @return [Pathname]
+        def data_default_dump_path
+          instance.data_default_dump_path.to_pathname
+        end
       end
     end
   end
