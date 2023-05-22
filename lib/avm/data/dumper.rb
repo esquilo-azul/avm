@@ -60,6 +60,15 @@ module Avm
         raise "\"#{temp_data_path}\" is not a file" unless temp_data_path.file?
       end
 
+      # @return [String, nil]
+      def do_rotate
+        return unless target_path.exist?
+        return unless existing == EXISTING_ROTATE
+
+        infom "Rotating \"#{target_path}\"..."
+        ::Avm::Data::Rotate.new(target_path).run
+      end
+
       # @return [Array<Symbol>]
       def excluded_units
         excludes.map(&:to_sym).sort
@@ -93,7 +102,7 @@ module Avm
       def internal_perform
         on_temp_data_file do
           build_temp_data_file
-          rotate
+          do_rotate
           move_data_to_target_path
         end
       end
@@ -107,15 +116,6 @@ module Avm
           @temp_data_path = file.to_pathname
           yield
         end
-      end
-
-      # @return [String, nil]
-      def rotate
-        return unless target_path.exist?
-        return unless existing == EXISTING_ROTATE
-
-        infom "Rotating \"#{target_path}\"..."
-        ::Avm::Data::Rotate.new(target_path).run
       end
 
       # @return [Pathname]
