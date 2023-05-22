@@ -19,7 +19,7 @@ module Avm
 
       # @return [self]
       def perform
-        raise "Cannot run: #{cannot_run_reason}" unless performable?
+        raise "Cannot run: #{cannot_perform_reason}" unless performable?
 
         internal_perform
 
