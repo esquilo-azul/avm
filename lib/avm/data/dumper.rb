@@ -9,17 +9,17 @@ module Avm
   module Data
     class Dumper < ::Avm::Data::Performer
       DEFAULT_EXPIRE_TIME = 1.day
+      DEFAULT_OVERWRITE = false
       DEFAULT_ROTATE = true
 
       enable_speaker
       enable_listable
-      lists.add_symbol :existing, :denied, :overwrite
-      immutable_accessor :existing, :expire_time, :target_path
-      immutable_accessor :rotate, type: :boolean
+      immutable_accessor :expire_time, :target_path
+      immutable_accessor :overwrite, :rotate, type: :boolean
 
       # @return [String, nil]
       def cannot_perform_reason
-        return nil if !target_path.exist? || existing == EXISTING_OVERWRITE
+        return nil if !target_path.exist? || overwrite?
 
         'Data exist and overwriting is denied'
       end
@@ -71,11 +71,6 @@ module Avm
         excludes.map(&:to_sym).sort
       end
 
-      # @return [Symbol, nil]
-      def existing_set_filter(value)
-        value.nil? ? nil : self.class.lists.existing.value_validate!(value)
-      end
-
       # @return [ActiveSupport::Duration]
       def expire_time_get_filter(value)
         value || DEFAULT_EXPIRE_TIME
@@ -113,6 +108,11 @@ module Avm
           @temp_data_path = file.to_pathname
           yield
         end
+      end
+
+      # @return [Boolean]
+      def overwrite_get_filter(value)
+        value.nil? ? DEFAULT_OVERWRITE : value
       end
 
       def rotate_get_filter(value)
