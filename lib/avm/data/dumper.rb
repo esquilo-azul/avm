@@ -92,6 +92,10 @@ module Avm
 
       # @return [self]
       def internal_perform
+        internal_perform_new
+      end
+
+      def internal_perform_new
         on_temp_data_file do
           build_temp_data_file
           do_rotate
