@@ -17,11 +17,9 @@ module Avm
       immutable_accessor :expire_time, :target_path
       immutable_accessor :overwrite, :rotate, type: :boolean
 
-      # @return [String, nil]
+      # @return [nil]
       def cannot_perform_reason
-        return nil if !target_path.exist? || overwrite?
-
-        'Data exist and overwriting is denied'
+        nil
       end
 
       # @return [Pathname]
@@ -92,7 +90,7 @@ module Avm
 
       # @return [self]
       def internal_perform
-        internal_perform_new
+        use_current? ? internal_perform_use_current : internal_perform_new
       end
 
       def internal_perform_new
@@ -101,6 +99,10 @@ module Avm
           do_rotate
           move_data_to_target_path
         end
+      end
+
+      def internal_perform_use_current
+        infom "Dump \"#{target_path}\" exists and is unexpired"
       end
 
       def move_data_to_target_path
@@ -126,6 +128,14 @@ module Avm
       # @return [Pathname]
       def target_path_get_filter(value)
         (value || default_dump_path).to_pathname
+      end
+
+      # @return [Boolean]
+      def use_current?
+        return false unless target_path.exist?
+        return false if overwrite?
+
+        !target_path_expired?
       end
     end
   end
