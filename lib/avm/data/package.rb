@@ -44,9 +44,11 @@ module Avm
         end
       end
 
-      def load_units_from_directory(directory)
+      def load_units_from_directory(directory, selected_units = nil)
         run_callbacks :load do
-          units.each { |identifier, unit| unit.load_from_directory(directory, identifier) }
+          (selected_units || units).each do |identifier, unit|
+            unit.load_from_directory(directory, identifier)
+          end
         end
       end
 
