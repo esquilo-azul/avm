@@ -37,7 +37,7 @@ module Avm
 
       # @return [Boolean]
       def target_path_expired?
-        target_path_time.if_present(false) { |v| v >= expire_time }
+        target_path_time.if_present(true) { |v| v >= expire_time }
       end
 
       # @return [ActiveSupport::Duration, nil]
