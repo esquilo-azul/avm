@@ -26,12 +26,24 @@ module Avm
             end
           end
 
+          def define_get_method
+            outer_self = self
+            entries_provider_class.define_method(get_method_name) do
+              read_entry(outer_self.entry_key_path.to_string)
+            end
+          end
+
           def define_inherited_value_proc_method(&block)
             entries_provider_class.define_method(inherited_value_proc_name, &block)
           end
 
           def entry_key_path
             ::EacConfig::EntryPath.assert([prefix, component])
+          end
+
+          # @return [String]
+          def get_method_name # rubocop:disable Naming/AccessorMethodName
+            component_method_name
           end
 
           def id_component
@@ -44,6 +56,7 @@ module Avm
 
           def setup
             define_auto_method
+            define_get_method
           end
         end
       end
