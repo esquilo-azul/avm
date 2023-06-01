@@ -19,8 +19,11 @@ module Avm
             [prefix, component].join('_')
           end
 
-          def define_auto_method(&block)
-            entries_provider_class.define_method(auto_method_name, &block)
+          def define_auto_method
+            outer_self = self
+            entries_provider_class.define_method(auto_method_name) do
+              uri_component_entry_value(outer_self.entry_key_path.to_string)
+            end
           end
 
           def define_inherited_value_proc_method(&block)
@@ -40,10 +43,7 @@ module Avm
           end
 
           def setup
-            outer_self = self
-            define_auto_method do
-              uri_component_entry_value(outer_self.entry_key_path.to_string)
-            end
+            define_auto_method
           end
         end
       end

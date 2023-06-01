@@ -8,9 +8,9 @@ module Avm
     module Base
       class UriComponentsEntriesValues
         class UrlComponent < ::Avm::Entries::Base::UriComponentsEntriesValues::GenericComponent
-          def setup
+          def define_auto_method
             outer_self = self
-            define_auto_method do
+            entries_provider_class.define_method(auto_method_name) do
               inherited_entry_value(outer_self.id_component.entry_key_path.to_string,
                                     outer_self.entry_key_path.to_string) ||
                 outer_self.auto_install_url_by_parts(self)
