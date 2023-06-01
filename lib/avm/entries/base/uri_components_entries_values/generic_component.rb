@@ -33,6 +33,13 @@ module Avm
             end
           end
 
+          def define_get_optional_method
+            outer_self = self
+            entries_provider_class.define_method(get_optional_method_name) do
+              read_entry_optional(outer_self.entry_key_path.to_string)
+            end
+          end
+
           def define_inherited_value_proc_method(&block)
             entries_provider_class.define_method(inherited_value_proc_name, &block)
           end
@@ -46,6 +53,11 @@ module Avm
             component_method_name
           end
 
+          # @return [String]
+          def get_optional_method_name # rubocop:disable Naming/AccessorMethodName
+            get_method_name + '_optional'
+          end
+
           def id_component
             @id_component ||= owner.component_factory('id')
           end
@@ -57,6 +69,7 @@ module Avm
           def setup
             define_auto_method
             define_get_method
+            define_get_optional_method
           end
         end
       end
