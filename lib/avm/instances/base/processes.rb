@@ -12,9 +12,9 @@ module Avm
         end
 
         def on_disabled_processes(&block)
-          available_processes.each(&:disable)
-          block.call
-          available_processes.each(&:enable)
+          available_processes.inject(block) do |a, e|
+            -> { e.on_disabled(&a) }
+          end.call
         end
 
         # @return [Array<Avm::Instances::Process>]
