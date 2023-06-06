@@ -12,7 +12,7 @@ module Avm
         end
       end
 
-      acts_as_abstract :available?, :disable, :enable
+      acts_as_abstract :available?, :disable, :enable, :enabled?
       common_constructor :instance, :id, default: [nil] do
         self.id ||= (id || self.class.default_id).to_sym
       end
