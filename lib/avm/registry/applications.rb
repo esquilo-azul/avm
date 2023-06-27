@@ -10,6 +10,7 @@ module Avm
 
       # @return [Array<Avm::Applications::Base>]
       def available
+        load_config
         detected.values
       end
 
@@ -25,6 +26,12 @@ module Avm
       # @return [Hash<String, Avm::Applications::Base>]
       def detected
         @detected ||= {}
+      end
+
+      def load_config
+        ::Avm::Registry.config_objects.available.each do |id, type|
+          detect(id) if type == ::Avm::Applications::Base::AVM_TYPE
+        end
       end
     end
   end
