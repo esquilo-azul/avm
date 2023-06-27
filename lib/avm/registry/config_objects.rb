@@ -10,8 +10,9 @@ module Avm
 
       # @return [Array<Avm::Applications::Base>]
       def available
-        load_config
-        detected.values
+        ::EacConfig::Node.context.current.entries('*.avm_type').node_entries.each do |node_entry|
+          detect(node_entry.path.first)
+        end
       end
 
       # @return [Avm::Applications::Base]
