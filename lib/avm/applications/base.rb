@@ -12,6 +12,7 @@ module Avm
       require_sub __FILE__, include_modules: true
       include ::Avm::Entries::Base
 
+      AVM_TYPE = 'application'
       LOCAL_INSTANCE_SUFFIX = 'dev'
 
       common_constructor :id do
