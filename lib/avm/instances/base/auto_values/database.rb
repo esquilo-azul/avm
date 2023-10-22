@@ -8,6 +8,7 @@ module Avm
       module AutoValues
         module Database
           LOCAL_ADDRESS = '127.0.0.1'
+          LOCAL_ADDRESSES = [LOCAL_ADDRESS, '::1', 'localhost'].freeze
           DEFAULT_EXTRA = ''
           DEFAULT_HOSTNAME = LOCAL_ADDRESS
           DEFAULT_LIMIT = 5
