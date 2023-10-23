@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'avm/entries/base'
-require 'avm/registry'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
@@ -27,23 +26,6 @@ module Avm
 
       def name
         entry(::Avm::Instances::EntryKeys::NAME).read
-      end
-
-      # @return [Pathname]
-      def local_source_path
-        local_source_path_entry.value!.to_pathname
-      end
-
-      # @return [EacConfig::Entry]
-      def local_source_path_entry
-        ::EacConfig::Node.context.current.entry([local_instance_id, 'install', 'path'])
-      end
-
-      private
-
-      # @return [Avm::Sources::Base]
-      def local_source_uncached
-        ::Avm::Registry.sources.detect(local_source_path)
       end
     end
   end
