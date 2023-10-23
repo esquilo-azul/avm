@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'avm/entries/base'
-require 'avm/instances/ids'
 require 'avm/registry'
 require 'eac_ruby_utils/core_ext'
 
@@ -13,7 +12,6 @@ module Avm
       include ::Avm::Entries::Base
 
       AVM_TYPE = 'Application'
-      LOCAL_INSTANCE_SUFFIX = 'dev'
 
       common_constructor :id do
         self.id = id.to_s
@@ -31,11 +29,6 @@ module Avm
         entry(::Avm::Instances::EntryKeys::NAME).read
       end
 
-      # @return [String]
-      def local_instance_id
-        ::Avm::Instances::Ids.build(id, local_instance_suffix)
-      end
-
       # @return [Pathname]
       def local_source_path
         local_source_path_entry.value!.to_pathname
@@ -46,17 +39,7 @@ module Avm
         ::EacConfig::Node.context.current.entry([local_instance_id, 'install', 'path'])
       end
 
-      # @return [String]
-      def local_instance_suffix
-        LOCAL_INSTANCE_SUFFIX
-      end
-
       private
-
-      # @return [Avm::Instances::Base]
-      def local_instance_uncached
-        instance(local_instance_suffix)
-      end
 
       # @return [Avm::Sources::Base]
       def local_source_uncached
