@@ -8,6 +8,11 @@ module Avm
       module Naming
         # @return [String]
         def name
+          name_from_configuration
+        end
+
+        # @return [String]
+        def name_from_configuration
           entry(::Avm::Instances::EntryKeys::NAME).read
         end
       end
