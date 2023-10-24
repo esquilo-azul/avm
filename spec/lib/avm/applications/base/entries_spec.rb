@@ -6,11 +6,19 @@ RSpec.describe ::Avm::Applications::Base do
   include_examples 'entries_values', __FILE__, {
     'app0' => {
       'name' => 'Application 0',
-      'organization' => nil
+      'organization' => nil,
+      'scm.id' => 'app1',
+      'scm.type' => 'ScmX',
+      'scm.url' => 'http://nowhere.net/anypath',
+      'scm.repos_path' => 'mygroup/app0'
     },
     'app1' => {
       'name' => nil,
-      'organization' => 'org1'
+      'organization' => 'org1',
+      'scm.id' => nil,
+      'scm.type' => 'ScmX',
+      'scm.url' => 'http://nowhere.net/anypath',
+      'scm.repos_path' => 'mygroup'
     }
   }
 
