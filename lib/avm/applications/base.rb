@@ -23,10 +23,6 @@ module Avm
       def instance(suffix)
         stereotype.instance_class.new(self, suffix)
       end
-
-      def name
-        entry(::Avm::Instances::EntryKeys::NAME).read
-      end
     end
   end
 end
