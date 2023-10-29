@@ -13,8 +13,8 @@ require 'eac_ruby_utils/core_ext'
         context "when a auto value is requested for \"#{instance_id}.#{input}\"" do
           let(:instance) { described_class.by_id(instance_id) }
 
-          it ".read_entry should return \"#{expected}\"" do
-            expect(instance.read_entry(input)).to eq(expected)
+          it ".entry('#{input}').value should return \"#{expected}\"" do
+            expect(instance.entry(input).value).to eq(expected)
           end
         end
       end
