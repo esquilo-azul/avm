@@ -18,8 +18,14 @@ module Avm
           end
         end
 
+        # @param provider_id [String]
+        # @return [Avm::Entries::Base]
+        def other_entries_provider(provider_id)
+          ::Avm::Instances::Base.by_id(provider_id)
+        end
+
         def other_entry_value(instance_id)
-          ::Avm::Instances::Base.by_id(instance_id).read_entry_optional(target_entry_suffix)
+          other_entries_provider(instance_id).read_entry_optional(target_entry_suffix)
         end
 
         def self_entry_value
