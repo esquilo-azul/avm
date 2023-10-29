@@ -11,6 +11,14 @@ module Avm
 
       AVM_TYPE = 'Application'
 
+      class << self
+        # @param id [String]
+        # @return [Avm::Applications::Base]
+        def by_id(id)
+          new(id)
+        end
+      end
+
       common_constructor :id do
         self.id = id.to_s
       end
