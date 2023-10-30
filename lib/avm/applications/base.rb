@@ -7,7 +7,6 @@ module Avm
   module Applications
     class Base
       enable_simple_cache
-      require_sub __FILE__, include_modules: true
       include ::Avm::Entries::Base
 
       AVM_TYPE = 'Application'
@@ -23,6 +22,8 @@ module Avm
       def instance(suffix)
         stereotype.instance_class.new(self, suffix)
       end
+
+      require_sub __FILE__, include_modules: true
     end
   end
 end
