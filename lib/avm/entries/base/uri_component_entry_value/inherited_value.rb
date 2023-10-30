@@ -28,8 +28,9 @@ module Avm
             ->(value) { entries_provider.send(inherited_value_block_method_name, value) }
           end
 
+          # @return [Symbol]
           def inherited_value_block_method_name
-            "#{component_entry_path.parts.join('_').variableize}_inherited_value_proc".to_sym
+            component_entry_path.inherited_block_method_name
           end
         end
       end

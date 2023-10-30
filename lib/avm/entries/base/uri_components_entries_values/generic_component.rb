@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/entries/uri_builder'
+require 'avm/patches/eac_config/entry_path'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
@@ -10,14 +11,8 @@ module Avm
         class GenericComponent
           common_constructor :owner, :component
           delegate :entries_provider_class, :prefix, to: :owner
-
-          def auto_method_name
-            ['auto', component_method_name].join('_')
-          end
-
-          def component_method_name
-            [prefix, component].join('_')
-          end
+          delegate :auto_method_name, :get_method_name, :get_optional_method_name,
+                   to: :entry_key_path
 
           def define_auto_method
             outer_self = self
@@ -48,22 +43,12 @@ module Avm
             ::EacConfig::EntryPath.assert([prefix, component])
           end
 
-          # @return [String]
-          def get_method_name # rubocop:disable Naming/AccessorMethodName
-            component_method_name
-          end
-
-          # @return [String]
-          def get_optional_method_name # rubocop:disable Naming/AccessorMethodName
-            get_method_name + '_optional'
-          end
-
           def id_component
             @id_component ||= owner.component_factory('id')
           end
 
           def inherited_value_proc_name
-            [component_method_name, 'inherited_value_proc'].join('_')
+            entry_key_path.inherited_block_method_name
           end
 
           def setup
