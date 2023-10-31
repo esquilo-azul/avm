@@ -26,7 +26,11 @@ module Avm
 
         # @return [Class]
         def other_entries_provider_class
-          ::Avm::Instances::Base
+          [::Avm::Instances::Base, ::Avm::Applications::Base].each do |klass|
+            return klass if entries_provider.is_a?(klass)
+          end
+
+          raise "No provider class found for \"#{entries_provider}\""
         end
 
         def other_entry_value(instance_id)
