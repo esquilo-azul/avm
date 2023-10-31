@@ -21,7 +21,12 @@ module Avm
         # @param provider_id [String]
         # @return [Avm::Entries::Base]
         def other_entries_provider(provider_id)
-          ::Avm::Instances::Base.by_id(provider_id)
+          other_entries_provider_class.by_id(provider_id)
+        end
+
+        # @return [Class]
+        def other_entries_provider_class
+          ::Avm::Instances::Base
         end
 
         def other_entry_value(instance_id)
