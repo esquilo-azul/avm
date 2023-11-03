@@ -6,9 +6,9 @@ module Avm
   module Registry
     class ApplicationScms < ::Avm::Registry::FromGems
       def class_detect(klass, detect_args)
-        return nil unless klass.type_name == detect_args[0]
+        return nil unless klass.type_name == detect_args.fetch(0).scm_type
 
-        klass.new(*detect_args[1..-1])
+        klass.new(*detect_args)
       end
     end
   end

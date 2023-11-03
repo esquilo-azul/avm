@@ -5,6 +5,8 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module ApplicationScms
     class Base
+      acts_as_abstract
+
       class << self
         # @return [String]
         def type_name
@@ -12,16 +14,19 @@ module Avm
         end
       end
 
-      # !method initialize(url)
-      # @param url [Addressable::URI]
-      common_constructor :url do
-        self.url = url.to_uri
-      end
+      # !method initialize(application)
+      # @param application [Avm::Application::Base]
+      common_constructor :application
       delegate :type_name, to: :class
 
       # @return [String]
       def to_s
-        "#{type_name}[#{url}]"
+        "#{type_name}[#{to_s_type_specific}]"
+      end
+
+      # @return [String]
+      def to_s_type_specific
+        ''
       end
     end
   end

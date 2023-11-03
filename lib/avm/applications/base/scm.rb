@@ -13,7 +13,7 @@ module Avm
 
         # @return [Avm::ApplicationScms::Base]
         def scm
-          @scm ||= ::Avm::Registry.application_scms.detect(scm_type, scm_url)
+          @scm ||= ::Avm::Registry.application_scms.detect(self)
         end
 
         # @param value [String]
