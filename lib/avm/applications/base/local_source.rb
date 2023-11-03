@@ -10,7 +10,7 @@ module Avm
       module LocalSource
         # @return [Pathname]
         def local_source_path
-          local_source_path_entry.value!.to_pathname
+          (local_source_path_entry.value || auto_local_source_path).to_pathname
         end
 
         # @return [EacConfig::Entry]
