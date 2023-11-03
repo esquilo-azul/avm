@@ -19,6 +19,12 @@ module Avm
       common_constructor :application
       delegate :type_name, to: :class
 
+      # @param path [Pathname]
+      # @return [Pathname]
+      def assert_main_at(path) # rubocop:disable Lint/UnusedMethodArgument
+        raise_abstract_method __method__
+      end
+
       # @return [String]
       def to_s
         "#{type_name}[#{to_s_type_specific}]"
