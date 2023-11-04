@@ -8,7 +8,7 @@ module Avm
     class Base
       module Scm
         common_concern do
-          uri_components_entries_values 'scm', %w[repos_path type]
+          uri_components_entries_values 'scm', %w[repos_path ssh_username type]
         end
 
         # @return [Avm::ApplicationScms::Base]

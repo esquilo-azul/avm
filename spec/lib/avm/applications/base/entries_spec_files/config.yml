@@ -9,3 +9,4 @@ app1:
     url: http://nowhere.net/anypath
     type: ScmX
     repos_path: mygroup
+    ssh_username: myuser
