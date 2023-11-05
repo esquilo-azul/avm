@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'avm/sources/base/sub'
 require 'avm/sources/base/subs_paths'
 require 'eac_ruby_utils/core_ext'
 
@@ -15,6 +16,12 @@ module Avm
         # @return [Avm::Sources::Base, nil]
         def sub_for_path(path)
           subs.lazy.map { |sub| path.expand_path.child_of?(sub.path) ? sub : nil }.find(&:present?)
+        end
+
+        # @param sub_path [Pathname]
+        # @return [Avm::Sources::Base::Sub]
+        def sub(sub_path)
+          ::Avm::Sources::Base::Sub.new(self, sub_path)
         end
 
         # @return [Enumerable<Avm::Sources::Base>]
