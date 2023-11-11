@@ -25,6 +25,12 @@ module Avm
         success "Source generated in \"#{generator.target_path}\""
       end
 
+      # @return [String]
+      def help_extra_text
+        help_list_section('Stereotypes', ::Avm::Registry.source_generators.available
+          .map(&:application_stereotype_name))
+      end
+
       def start_banner
         infov 'Stereotype', stereotype_name
         infov 'Target path', target_path
