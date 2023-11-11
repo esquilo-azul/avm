@@ -7,6 +7,7 @@ require 'eac_ruby_utils/core_ext'
 module Avm
   module SourceGenerators
     class Base
+      acts_as_abstract
       include ::Avm::With::ApplicationStereotype
 
       class << self
