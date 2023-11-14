@@ -34,7 +34,7 @@ module Avm
               next unless publish?(s)
 
               puts "#{name.to_s.cyan}|#{s.label}|" \
-                "#{s.publish_class.new(self).check}"
+                   "#{s.publish_class.new(self).check}"
             end
           end
 

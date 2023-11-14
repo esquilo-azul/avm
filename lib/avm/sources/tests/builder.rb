@@ -73,7 +73,7 @@ module Avm
           return r if r.any?
 
           raise ::ArgumentError, "Source not found with ID=#{source_id}" \
-            "(Available: #{available_units.map(&:id).join(', ')})"
+                                 "(Available: #{available_units.map(&:id).join(', ')})"
         end
 
         # @return [Array<Avm::Sources::Tests::Single>]

@@ -52,7 +52,7 @@ module Avm
           file = oldest_rotated_file
           unless file
             raise 'oldest_rotated_file returned nil ' \
-              "(Limit: #{space_limit}, used: #{space_used})"
+                  "(Limit: #{space_limit}, used: #{space_used})"
           end
           ::File.delete(file)
         end

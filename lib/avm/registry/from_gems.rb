@@ -48,7 +48,7 @@ module Avm
 
       def raise_not_found(*args)
         raise("No registered module valid for #{args} " \
-            "(Module suffix: #{module_suffix}, Available: #{available.join(', ')})")
+              "(Module suffix: #{module_suffix}, Available: #{available.join(', ')})")
       end
 
       def registered_modules_uncached
