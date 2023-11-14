@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{exe,lib}/**/*', 'Gemfile', 'MIT-LICENSE', 'README.rdoc']
   s.bindir = 'exe'
   s.executables = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  s.required_ruby_version = '>= 2.7'
 
   s.add_dependency 'activesupport', '~> 4.2', '>= 4.2.10'
   s.add_dependency 'colorize', '~> 0.8.1'

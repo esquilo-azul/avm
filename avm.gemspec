@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Ruby base library for Agora Vai! Methodology (https://avm.esquiloazul.tech).'
 
   s.files = Dir['{lib, locale}/**/*']
+  s.required_ruby_version = '>= 2.7'
 
   s.add_dependency 'aranha-parsers', '~> 0.21'
   s.add_dependency 'eac_cli', '~> 0.38', '>= 0.38.1'
