@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'htmlbeautifier', '~> 1.4', '>= 1.4.2'
   s.add_dependency 'minitar', '~> 0.9'
 
-  s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.24'
+  s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.33'
   s.add_development_dependency 'avm-git', '~> 0.7'
   s.add_development_dependency 'eac_ruby_gem_support', '~> 0.5.1'
 end
