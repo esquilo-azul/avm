@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Layout/LineContinuationLeadingSpace:
-  Exclude:
-  - lib/avm/registry/from_gems.rb
 Layout/LineEndStringConcatenationIndentation:
   Exclude:
   - lib/avm/data/rotate.rb
