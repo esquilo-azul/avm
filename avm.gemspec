@@ -26,5 +26,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.33'
   s.add_development_dependency 'avm-git', '~> 0.14'
-  s.add_development_dependency 'eac_ruby_gem_support', '~> 0.5.1'
+  s.add_development_dependency 'eac_ruby_gem_support', '~> 0.9'
 end

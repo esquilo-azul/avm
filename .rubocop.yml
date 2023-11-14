@@ -1,45 +1,115 @@
-require:
-  - rubocop-rails
-  - rubocop-rspec
-
-AllCops:
-  TargetRailsVersion: 5.2
-  TargetRubyVersion: 2.7
-
-Metrics/BlockLength:
+inherit_gem:
+  eac_ruby_gem_support: .rubocop.yml
+Gemspec/RequiredRubyVersion:
   Exclude:
-    - '**/*.gemspec'
-    - 'spec/**/*_spec.rb'
-
-Layout/LineLength:
-  Max: 100
-
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented_relative_to_receiver
-
-Rails/DynamicFindBy:
-  Enabled: false
-
-Rails/Output:
-  Enabled: false
-
-Rails/SkipsModelValidations:
-  Enabled: false
-
-Rails/TimeZone:
-  Enabled: false
-
-Style/AsciiComments:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/HashEachMethods:
-  Enabled: true
-
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
+  - avm.gemspec
+  - spec/lib/avm/launcher/instances/base_spec_files/projects/avm-tools_stub/avm-tools.gemspec
+  - spec/lib/avm/launcher/instances/base_spec_files/projects/ruby_gem_stub/ruby_gem_stub.gemspec
+Layout/LineContinuationLeadingSpace:
+  Exclude:
+  - lib/avm/registry/from_gems.rb
+Layout/LineEndStringConcatenationIndentation:
+  Exclude:
+  - lib/avm/data/rotate.rb
+  - lib/avm/launcher/instances/base/publishing.rb
+  - lib/avm/registry/from_gems.rb
+  - lib/avm/sources/tests/builder.rb
+Lint/MissingSuper:
+  Exclude:
+  - lib/avm/docker/image.rb
+Lint/RedundantCopDisableDirective:
+  Exclude:
+  - lib/avm/applications/base/publishing.rb
+RSpec/BeEq:
+  Exclude:
+  - spec/lib/avm/launcher/instances/base_spec.rb
+RSpec/FilePath:
+  Exclude:
+  - spec/lib/avm/applications/base/entries_spec.rb
+RSpec/MetadataStyle:
+  Exclude:
+  - spec/lib/avm/scms/auto_commit/file_resource_name_spec.rb
+RSpec/SpecFilePathFormat:
+  Exclude:
+  - spec/lib/avm/applications/base/entries_spec.rb
+Rails/CompactBlank:
+  Exclude:
+  - lib/avm/docker/image.rb
+  - lib/avm/entries/keys_constants_set.rb
+  - lib/avm/launcher/context/instance_manager/cached_instances.rb
+  - lib/avm/path_string.rb
+  - lib/avm/sources/base/subs.rb
+Rails/FindEach:
+  Exclude:
+  - lib/avm/instances/base/entry_keys.rb
+Rails/NegateInclude:
+  Exclude:
+  - lib/avm/launcher/instances/base.rb
+  - lib/avm/launcher/paths/logical.rb
+Style/AccessorGrouping:
+  Exclude:
+  - lib/avm/docker/image.rb
+Style/DocumentDynamicEvalDefinition:
+  Exclude:
+  - lib/avm/launcher/publish/check_result.rb
+  - lib/avm/result.rb
+Style/HashConversion:
+  Exclude:
+  - lib/avm/launcher/context/instance_manager.rb
+Style/MapToHash:
+  Exclude:
+  - lib/avm/entries/uri_builder.rb
+  - lib/avm/source_generators/runner.rb
+  - lib/avm/sources/base/testing.rb
+Style/RedundantConstantBase:
+  Exclude:
+  - Gemfile
+  - lib/avm/rspec/shared_examples/avm_file_format_file_resource_name.rb
+  - lib/avm/rspec/shared_examples/avm_file_formats_with_fixtures.rb
+  - lib/avm/rspec/shared_examples/avm_source_generated.rb
+  - lib/avm/rspec/shared_examples/entries_values.rb
+  - lib/avm/rspec/shared_examples/in_avm_registry.rb
+  - lib/avm/rspec/shared_examples/not_in_avm_registry.rb
+  - lib/avm/scms/auto_commit/rules.rb
+  - spec/lib/avm/applications/base/entries_spec.rb
+  - spec/lib/avm/applications/base_spec.rb
+  - spec/lib/avm/file_formats/base_spec.rb
+  - spec/lib/avm/instances/base_spec.rb
+  - spec/lib/avm/launcher/instances/base_spec.rb
+  - spec/lib/avm/launcher/instances/base_spec_files/projects/avm-tools_stub/avm-tools.gemspec
+  - spec/lib/avm/launcher/instances/base_spec_files/projects/ruby_gem_stub/ruby_gem_stub.gemspec
+  - spec/lib/avm/patches/eac_config/entry_path_spec.rb
+  - spec/lib/avm/scms/auto_commit/file_resource_name_spec.rb
+  - spec/lib/avm/scms/base_spec.rb
+  - spec/lib/avm/sources/base_spec.rb
+  - spec/lib/avm/sources/runner_spec.rb
+  - spec/rubocop_spec.rb
+  - spec/spec_helper.rb
+Style/RedundantRegexpArgument:
+  Exclude:
+  - lib/avm/rspec/shared_examples/avm_file_formats_with_fixtures.rb
+Style/RedundantRegexpEscape:
+  Exclude:
+  - lib/avm/data/rotate.rb
+  - lib/avm/instances/base.rb
+  - lib/avm/instances/ids.rb
+Style/RedundantStringEscape:
+  Exclude:
+  - lib/avm/sources/tests/single.rb
+Style/SafeNavigation:
+  Exclude:
+  - lib/avm/entries/uri_builder.rb
+  - lib/avm/launcher/instances/base.rb
+  - lib/avm/launcher/paths/logical.rb
+Style/SelectByRegexp:
+  Exclude:
+  - lib/avm/launcher/paths/logical.rb
+Style/StringConcatenation:
+  Exclude:
+  - lib/avm/docker/runner.rb
+  - lib/avm/entries/base/uri_components_entries_values/path_component.rb
+  - lib/avm/executables.rb
+  - lib/avm/instances/base/install.rb
+  - lib/avm/scms/auto_commit/file_resource_name.rb
+  - lib/avm/scms/auto_commit/rules.rb
+  - lib/avm/scms/commit_info.rb
