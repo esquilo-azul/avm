@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'aranha/parsers/source_target_fixtures'
 require 'avm/file_formats/search_formatter'
 require 'eac_ruby_utils/core_ext'
 
