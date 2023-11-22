@@ -25,6 +25,7 @@ module Avm
       attr_accessor :version
 
       def initialize(registry = nil)
+        super()
         @registry = registry || self.class.default_registry
         self.snapshot = true
         self.version = true

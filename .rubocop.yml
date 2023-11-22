@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Lint/MissingSuper:
-  Exclude:
-  - lib/avm/docker/image.rb
 Lint/RedundantCopDisableDirective:
   Exclude:
   - lib/avm/applications/base/publishing.rb
