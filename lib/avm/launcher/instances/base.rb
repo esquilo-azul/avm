@@ -64,7 +64,7 @@ module Avm
         end
 
         def to_h
-          super.to_h.merge(parent: parent ? parent.logical : nil)
+          super.to_h.merge(parent: parent&.logical)
         end
 
         private

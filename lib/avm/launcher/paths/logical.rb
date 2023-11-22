@@ -28,7 +28,7 @@ module Avm
         end
 
         def to_h
-          { logical: logical, real: real.to_s, parent_path: parent_path ? parent_path.to_h : nil }
+          { logical: logical, real: real.to_s, parent_path: parent_path&.to_h }
         end
 
         def project?

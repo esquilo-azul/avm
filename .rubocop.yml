@@ -1,11 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/SafeNavigation:
-  Exclude:
-  - lib/avm/entries/uri_builder.rb
-  - lib/avm/launcher/instances/base.rb
-  - lib/avm/launcher/paths/logical.rb
 Style/SelectByRegexp:
   Exclude:
   - lib/avm/launcher/paths/logical.rb
