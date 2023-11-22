@@ -48,7 +48,7 @@ module Avm
         end
 
         def included?
-          !context.settings.excluded_paths.include?(logical)
+          context.settings.excluded_paths.exclude?(logical)
         end
 
         private

@@ -60,7 +60,7 @@ module Avm
         end
 
         def included?
-          !::Avm::Launcher::Context.current.settings.excluded_projects.include?(project_name)
+          ::Avm::Launcher::Context.current.settings.excluded_projects.exclude?(project_name)
         end
 
         def to_h
