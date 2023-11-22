@@ -47,7 +47,7 @@ module Avm
 
       # @return [Hash<String, String>]
       def options
-        parsed.option.map { |v| v.split(OPTION_NAME_VALUE_SEPARATOR) }.to_h
+        parsed.option.to_h { |v| v.split(OPTION_NAME_VALUE_SEPARATOR) }
       end
 
       def target_path

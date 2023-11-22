@@ -78,7 +78,7 @@ module Avm
 
       # @return [Addressable::URI]
       def to_required_uri
-        ::Addressable::URI.new(FIELDS.map { |f| [f.to_sym, field_get(f)] }.to_h)
+        ::Addressable::URI.new(FIELDS.to_h { |f| [f.to_sym, field_get(f)] })
       end
 
       private

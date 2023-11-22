@@ -57,12 +57,12 @@ module Avm
 
         def configured_enumerable_value_as_test_commands(value)
           configured_hash_value_as_test_commands(
-            value.each_with_index.map { |v, i| ["test_#{i}", v] }.to_h
+            value.each_with_index.to_h { |v, i| ["test_#{i}", v] }
           )
         end
 
         def configured_hash_value_as_test_commands(value)
-          value.map { |k, v| [k.to_s.strip, configuration_value_to_env_command(v)] }.to_h
+          value.to_h { |k, v| [k.to_s.strip, configuration_value_to_env_command(v)] }
         end
       end
     end
