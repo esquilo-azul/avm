@@ -3,11 +3,11 @@
 require 'avm/file_formats/search_formatter'
 require 'eac_ruby_utils/core_ext'
 
-::RSpec.shared_examples 'avm_file_formats_with_fixtures' do |the_spec_file|
+RSpec.shared_examples 'avm_file_formats_with_fixtures' do |the_spec_file|
   include_examples 'source_target_fixtures', the_spec_file
 
   def format_files_in_directory(target_dir)
-    ::Avm::FileFormats::SearchFormatter
+    Avm::FileFormats::SearchFormatter
       .new([target_dir], recursive: true, apply: true, verbose: false)
       .run
   end
@@ -16,7 +16,7 @@ require 'eac_ruby_utils/core_ext'
     dir = temp_dir
     source_basename = source_file_basename_without_source_extname(source_file)
     source_path = dir.join(source_basename)
-    ::FileUtils.cp(source_file, source_path)
+    FileUtils.cp(source_file, source_path)
     format_files_in_directory(dir)
     source_path.read
   end
@@ -26,6 +26,6 @@ require 'eac_ruby_utils/core_ext'
   end
 
   def target_data(target_file)
-    ::File.read(target_file)
+    File.read(target_file)
   end
 end

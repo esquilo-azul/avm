@@ -2,7 +2,7 @@
 
 require 'eac_ruby_utils/core_ext'
 
-::EacRubyUtils.require_sub __FILE__
+EacRubyUtils.require_sub __FILE__
 
 module Avm
   module Scms

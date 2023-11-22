@@ -2,7 +2,7 @@
 
 require 'avm/patches/eac_config/entry_path'
 
-::RSpec.describe ::EacConfig::EntryPath do
+RSpec.describe EacConfig::EntryPath do
   {
     'install.path' => {
       auto: 'auto_install_path',

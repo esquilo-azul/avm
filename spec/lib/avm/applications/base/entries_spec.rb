@@ -2,7 +2,7 @@
 
 require 'avm/applications/base'
 
-RSpec.describe ::Avm::Applications::Base do
+RSpec.describe Avm::Applications::Base, '#entries' do
   include_examples 'entries_values', __FILE__, {
     'app0' => {
       'name' => 'Application 0',

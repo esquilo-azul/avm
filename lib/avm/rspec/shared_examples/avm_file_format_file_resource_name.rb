@@ -2,7 +2,7 @@
 
 require 'eac_ruby_utils/core_ext'
 
-::RSpec.shared_examples 'avm_file_format_file_resource_name' do |input_expected|
+RSpec.shared_examples 'avm_file_format_file_resource_name' do |input_expected|
   describe '#file_resource_name' do
     input_expected.each do |path, expected_resource_name|
       context "when path is \"#{path}\"" do
