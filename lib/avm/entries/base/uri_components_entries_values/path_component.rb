@@ -10,7 +10,7 @@ module Avm
         class PathComponent < ::Avm::Entries::Base::UriComponentsEntriesValues::GenericComponent
           def setup
             super
-            define_inherited_value_proc_method { |value| value + '/' + id }
+            define_inherited_value_proc_method { |value| "#{value}/#{id}" }
           end
         end
       end

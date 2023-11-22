@@ -20,7 +20,7 @@ module Avm
         def commit_message
           r = class_name
           r += ': remove' unless path.file?
-          r + '.'
+          "#{r}."
         end
 
         def relative_path

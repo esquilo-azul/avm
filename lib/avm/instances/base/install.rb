@@ -12,7 +12,7 @@ module Avm
         end
 
         def install_data_path_inherited_value_proc(value)
-          value + '/' + id
+          "#{value}/#{id}"
         end
 
         def install_groupname_default_value

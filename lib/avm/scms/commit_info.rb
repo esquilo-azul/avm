@@ -24,9 +24,15 @@ module Avm
       immutable_accessor :path, type: :array
 
       def to_s
-        self.class.name.demodulize + '[' +
-          %w[fixup message].map { |m| [m, send(m)] }.reject { |m| m[1].blank? }
-            .map { |m| m.join(': ') }.join(',') + ']'
+        "#{self.class.name.demodulize}[#{attributes_to_s}]"
+      end
+
+      private
+
+      # @return [String]
+      def attributes_to_s
+        %w[fixup message].map { |m| [m, send(m)] }.reject { |m| m[1].blank? }
+          .map { |m| m.join(': ') }.join(',')
       end
     end
   end

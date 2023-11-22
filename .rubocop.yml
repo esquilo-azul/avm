@@ -1,12 +1,3 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/StringConcatenation:
-  Exclude:
-  - lib/avm/docker/runner.rb
-  - lib/avm/entries/base/uri_components_entries_values/path_component.rb
-  - lib/avm/executables.rb
-  - lib/avm/instances/base/install.rb
-  - lib/avm/scms/auto_commit/file_resource_name.rb
-  - lib/avm/scms/auto_commit/rules.rb
-  - lib/avm/scms/commit_info.rb

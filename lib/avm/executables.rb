@@ -15,7 +15,7 @@ module Avm
       private
 
       %w[xdg-open].each do |program|
-        define_method(program.underscore + '_uncached') do
+        define_method("#{program.underscore}_uncached") do
           env.executable(program, '--version')
         end
       end

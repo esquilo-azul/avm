@@ -89,7 +89,7 @@ module Avm
       def output_image_name
         return unless parsed.image_name
 
-        out(docker_image.tag.to_s.strip + "\n")
+        out("#{docker_image.tag.to_s.strip}\n")
       end
 
       def registry_uncached
