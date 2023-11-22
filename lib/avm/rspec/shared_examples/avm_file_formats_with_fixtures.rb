@@ -22,7 +22,7 @@ RSpec.shared_examples 'avm_file_formats_with_fixtures' do |the_spec_file|
   end
 
   def source_file_basename_without_source_extname(source_file)
-    source_file.to_pathname.basename_sub { |b| b.to_path.gsub(/\.source/, '') }.basename
+    source_file.to_pathname.basename_sub { |b| b.to_path.gsub('.source', '') }.basename
   end
 
   def target_data(target_file)

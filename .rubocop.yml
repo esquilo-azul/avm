@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/RedundantRegexpArgument:
-  Exclude:
-  - lib/avm/rspec/shared_examples/avm_file_formats_with_fixtures.rb
 Style/RedundantRegexpEscape:
   Exclude:
   - lib/avm/data/rotate.rb
