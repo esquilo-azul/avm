@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/SelectByRegexp:
-  Exclude:
-  - lib/avm/launcher/paths/logical.rb
 Style/StringConcatenation:
   Exclude:
   - lib/avm/docker/runner.rb

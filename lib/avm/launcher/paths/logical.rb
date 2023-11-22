@@ -54,7 +54,7 @@ module Avm
         private
 
         def stereotypes_uncached
-          ::Avm::Launcher::Stereotype.stereotypes.select { |s| s.match?(self) }
+          ::Avm::Launcher::Stereotype.stereotypes.select { |s| s.match?(self) } # rubocop:disable Style/SelectByRegexp
         end
 
         def build_child(name)
