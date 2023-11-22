@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.7'
 
   s.add_dependency 'aranha-parsers', '~> 0.22'
-  s.add_dependency 'eac_cli', '~> 0.38', '>= 0.38.1'
+  s.add_dependency 'eac_cli', '~> 0.39'
   s.add_dependency 'eac_config', '~> 0.14', '>= 0.14.1'
   s.add_dependency 'eac_docker', '~> 0.7'
   s.add_dependency 'eac_fs', '~> 0.16'
