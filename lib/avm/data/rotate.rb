@@ -93,7 +93,7 @@ module Avm
         return '_UNKNOWN_MTIME' unless ::File.exist?(source_path)
 
         t = ::File.mtime(source_path)
-        t.strftime('_%Y-%m-%d_%H-%M-%S_') + t.strftime('%z').gsub(/\A\+/, 'P').gsub(/\A\-/, 'N')
+        t.strftime('_%Y-%m-%d_%H-%M-%S_') + t.strftime('%z').gsub(/\A\+/, 'P').gsub(/\A-/, 'N')
       end
 
       def file_extension(basename)
