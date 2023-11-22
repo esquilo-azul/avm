@@ -25,7 +25,7 @@ RSpec.describe ::Avm::Launcher::Instances::Base do
       it { expect(instance).to be_a(described_class) }
       it { expect(instance.options.git_current_revision).to eq('origin/master') }
       it { expect(instance.options.git_publish_remote).to eq('publish') }
-      it { expect(instance.publishable?).to eq(true) }
+      it { expect(instance.publishable?).to be(true) }
     end
 
     context 'when instance is "ruby_gem_stub"' do
@@ -37,7 +37,7 @@ RSpec.describe ::Avm::Launcher::Instances::Base do
 
       it { expect(instance.options.git_current_revision).to eq('git_current_revision_setted') }
       it { expect(instance.options.git_publish_remote).to eq('git_publish_remote_setted') }
-      it { expect(instance.publishable?).to eq(false) }
+      it { expect(instance.publishable?).to be(false) }
     end
   end
 end
