@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/RedundantStringEscape:
-  Exclude:
-  - lib/avm/sources/tests/single.rb
 Style/SafeNavigation:
   Exclude:
   - lib/avm/entries/uri_builder.rb

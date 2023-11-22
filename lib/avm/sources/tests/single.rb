@@ -24,7 +24,7 @@ module Avm
 
         # @return [String]
         def id
-          "#{main? ? MAIN_SOURCE_ID : relative_path_from_main_source}\##{test_name}"
+          "#{main? ? MAIN_SOURCE_ID : relative_path_from_main_source}##{test_name}"
         end
 
         def main?
