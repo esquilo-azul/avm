@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/AccessorGrouping:
-  Exclude:
-  - lib/avm/docker/image.rb
 Style/DocumentDynamicEvalDefinition:
   Exclude:
   - lib/avm/launcher/publish/check_result.rb

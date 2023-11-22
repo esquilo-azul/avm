@@ -21,8 +21,7 @@ module Avm
       end
 
       attr_reader :registry
-      attr_accessor :snapshot
-      attr_accessor :version
+      attr_accessor :snapshot, :version
 
       def initialize(registry = nil)
         super()
