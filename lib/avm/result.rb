@@ -11,11 +11,9 @@ module Avm
     lists.add_string :type, :success, :error, :neutral, :pending, :outdated
 
     lists.type.values.each do |type| # rubocop:disable Style/HashEachMethods
-      class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-        def self.#{type}(value)
-          new(value, TYPE_#{type.upcase})
-        end
-      RUBY_EVAL
+      singleton_class.define_method type do |value|
+        new(value, type)
+      end
     end
 
     TYPE_SUCCESS_COLOR = 'green'
@@ -62,11 +60,9 @@ module Avm
     end
 
     lists.type.values.each do |type| # rubocop:disable Style/HashEachMethods
-      class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-        def #{type}?
-          @type == '#{type}'
-        end
-      RUBY_EVAL
+      define_method "#{type}?" do
+        @type == type
+      end
     end
 
     private

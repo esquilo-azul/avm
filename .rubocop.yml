@@ -1,10 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Style/DocumentDynamicEvalDefinition:
-  Exclude:
-  - lib/avm/launcher/publish/check_result.rb
-  - lib/avm/result.rb
 Style/HashConversion:
   Exclude:
   - lib/avm/launcher/context/instance_manager.rb

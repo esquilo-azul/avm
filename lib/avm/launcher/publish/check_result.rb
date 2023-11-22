@@ -13,11 +13,9 @@ module Avm
         lists.add_string :status, :updated, :pending, :blocked, :outdated
 
         lists.status.values.each do |status| # rubocop:disable Style/HashEachMethods
-          class_eval <<-RUBY_EVAL, __FILE__, __LINE__ + 1
-          def self.#{status}(message)
-            new('#{status}', message)
+          singleton_class.define_method status do |message|
+            new(status, message)
           end
-          RUBY_EVAL
         end
 
         class << self
