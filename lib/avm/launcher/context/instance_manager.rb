@@ -49,7 +49,7 @@ module Avm
         end
 
         def cache_instances(instances)
-          write_cache_file(Hash[instances.map { |i| [i.logical, i.to_h] }])
+          write_cache_file(instances.to_h { |i| [i.logical, i.to_h] })
           instances
         end
 
