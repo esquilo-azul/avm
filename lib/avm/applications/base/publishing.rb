@@ -26,7 +26,7 @@ module Avm
           parse_publishable_value(entry(PUBLISHABLE_KEY).optional_value, false)
         end
 
-        def parse_publishable_value(value, hash_to_true) # rubocop:disable Metrics/CyclomaticComplexity
+        def parse_publishable_value(value, hash_to_true)
           return value.with_indifferent_access if parse_publishable_value_hash?(value, hash_to_true)
           return true if value.nil? || value == true
           return false if value == false || value.is_a?(::EacRubyUtils::BlankNotBlank)
