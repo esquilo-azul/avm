@@ -22,7 +22,7 @@ module Avm
 
       # @return [String]
       def key_const_set(prefix, suffix)
-        key = [prefix, suffix].reject(&:blank?).join('.')
+        key = [prefix, suffix].compact_blank.join('.')
         entries_provider_class.const_set(key.gsub('.', '_').upcase, key)
         key
       end

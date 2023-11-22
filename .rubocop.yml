@@ -1,13 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Rails/CompactBlank:
-  Exclude:
-  - lib/avm/docker/image.rb
-  - lib/avm/entries/keys_constants_set.rb
-  - lib/avm/launcher/context/instance_manager/cached_instances.rb
-  - lib/avm/path_string.rb
-  - lib/avm/sources/base/subs.rb
 Rails/FindEach:
   Exclude:
   - lib/avm/instances/base/entry_keys.rb

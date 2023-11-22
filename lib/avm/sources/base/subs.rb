@@ -28,7 +28,7 @@ module Avm
         def subs
           subs_paths_to_search
             .map { |sub_path| ::Avm::Registry.sources.detect_optional(sub_path, parent: self) }
-            .reject(&:blank?)
+            .compact_blank
             .sort_by { |sub| [sub.path] }
         end
 

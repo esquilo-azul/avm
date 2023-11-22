@@ -21,7 +21,7 @@ module Avm
 
     # @return [Array] List of paths. Blank paths are rejected.
     def paths
-      split(SEPARATOR).reject(&:blank?)
+      split(SEPARATOR).compact_blank
     end
   end
 end

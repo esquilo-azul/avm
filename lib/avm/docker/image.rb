@@ -62,7 +62,7 @@ module Avm
       end
 
       def tag_version
-        [tag_version_version, stereotype_tag].reject(&:blank?).join('_')
+        [tag_version_version, stereotype_tag].compact_blank.join('_')
       end
 
       def tag_version_version
