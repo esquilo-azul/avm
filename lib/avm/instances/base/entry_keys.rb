@@ -11,7 +11,7 @@ module Avm
           ::Avm::Instances::EntryKeys.all
         end
 
-        ::Avm::Instances::EntryKeys.find_each do |key|
+        ::Avm::Instances::EntryKeys.all.each do |key|
           method_name = key.to_s.variableize
           define_method method_name do
             read_entry(key)
