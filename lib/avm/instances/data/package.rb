@@ -10,7 +10,7 @@ module Avm
 
         def initialize(instance, options = {})
           @instance = instance
-          super options
+          super(options)
         end
 
         # @return [Pathname]

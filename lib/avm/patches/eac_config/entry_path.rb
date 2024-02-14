@@ -40,7 +40,7 @@ module EacConfig
     # @param after [String]
     # @return [Symbol]
     def method_name(before, after)
-      "#{before}#{variableize}#{after}".to_sym
+      :"#{before}#{variableize}#{after}"
     end
   end
 end
