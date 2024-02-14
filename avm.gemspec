@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'eac_ruby_utils', '~> 0.121'
   s.add_dependency 'eac_templates', '~> 0.5', '>= 0.5.1'
   s.add_dependency 'filesize', '~> 0.2'
-  s.add_dependency 'htmlbeautifier', '~> 1.4', '>= 1.4.2'
+  s.add_dependency 'htmlbeautifier', '~> 1.4', '>= 1.4.3'
   s.add_dependency 'minitar', '~> 0.9'
 
   s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.33'
