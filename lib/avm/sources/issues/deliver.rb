@@ -10,7 +10,8 @@ module Avm
         enable_simple_cache
         enable_speaker
 
-        common_constructor :git_repo
+        common_constructor :scm
+        delegate :head_branch, to: :scm
 
         def run
           push
@@ -19,19 +20,18 @@ module Avm
         end
 
         def start_banner
-          infov 'Branch name', branch_name
+          infov 'Branch ID', branch_id
           infov 'Commit ID', branch_commit_id
-          infov 'Push arguments', ::Shellwords.join(push_args)
         end
 
         private
 
         def branch_commit_id
-          git_repo.rev_parse(branch_name)
+          head_branch.head_commit.id
         end
 
-        def branch_name_uncached
-          git_repo.command('rev-parse', '--abbrev-ref', 'HEAD').execute!.strip
+        def branch_id
+          head_branch.id
         end
 
         def clipboard_copy_tracker_message
@@ -40,15 +40,11 @@ module Avm
         end
 
         def push
-          git_repo.command(*push_args).system!
-        end
-
-        def push_args
-          %w[push origin --force] + ["#{branch_name}:refs/heads/#{branch_name}"]
+          head_branch.push(scm.default_remote)
         end
 
         def textile_tracker_message
-          "#{branch_name}: commit:#{branch_commit_id}."
+          "#{branch_id}: commit:#{branch_commit_id}."
         end
       end
     end
