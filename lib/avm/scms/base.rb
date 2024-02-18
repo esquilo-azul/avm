@@ -20,6 +20,11 @@ module Avm
         raise_abstract_method __method__
       end
 
+      # @param options [Hash<Symbol, Object>]
+      def completer(options = {}) # rubocop:disable Lint/UnusedMethodArgument
+        raise_abstract_method __method__
+      end
+
       # @return [Avm::Scms::Interval]
       def interval(_from, _to)
         raise_abstract_method __method__
