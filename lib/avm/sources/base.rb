@@ -24,6 +24,11 @@ module Avm
 
       abstract_methods :valid?
 
+      # @param options [Hash<Symbol, Object>]
+      def completer(options = {})
+        scm.completer(options)
+      end
+
       # @return [EacRubyUtils::Envs::LocalEnv]
       def env
         ::EacRubyUtils::Envs::LocalEnv.new
