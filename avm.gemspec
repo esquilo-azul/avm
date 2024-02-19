@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Eduardo H. Bogoni']
   s.summary     = 'Ruby base library for Agora Vai! Methodology (https://avm.esquiloazul.tech).'
 
-  s.files = Dir['{lib,locale}/**/*']
+  s.files = Dir['{lib,locale,template}/**/*']
   s.required_ruby_version = '>= 2.7'
 
   s.add_dependency 'aranha-parsers', '~> 0.22'
