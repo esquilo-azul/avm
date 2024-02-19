@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'filesize', '~> 0.2'
   s.add_dependency 'htmlbeautifier', '~> 1.4', '>= 1.4.3'
   s.add_dependency 'minitar', '~> 0.9'
+  s.add_dependency 'ruby-progressbar', '~> 1.13'
 
   s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.33'
   s.add_development_dependency 'avm-git', '~> 0.14'
