@@ -12,7 +12,16 @@ module Avm
 
       # @return [Avm::Sources::Base, nil]
       def detect_optional(*detect_args)
-        detect_optional_by_configuration(*detect_args) || super
+        detect_optional_by_configuration(*detect_args) ||
+          detect_optional_by_application_configuration(*detect_args) ||
+          super
+      end
+
+      # @return [Avm::Sources::Base, nil]
+      def detect_optional_by_application_configuration(path, *detect_args)
+        ::Avm::Sources::Base.new(path).application.stereotype_by_configuration.if_present do |v|
+          v.source_class.new(path, *detect_args)
+        end
       end
 
       # @return [Avm::Sources::Base, nil]
