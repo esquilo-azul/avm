@@ -58,7 +58,10 @@ module Avm
       private
 
       def context_entry
-        ::EacConfig::Node.context.current.entry(full_path)
+        current_node = ::EacConfig::Node.context.optional_current
+        return current_node.entry(full_path) if current_node.present?
+
+        ::Avm::Entries::Entry::NoContextEntry.new
       end
 
       require_sub __FILE__
