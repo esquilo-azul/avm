@@ -60,6 +60,8 @@ module Avm
       def context_entry
         ::EacConfig::Node.context.current.entry(full_path)
       end
+
+      require_sub __FILE__
     end
   end
 end
