@@ -71,12 +71,10 @@ module Avm
     end
 
     def target_remove(tpath)
-      return if skip_target_path?(tpath)
-
       if tpath.directory?
         tpath.children.each { |tchild| target_remove(tchild) }
         tpath.rmdir if tpath.children.empty?
-      elsif tpath.file?
+      elsif tpath.file? && !skip_target_path?(tpath)
         tpath.unlink
       end
     end
