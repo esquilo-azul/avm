@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/applications/base'
+require 'eac_config/entry_path'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
@@ -26,7 +27,8 @@ module Avm
 
         # @return [String]
         def application_id_by_directory
-          path.basename.to_path
+          path.basename.to_path.gsub(::EacConfig::EntryPath::PART_SEPARATOR, '-')
+            .gsub(/\A-+/, '').gsub(/-+\z/, '')
         end
       end
     end
