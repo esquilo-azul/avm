@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'eac_config/entry_path'
 require 'eac_ruby_utils/core_ext'
 require 'avm/entries/entry'
 
@@ -19,12 +20,22 @@ module Avm
         id
       end
 
+      # @raise
+      # @return [void]
+      def entries_provider_id!
+        return entries_provider_id unless
+        entries_provider_id.include?(::EacConfig::EntryPath::PART_SEPARATOR)
+
+        raise ".entries_provider_id \"#{entries_provider_id}\" cannot have " \
+              "\"#{::EacConfig::EntryPath::PART_SEPARATOR}\" (EacConfig::EntryPath::PART_SEPARATOR)"
+      end
+
       def entry(suffix, options = {})
         ::Avm::Entries::Entry.new(self, suffix, options)
       end
 
       def path_prefix
-        @path_prefix ||= [entries_provider_id].freeze
+        @path_prefix ||= [entries_provider_id!].freeze
       end
 
       def read_entry(entry_suffix, options = {})
