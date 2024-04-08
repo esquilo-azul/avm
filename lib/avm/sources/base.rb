@@ -45,6 +45,11 @@ module Avm
         "#{self.class}[#{path}]"
       end
 
+      # @return [Avm::VersionNumber, nil]
+      def version
+        raise_abstract __method__, 'Should return a Avm::VersionNumber or nil'
+      end
+
       private
 
       # @return [Avm::Scms::Base]
