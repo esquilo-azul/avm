@@ -28,10 +28,10 @@ RSpec.shared_context 'with launcher' do
     require 'avm/launcher/context'
     require 'tmpdir'
     Avm::Launcher::Context.current = Avm::Launcher::Context.new(
-      projects_root: projects_root.to_pathname.to_path,
       settings_file: settings_path.to_pathname.to_path,
       cache_root: Dir.mktmpdir
     )
+    self.projects_root = projects_root
   end
 
   # @param settings_path [Pathname]
@@ -48,12 +48,21 @@ RSpec.shared_context 'with launcher' do
 
   def init_git(subdir)
     require 'avm/git/launcher/base'
-    r = Avm::Git::Launcher::Base.new(File.join(Avm::Launcher::Context.current.root.real,
-                                               subdir))
+    r = Avm::Git::Launcher::Base.new(File.join(projects_root, subdir))
     r.git
     r.execute!('config', 'user.email', 'theuser@example.net')
     r.execute!('config', 'user.name', 'The User')
     r
+  end
+
+  # @param path [String]
+  def projects_root
+    @projects_root ||= Dir.mktmpdir
+  end
+
+  # @param path [Pathname]
+  def projects_root=(path)
+    @projects_root = path.to_pathname.to_path
   end
 
   def touch_commit(repos, subpath)

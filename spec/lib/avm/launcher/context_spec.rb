@@ -39,7 +39,7 @@ RSpec.describe Avm::Launcher::Context do
       before do
         temp_context(File.join(__dir__, 'context_spec.yml'))
         mylib_repos
-        application_source_path('app', File.join(described_class.current.root.real, 'app'))
+        application_source_path('app', File.join(projects_root, 'app'))
       end
 
       context 'when sub is a GitSubrepo' do

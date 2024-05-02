@@ -29,14 +29,14 @@ module Avm
         end
       end
 
-      attr_reader :root, :settings, :cache_root
+      attr_reader :settings, :cache_root
       attr_accessor :publish_options, :recache, :instance_manager
 
       CONFIG_PATH_PREFIX = 'launcher'
+      FS_OBJECT_ID = 'unique'
 
       def initialize(options = {})
         @options = options.with_indifferent_access
-        @root = ::Avm::Launcher::Paths::Logical.new(self, nil, build_option(:projects_root), '/')
         @settings = ::Avm::Launcher::Context::Settings.new(build_option(:settings_file))
         @cache_root = build_option(:cache_root)
         @publish_options = { new: false, confirm: false, stereotype: nil }
@@ -45,7 +45,7 @@ module Avm
       end
 
       def fs_object_id
-        root.real.variableize
+        FS_OBJECT_ID
       end
 
       def instance(name)
