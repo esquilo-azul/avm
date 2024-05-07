@@ -8,20 +8,24 @@ module Avm
   module Launcher
     class Context
       class InstanceDiscovery
-        # @!attribute [r] instances
+        enable_simple_cache
+
+        # @!method instances
         #   @return [Array<Avm::Launcher::Instances::Base>]
-        attr_reader :instances
 
         # @!method initialize(context)
         #   @param context [Avm::Launcher::Context]
-        common_constructor :context do
+        common_constructor :context
+
+        private
+
+        # @return [Array<Avm::Launcher::Instances::Base>]
+        def instances_uncached
           @progress = ::ProgressBar.create(title: 'Instance discovery', total: 1)
-          @instances = path_instances(context.root, nil)
+          path_instances(context.root, nil)
         ensure
           @progress&.finish
         end
-
-        private
 
         # @param path [Avm::Launcher::Paths::Logical]
         # @param parent_instance [Avm::Launcher::Instances::Base]
