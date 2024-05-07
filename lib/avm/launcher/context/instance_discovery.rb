@@ -2,6 +2,7 @@
 
 require 'ruby-progressbar'
 require 'avm/launcher/instances/base'
+require 'eac_ruby_utils/core_ext'
 
 module Avm
   module Launcher
@@ -11,11 +12,11 @@ module Avm
         #   @return [Array<Avm::Launcher::Instances::Base>]
         attr_reader :instances
 
-        # @param context [Avm::Launcher::Context]
-        def initialize(context)
-          @context = context
+        # @!method initialize(context)
+        #   @param context [Avm::Launcher::Context]
+        common_constructor :context do
           @progress = ::ProgressBar.create(title: 'Instance discovery', total: 1)
-          @instances = path_instances(@context.root, nil)
+          @instances = path_instances(context.root, nil)
         ensure
           @progress&.finish
         end
