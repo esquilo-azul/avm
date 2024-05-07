@@ -7,8 +7,11 @@ module Avm
   module Launcher
     class Context
       class InstanceDiscovery
+        # @!attribute [r] instances
+        #   @return [Array<Avm::Launcher::Instances::Base>]
         attr_reader :instances
 
+        # @param context [Avm::Launcher::Context]
         def initialize(context)
           @context = context
           @progress = ::ProgressBar.create(title: 'Instance discovery', total: 1)
@@ -19,6 +22,9 @@ module Avm
 
         private
 
+        # @param path [Avm::Launcher::Paths::Logical]
+        # @param parent_instance [Avm::Launcher::Instances::Base]
+        # @return [Array<Avm::Launcher::Instances::Base>]
         def path_instances(path, parent_instance)
           update_progress_format(path)
           on_rescued_path_instances(path) do |r|
@@ -32,6 +38,8 @@ module Avm
           end
         end
 
+        # @param path [Avm::Launcher::Paths::Logical]
+        # @return [Array<Avm::Launcher::Instances::Base>]
         def on_rescued_path_instances(path)
           r = []
           begin
@@ -42,10 +50,14 @@ module Avm
           r
         end
 
+        # @param path [Avm::Launcher::Paths::Logical]
+        # @return [void]
         def update_progress_format(path)
           @progress.format = "%t (Paths: %c/%C, Current: #{path.logical}) |%B| %a"
         end
 
+        # @param path [Array<Avm::Launcher::Paths::Logical>]
+        # @return [void]
         def update_progress_count(children)
           @progress.total += children.count
           @progress.increment
