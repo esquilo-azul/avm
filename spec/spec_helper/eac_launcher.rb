@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 DUMMY_DIR = File.expand_path('../dummy', __dir__)
-ROOT_DIR = File.expand_path('../..', __dir__)
 
 require 'avm/launcher/context'
 
