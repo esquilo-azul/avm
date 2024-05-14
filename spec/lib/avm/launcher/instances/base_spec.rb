@@ -10,7 +10,12 @@ RSpec.describe Avm::Launcher::Instances::Base do
   before do
     allow(ProgressBar).to receive(:create).and_return(double.as_null_object)
     context_set(fixtures_dir.join('settings.yaml').to_path, DUMMY_DIR)
+    %w[avm-tools_stub ruby_gem_stub].each do |id|
+      application_source_path(id, File.join(Avm::Launcher::Context.current.root.real, id))
+    end
   end
+
+  include_examples 'with_config', __FILE__
 
   describe '#options' do
     context 'when instance is "avm-tools_stub"' do

@@ -5,8 +5,15 @@ require 'avm/launcher/stereotype'
 
 RSpec.describe Avm::Launcher::Context do
   include_context 'with launcher'
+  include_examples 'with_config', __FILE__
 
   describe '#instances' do
+    before do
+      %w[avm-tools_stub ruby_gem_stub].each do |id|
+        application_source_path(id, DUMMY_DIR.to_pathname.join(id))
+      end
+    end
+
     it 'returns all stub instances' do
       is = described_class.current.instances.map(&:name)
       expect(is).to contain_exactly('/avm-tools_stub', '/ruby_gem_stub')
@@ -32,6 +39,7 @@ RSpec.describe Avm::Launcher::Context do
       before do
         temp_context(File.join(__dir__, 'context_spec.yml'))
         mylib_repos
+        application_source_path('app', File.join(described_class.current.root.real, 'app'))
       end
 
       context 'when sub is a GitSubrepo' do
@@ -83,6 +91,7 @@ RSpec.describe Avm::Launcher::Context do
           touch_commit(app, 'file1')
           app.execute!('subtree', 'add', '-P', 'mylib', mylib_repos, 'master')
           app.execute!('remote', 'add', 'mylib', mylib_repos)
+          application_source_path('subtree_main_app', app.root_path)
         end
 
         it 'recognizes subtree instance' do # rubocop:disable RSpec/MultipleExpectations

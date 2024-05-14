@@ -14,6 +14,14 @@ RSpec.shared_context 'with launcher' do
     allow(ProgressBar).to receive(:create).and_return(double.as_null_object)
   end
 
+  # @param application_id [String]
+  # @param path [Pathname]
+  # @return void
+  def application_source_path(application_id, path)
+    EacConfig::Node.context.current.entry("#{application_id}_dev.install.path").value =
+      path.to_pathname.to_path
+  end
+
   # @param settings_path [Pathname]
   # @param projects_root [Pathname]
   def context_set(settings_path, projects_root)

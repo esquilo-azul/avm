@@ -22,7 +22,7 @@ module Avm
         # @return [Array<Avm::Launcher::Instances::Base>]
         def instances_uncached
           @progress = ::ProgressBar.create(title: 'Instance discovery', total: 1)
-          path_instances(context.root, nil)
+          root_instance_paths.flat_map { |path| path_instances(path, nil) }
         ensure
           @progress&.finish
         end
@@ -67,6 +67,8 @@ module Avm
           @progress.total += children.count
           @progress.increment
         end
+
+        require_sub __FILE__, require_mode: :kernel
       end
     end
   end
