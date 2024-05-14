@@ -4,9 +4,7 @@ require 'eac_ruby_utils/core_ext'
 
 RSpec.shared_examples 'entries_values' do |spec_file, expected_values|
   describe '#read_entry' do
-    config_path = spec_file.to_pathname
-    config_path = config_path.dirname.join("#{config_path.basename_noext}_files", 'config.yml')
-    EacRubyUtils::Rspec.default_setup.stub_eac_config_node(self, config_path)
+    include_examples 'with_config', spec_file
 
     expected_values.each do |instance_id, values|
       values.each do |input, expected|
