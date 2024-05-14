@@ -7,7 +7,7 @@ RSpec.describe Avm::Launcher::Instances::Base do
   let(:fixtures_dir) { __dir__.to_pathname.join('base_spec_files') }
   let(:launcher_context) do
     Avm::Launcher::Context.current = Avm::Launcher::Context.new(
-      projects_root: fixtures_dir.join('projects').to_path,
+      projects_root: DUMMY_DIR,
       settings_file: fixtures_dir.join('settings.yaml').to_path,
       cache_root: Dir.mktmpdir
     )
