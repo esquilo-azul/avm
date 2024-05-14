@@ -4,6 +4,8 @@ require 'avm/launcher/context'
 require 'avm/launcher/stereotype'
 
 RSpec.describe Avm::Launcher::Context do
+  include_context 'with launcher'
+
   describe '#instances' do
     it 'returns all stub instances' do
       is = described_class.current.instances.map(&:name)

@@ -2,14 +2,12 @@
 
 DUMMY_DIR = File.expand_path('../dummy', __dir__)
 
-require 'avm/launcher/context'
-
-RSpec.configure do |config|
-  config.before do
+RSpec.shared_context 'with launcher' do
+  before do
     require 'avm/launcher/context'
     Avm::Launcher::Context.current = Avm::Launcher::Context.new(
       projects_root: DUMMY_DIR,
-      settings_file: File.join(__dir__, 'eac_launcher', 'settings.yml'),
+      settings_file: File.join(__dir__, 'launcher_context', 'settings.yml'),
       cache_root: Dir.mktmpdir
     )
     @remotes_dir = Dir.mktmpdir
@@ -26,7 +24,7 @@ RSpec.configure do |config|
 
   def init_remote(name)
     require 'avm/git/launcher/base'
-    r = Avm::Git::Launcher::Base.new(File.join(@remotes_dir, name))
+    r = Avm::Git::Launcher::Base.new(File.join(@remotes_dir, name)) # rubocop:disable RSpec/InstanceVariable
     r.init_bare
     r
   end
