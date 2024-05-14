@@ -14,12 +14,21 @@ RSpec.shared_context 'with launcher' do
     allow(ProgressBar).to receive(:create).and_return(double.as_null_object)
   end
 
-  def temp_context(settings_path)
+  # @param settings_path [Pathname]
+  # @param projects_root [Pathname]
+  def context_set(settings_path, projects_root)
     require 'avm/launcher/context'
     require 'tmpdir'
     Avm::Launcher::Context.current = Avm::Launcher::Context.new(
-      projects_root: Dir.mktmpdir, settings_file: settings_path, cache_root: Dir.mktmpdir
+      projects_root: projects_root.to_pathname.to_path,
+      settings_file: settings_path.to_pathname.to_path,
+      cache_root: Dir.mktmpdir
     )
+  end
+
+  # @param settings_path [Pathname]
+  def temp_context(settings_path)
+    context_set(settings_path, Dir.mktmpdir)
   end
 
   def init_remote(name)
