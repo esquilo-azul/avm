@@ -7,6 +7,7 @@ module Avm
   module Docker
     class Runner
       DOCKER_DEFAULT_REGISTRY_METHOD = :docker_default_registry
+      DOCKER_DEFAULT_REGISTRY_NAME = 'local'
 
       enable_speaker
       enable_simple_cache
@@ -31,6 +32,11 @@ module Avm
         output_image_name
         push
         container_run
+      end
+
+      # @return [EacDocker::Registry, nil]
+      def docker_default_registry
+        ::EacDocker::Registry.new(default_docker_registry_name)
       end
 
       private
@@ -63,6 +69,11 @@ module Avm
 
       def docker_container
         instance.docker_container
+      end
+
+      # @return [String]
+      def default_docker_registry_name
+        DOCKER_DEFAULT_REGISTRY_NAME
       end
 
       def docker_image
