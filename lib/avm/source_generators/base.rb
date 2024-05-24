@@ -38,7 +38,12 @@ module Avm
       end
 
       def apply_template
-        template.apply(self, target_path)
+        root_template.apply(self, target_path)
+      end
+
+      # @return [EacTemlates::Modules::Base]
+      def root_template
+        template
       end
     end
   end
