@@ -8,6 +8,7 @@ module Avm
   module SourceGenerators
     class Base
       acts_as_abstract
+      enable_speaker
       include ::Avm::With::ApplicationStereotype
 
       class << self
@@ -35,6 +36,7 @@ module Avm
       end
 
       def perform
+        start_banner
         assert_clear_directory
         apply_template
       end
@@ -46,6 +48,12 @@ module Avm
 
       def apply_template
         root_template.apply(self, target_path)
+      end
+
+      # @return [void]
+      def start_banner
+        infov 'Target path', target_path
+        infov 'Application name', name
       end
 
       # @return [EacTemlates::Modules::Base]
