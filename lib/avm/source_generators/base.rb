@@ -8,6 +8,7 @@ module Avm
   module SourceGenerators
     class Base
       acts_as_abstract
+      enable_settings_provider
       enable_speaker
       include ::Avm::With::ApplicationStereotype
 
@@ -19,6 +20,7 @@ module Avm
       end
 
       OPTION_NAME = 'name'
+      JOBS = [].freeze
 
       common_constructor :target_path, :options, default: [{}] do
         self.target_path = target_path.to_pathname
@@ -39,6 +41,7 @@ module Avm
         start_banner
         assert_clear_directory
         apply_template
+        perform_jobs
       end
 
       def assert_clear_directory
@@ -48,6 +51,13 @@ module Avm
 
       def apply_template
         root_template.apply(self, target_path)
+      end
+
+      def perform_jobs
+        setting_value(:jobs).each do |job|
+          infom "Generating #{job.humanize}..."
+          send("generate_#{job}")
+        end
       end
 
       # @return [void]
