@@ -18,8 +18,8 @@ module Avm
           instance.data_default_dump_path.to_pathname
         end
 
-        def load(*args, &block)
-          instance.on_disabled_processes { super(*args, &block) }
+        def load(...)
+          instance.on_disabled_processes { super }
         end
       end
     end

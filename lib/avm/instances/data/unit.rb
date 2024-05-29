@@ -21,8 +21,8 @@ module Avm
           instance.data_package.units.key(self) || raise("No identifier found for #{self}")
         end
 
-        def load(*args, &block)
-          instance.on_disabled_processes { super(*args, &block) }
+        def load(...)
+          instance.on_disabled_processes { super }
         end
       end
     end

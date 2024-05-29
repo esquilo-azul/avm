@@ -7,7 +7,7 @@ module Avm
         def initialize(path)
           raise "Argument path is not a string: \"#{path}\"|#{path.class}" unless path.is_a?(String)
 
-          super(path)
+          super
         end
 
         def subpath(relative_path)
