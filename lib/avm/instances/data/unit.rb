@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/data/unit_with_commands'
+require 'avm/instances/data/loading_denied_error'
 require 'eac_ruby_utils/core_ext'
 
 module Avm
@@ -8,6 +9,14 @@ module Avm
     module Data
       class Unit < ::Avm::Data::UnitWithCommands
         common_constructor :instance
+
+        # @return [void]
+        # @raise Avm::Instances::Data::Unit
+        def check_load_permission!
+          return if instance.data_allow_loading
+
+          raise ::Avm::Instances::Data::LoadingDeniedError, "Instance: #{instance}"
+        end
 
         # @return [Pathname]
         def data_default_dump_path
@@ -22,6 +31,7 @@ module Avm
         end
 
         def load(...)
+          check_load_permission!
           instance.on_disabled_processes { super }
         end
       end
