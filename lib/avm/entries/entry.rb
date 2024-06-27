@@ -22,6 +22,11 @@ module Avm
         context_entry.found?
       end
 
+      # @return [Boolean]
+      def found?
+        context_found?
+      end
+
       def full_path
         (parent.path_prefix + suffix_as_array).join('.')
       end
