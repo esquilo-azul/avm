@@ -18,6 +18,11 @@ module Avm
               )
             end
           end
+
+          # @return [Boolean]
+          def auto_data_allow_loading
+            local? || !production?
+          end
         end
       end
     end
