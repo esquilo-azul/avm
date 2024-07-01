@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/instances/ids'
+require 'avm/applications/base/local_instance'
 require 'avm/with/application_stereotype'
 require 'avm/with/extra_subcommands'
 require 'eac_ruby_utils/require_sub'
@@ -59,6 +60,11 @@ module Avm
         when 'ssh' then ::EacRubyUtils::Envs.ssh(install_url)
         else raise("Unmapped access value: \"#{install_scheme}\"")
         end
+      end
+
+      # @return [Boolean]
+      def local?
+        suffix == ::Avm::Applications::Base::LocalInstance::LOCAL_INSTANCE_SUFFIX
       end
 
       private
