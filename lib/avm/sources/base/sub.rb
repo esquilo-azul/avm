@@ -11,7 +11,7 @@ module Avm
         # @param source [Avm::Sources::Base]
         # @param sub_path [Pathname]
         common_constructor :source, :sub_path do
-          self.sub_path = sub_path.to_pathname
+          self.sub_path = sub_path.to_pathname.cleanpath
         end
 
         # @return [Pathname]
