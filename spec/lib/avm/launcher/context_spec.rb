@@ -4,7 +4,7 @@ require 'avm/launcher/context'
 require 'avm/launcher/stereotype'
 
 RSpec.describe Avm::Launcher::Context do
-  include_context 'with launcher'
+  include_context 'with_launcher'
   include_examples 'with_config', __FILE__
 
   describe '#instances' do
