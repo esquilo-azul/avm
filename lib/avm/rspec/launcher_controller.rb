@@ -56,9 +56,9 @@ module Avm
         r
       end
 
+      # @return [Avm::Launcher::Context]
       def new_context
         Avm::Launcher::Context.new(
-          projects_root: dummy_directory,
           settings_file: templates_directory.join('settings.yml'),
           cache_root: Dir.mktmpdir
         )
