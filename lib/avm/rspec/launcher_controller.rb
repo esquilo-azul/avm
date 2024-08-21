@@ -31,6 +31,11 @@ module Avm
       end
 
       # @return [Pathname]
+      def default_settings_path
+        templates_directory.join('settings.yml')
+      end
+
+      # @return [Pathname]
       def dummy_directory
         templates_directory.join('dummy')
       end
@@ -59,7 +64,7 @@ module Avm
       # @return [Avm::Launcher::Context]
       def new_context
         Avm::Launcher::Context.new(
-          settings_file: templates_directory.join('settings.yml'),
+          settings_file: default_settings_path,
           cache_root: Dir.mktmpdir
         )
       end
