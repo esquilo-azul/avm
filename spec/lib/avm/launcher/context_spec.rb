@@ -10,7 +10,7 @@ RSpec.describe Avm::Launcher::Context do
   describe '#instances' do
     before do
       %w[avm-tools_stub ruby_gem_stub].each do |id|
-        application_source_path(id, DUMMY_DIR.to_pathname.join(id))
+        application_source_path(id, launcher_controller.dummy_directory.join(id))
       end
     end
 

@@ -9,7 +9,7 @@ RSpec.describe Avm::Launcher::Instances::Base do
 
   before do
     allow(ProgressBar).to receive(:create).and_return(double.as_null_object)
-    context_set(fixtures_dir.join('settings.yaml').to_path, DUMMY_DIR)
+    context_set(fixtures_dir.join('settings.yaml').to_path, launcher_controller.dummy_directory)
     %w[avm-tools_stub ruby_gem_stub].each do |id|
       application_source_path(id, File.join(projects_root, id))
     end
