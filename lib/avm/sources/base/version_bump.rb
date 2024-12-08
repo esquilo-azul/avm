@@ -21,7 +21,7 @@ module Avm
         end
 
         def version_bump_do_changes(_target_version)
-          raise_abstract_method(__METHOD__)
+          raise_abstract_method(__method__)
         end
       end
     end
