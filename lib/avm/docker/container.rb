@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'eac_docker/executables'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Docker

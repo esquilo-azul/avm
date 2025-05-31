@@ -2,7 +2,7 @@
 
 require 'avm/application_stereotypes/base'
 require 'avm/registry/application_stereotypes/stereotype_builder'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Registry

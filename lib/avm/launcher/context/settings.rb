@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/launcher/instances/settings'
-require 'eac_ruby_utils/simple_cache'
+require 'eac_ruby_utils'
 require 'yaml'
 
 module Avm

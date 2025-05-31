@@ -2,7 +2,7 @@
 
 require 'avm/launcher/context'
 require 'eac_config/node'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 require 'fileutils'
 require 'ruby-progressbar'
 require 'tmpdir'

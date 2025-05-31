@@ -2,8 +2,7 @@
 
 require 'avm/data/performer'
 require 'avm/data/rotate'
-require 'eac_ruby_utils/core_ext'
-require 'eac_ruby_utils/fs/temp'
+require 'eac_ruby_utils'
 
 module Avm
   module Data

@@ -2,7 +2,7 @@
 
 require 'active_support/concern' # Missing on "eac/listable"
 require 'active_support/hash_with_indifferent_access'
-require 'eac_ruby_utils/listable'
+require 'eac_ruby_utils'
 
 module Avm
   module Launcher

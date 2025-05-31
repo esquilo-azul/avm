@@ -2,7 +2,7 @@
 
 require 'avm/launcher/errors/non_project'
 require 'avm/registry'
-require 'eac_ruby_utils/speaker/sender'
+require 'eac_ruby_utils'
 
 module Avm
   module Launcher

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'eac_ruby_utils/envs'
-require 'eac_ruby_utils/simple_cache'
+require 'eac_ruby_utils'
 
 module Avm
   module Executables

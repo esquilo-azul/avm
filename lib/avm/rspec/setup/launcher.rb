@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/launcher/context'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 require 'tmpdir'
 
 module Avm

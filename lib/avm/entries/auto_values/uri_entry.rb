@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/entries/uri_builder'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Entries

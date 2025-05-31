@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/with/application_stereotype'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Scms

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require 'eac_config/yaml_file_node'
-require 'eac_ruby_utils/core_ext'
-require 'eac_ruby_utils/yaml'
+require 'eac_ruby_utils'
 require 'shellwords'
 
 module Avm

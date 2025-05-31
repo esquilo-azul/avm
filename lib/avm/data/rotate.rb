@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_support/core_ext/object/blank'
-require 'eac_ruby_utils/simple_cache'
+require 'eac_ruby_utils'
 
 module Avm
   module Data

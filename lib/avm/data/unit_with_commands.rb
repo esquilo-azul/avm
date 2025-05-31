@@ -2,7 +2,7 @@
 
 require 'avm/data/callbacks'
 require 'avm/data/unit'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Data

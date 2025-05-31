@@ -2,7 +2,7 @@
 
 require 'avm/data/unit_with_commands'
 require 'avm/instances/data/loading_denied_error'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Instances

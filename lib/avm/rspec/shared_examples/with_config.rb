@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 RSpec.shared_examples 'with_config' do |spec_file|
   config_path = spec_file.to_pathname

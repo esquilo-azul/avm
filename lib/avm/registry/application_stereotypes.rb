@@ -2,7 +2,7 @@
 
 require 'avm/instances/base'
 require 'avm/sources/base'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Registry

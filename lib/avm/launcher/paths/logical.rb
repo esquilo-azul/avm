@@ -2,7 +2,7 @@
 
 require 'avm/launcher/paths/real'
 require 'avm/launcher/stereotype'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module Launcher

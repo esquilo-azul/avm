@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'avm/source_generators/option'
-require 'eac_ruby_utils/core_ext'
+require 'eac_ruby_utils'
 
 module Avm
   module SourceGenerators
