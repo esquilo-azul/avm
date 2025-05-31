@@ -33,9 +33,7 @@ module Avm
       end
 
       # @return [Avm::SourceGenerators::OptionList]
-      def option_list
-        self.class.option_list
-      end
+      delegate :option_list, to: :class
 
       def perform
         start_banner

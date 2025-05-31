@@ -17,9 +17,7 @@ module Avm
           configuration_entry(LOCALE_KEY).value
         end
 
-        def default_locale
-          ::I18n.default_locale
-        end
+        delegate :default_locale, to: :'::I18n'
 
         # @param entry_suffix [String]
         # @param values [Hash]

@@ -41,9 +41,7 @@ module Avm
       end
 
       # @return [String]
-      def name
-        self.class.name
-      end
+      delegate :name, to: :class
     end
   end
 end

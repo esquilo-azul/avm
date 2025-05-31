@@ -25,9 +25,7 @@ module Avm
         end
       end
 
-      def stereotype_namespace_module
-        self.class.stereotype_namespace_module
-      end
+      delegate :stereotype_namespace_module, to: :class
     end
   end
 end

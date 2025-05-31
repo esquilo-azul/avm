@@ -21,7 +21,7 @@ module Avm
 
         # @param id [String]
         # @return [String]
-        def parse!(id)
+        def parse!(id) # rubocop:disable Rails/Delegate
           ID_PARSER.parse!(id)
         end
       end
