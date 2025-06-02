@@ -2,12 +2,12 @@
 
 require 'eac_ruby_utils'
 
-EacRubyUtils.require_sub __FILE__
-
 module Avm
   module Scms
     module AutoCommit
       module Rules
+        require_sub __FILE__
+
         RULES_CLASSES = %w[last manual new nth unique]
                           .map { |key| ::Avm::Scms::AutoCommit::Rules.const_get(key.camelcase) }
 
