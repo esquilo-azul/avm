@@ -28,8 +28,6 @@ module Avm
           end
         end
 
-        require_sub __FILE__
-
         attr_accessor :parent
 
         # @return [Avm::Applications::Base]

@@ -7,7 +7,6 @@ module Avm
   module Entries
     module Base
       class UriComponentsEntriesValues
-        require_sub __FILE__
         common_constructor :entries_provider_class, :prefix, :extra_fields
 
         ENTRIES_FIELDS = ::Avm::Entries::UriBuilder::ENTRIES_FIELDS + %w[url]

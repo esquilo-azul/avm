@@ -5,7 +5,6 @@ require 'eac_ruby_utils'
 module Avm
   module Launcher
     module Errors
-      require_sub __FILE__
     end
   end
 end

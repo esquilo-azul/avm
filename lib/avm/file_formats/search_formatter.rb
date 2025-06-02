@@ -8,7 +8,7 @@ module Avm
   module FileFormats
     class SearchFormatter
       include ::EacFs::Traversable
-      require_sub __FILE__
+
       enable_simple_cache
       enable_speaker
       enable_listable

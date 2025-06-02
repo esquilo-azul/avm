@@ -68,8 +68,6 @@ module Avm
 
         ::Avm::Entries::Entry::NoContextEntry.new
       end
-
-      require_sub __FILE__
     end
   end
 end

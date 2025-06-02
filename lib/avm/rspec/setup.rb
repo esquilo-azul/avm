@@ -6,7 +6,6 @@ require 'eac_ruby_utils'
 module Avm
   module Rspec
     module Setup
-      require_sub __FILE__
       EXAMPLES = %w[avm_file_formats_with_fixtures avm_file_format_file_resource_name
                     avm_source_generated entries_values in_avm_registry not_in_avm_registry
                     with_config with_launcher].freeze

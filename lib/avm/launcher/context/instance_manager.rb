@@ -8,7 +8,6 @@ module Avm
   module Launcher
     class Context
       class InstanceManager
-        require_sub __FILE__
         enable_simple_cache
         common_constructor :context
 

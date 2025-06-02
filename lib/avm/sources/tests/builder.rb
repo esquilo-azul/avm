@@ -10,7 +10,6 @@ module Avm
       class Builder
         NO_TEST_TEST_NAME = 'no_test'
 
-        require_sub __FILE__
         enable_immutable
 
         immutable_accessor :include_main, :include_subs, type: :boolean

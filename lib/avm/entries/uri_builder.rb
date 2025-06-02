@@ -5,8 +5,6 @@ require 'eac_ruby_utils'
 module Avm
   module Entries
     class UriBuilder
-      require_sub __FILE__
-
       FIELDS = %w[scheme user password host port path query fragment].freeze
       FIELDS_TRANSLATIONS = {
         username: :user, hostname: :host
