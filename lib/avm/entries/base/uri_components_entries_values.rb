@@ -19,6 +19,8 @@ module Avm
         def result
           fields.map { |field| component_factory(field).setup }
         end
+
+        require_sub __FILE__, require_mode: :kernel
       end
     end
   end
