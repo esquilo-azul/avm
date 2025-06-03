@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/scms/auto_commit/file_resource_name'
-
 RSpec.describe Avm::Scms::AutoCommit::FileResourceName, :git do
   let(:git) { stubbed_git_local_repo }
 

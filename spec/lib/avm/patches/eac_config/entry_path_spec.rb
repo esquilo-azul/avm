@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/patches/eac_config/entry_path'
-
 RSpec.describe EacConfig::EntryPath do
   {
     'install.path' => {

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/file_formats/base'
-
 RSpec.describe Avm::FileFormats::Base do
   include_examples 'avm_file_format_file_resource_name', {
     'app/models/mynamespace/the_class.rb' => 'app/models/mynamespace/the_class.rb',

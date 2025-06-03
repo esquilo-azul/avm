@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/instances/base'
-require 'avm/instances/entry_keys'
-
 RSpec.describe Avm::Instances::Base do
   it do
     expect(described_class.ancestors.map(&:name)).to(

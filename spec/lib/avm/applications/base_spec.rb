@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/applications/base'
-
 RSpec.describe Avm::Applications::Base do
   let(:instance) { described_class.new('avm-tools') }
 

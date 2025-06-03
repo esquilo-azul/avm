@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/context'
-require 'avm/launcher/instances/base'
-
 RSpec.describe Avm::Launcher::Instances::Base do
   include_context 'with_launcher'
   let(:fixtures_dir) { __dir__.to_pathname.join('base_spec_files') }
