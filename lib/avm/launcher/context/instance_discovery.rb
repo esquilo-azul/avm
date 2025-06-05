@@ -2,7 +2,6 @@
 
 require 'ruby-progressbar'
 require 'avm/launcher/instances/base'
-require 'eac_ruby_utils'
 
 module Avm
   module Launcher

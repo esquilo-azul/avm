@@ -2,7 +2,6 @@
 
 require 'avm/entries/uri_builder'
 require 'avm/patches/eac_config/entry_path'
-require 'eac_ruby_utils'
 
 module Avm
   module Entries

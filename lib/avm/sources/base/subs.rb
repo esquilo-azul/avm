@@ -2,7 +2,6 @@
 
 require 'avm/sources/base/sub'
 require 'avm/sources/base/subs_paths'
-require 'eac_ruby_utils'
 
 module Avm
   module Sources

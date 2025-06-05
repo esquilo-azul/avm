@@ -4,7 +4,7 @@ require 'avm/instances/ids'
 require 'avm/applications/base/local_instance'
 require 'avm/with/application_stereotype'
 require 'avm/with/extra_subcommands'
-require 'eac_ruby_utils'
+
 require 'avm/entries/base'
 
 module Avm

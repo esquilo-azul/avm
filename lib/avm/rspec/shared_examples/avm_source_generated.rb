@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'eac_fs/comparator'
-require 'eac_ruby_utils'
 
 RSpec.shared_examples 'avm_source_generated' do |spec_file, stereotype, options = {}|
   include_context 'spec_paths', spec_file

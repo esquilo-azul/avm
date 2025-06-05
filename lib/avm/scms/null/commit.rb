@@ -2,7 +2,6 @@
 
 require 'avm/scms/base'
 require 'avm/scms/commit'
-require 'eac_ruby_utils'
 
 module Avm
   module Scms

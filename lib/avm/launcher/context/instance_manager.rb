@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_ruby_utils'
 require 'avm/launcher/publish/check_result'
 require('yaml')
 

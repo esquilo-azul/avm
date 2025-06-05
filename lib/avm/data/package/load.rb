@@ -2,7 +2,7 @@
 
 require 'avm/data/package/base_performer'
 require 'avm/data/package/build_directory'
-require 'eac_ruby_utils'
+
 require 'minitar'
 
 module Avm

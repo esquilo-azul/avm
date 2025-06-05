@@ -4,7 +4,6 @@ require 'avm/registry'
 require 'avm/scms/null'
 require 'avm/with/application_stereotype'
 require 'avm/with/extra_subcommands'
-require 'eac_ruby_utils'
 
 module Avm
   module Sources

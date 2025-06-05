@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'avm/data/callbacks'
-require 'eac_ruby_utils'
 
 module Avm
   module Data

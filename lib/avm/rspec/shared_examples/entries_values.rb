@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_ruby_utils'
-
 RSpec.shared_examples 'entries_values' do |spec_file, expected_values|
   describe '#read_entry' do
     include_examples 'with_config', spec_file

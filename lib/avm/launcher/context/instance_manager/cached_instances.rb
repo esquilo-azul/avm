@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'avm/launcher/context/instance_manager/cached_instance'
-require 'eac_ruby_utils'
 
 module Avm
   module Launcher

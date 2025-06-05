@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'eac_config/entry_path'
-require 'eac_ruby_utils'
+
 require 'avm/entries/entry'
 
 module Avm

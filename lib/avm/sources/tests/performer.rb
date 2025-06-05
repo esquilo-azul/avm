@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'avm/sources/tests/result'
-require 'eac_ruby_utils'
 
 module Avm
   module Sources

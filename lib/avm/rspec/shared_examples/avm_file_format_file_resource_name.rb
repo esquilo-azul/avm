@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_ruby_utils'
-
 RSpec.shared_examples 'avm_file_format_file_resource_name' do |input_expected|
   describe '#file_resource_name' do
     input_expected.each do |path, expected_resource_name|

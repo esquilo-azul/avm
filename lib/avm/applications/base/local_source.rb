@@ -2,7 +2,6 @@
 
 require 'avm/registry'
 require 'eac_config/node'
-require 'eac_ruby_utils'
 
 module Avm
   module Applications

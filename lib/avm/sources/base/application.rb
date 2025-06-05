@@ -2,7 +2,6 @@
 
 require 'avm/applications/base'
 require 'eac_config/entry_path'
-require 'eac_ruby_utils'
 
 module Avm
   module Sources

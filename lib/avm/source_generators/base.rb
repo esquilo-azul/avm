@@ -2,7 +2,6 @@
 
 require 'avm/source_generators/option_list'
 require 'avm/with/application_stereotype'
-require 'eac_ruby_utils'
 
 module Avm
   module SourceGenerators

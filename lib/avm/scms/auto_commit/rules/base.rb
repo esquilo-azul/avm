@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'avm/scms/commit_info'
-require 'eac_ruby_utils'
 
 module Avm
   module Scms

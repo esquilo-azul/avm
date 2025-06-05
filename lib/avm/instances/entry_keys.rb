@@ -2,7 +2,6 @@
 
 require 'avm/entries/keys_constants_set'
 require 'avm/entries/uri_builder'
-require 'eac_ruby_utils'
 
 module Avm
   module Instances

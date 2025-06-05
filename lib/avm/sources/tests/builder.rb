@@ -2,7 +2,6 @@
 
 require 'avm/sources/tests/performer'
 require 'avm/sources/tests/single'
-require 'eac_ruby_utils'
 
 module Avm
   module Sources
