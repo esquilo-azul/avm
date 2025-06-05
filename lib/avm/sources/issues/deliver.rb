@@ -13,7 +13,7 @@ module Avm
         common_constructor :scm
         delegate :head_branch, to: :scm
 
-        def run
+        def run # rubocop:disable Naming/PredicateMethod
           push
           clipboard_copy_tracker_message
           true

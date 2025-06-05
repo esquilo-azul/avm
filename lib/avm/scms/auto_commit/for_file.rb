@@ -43,7 +43,7 @@ module Avm
           infov '  Commits found', commits.count
         end
 
-        def run_commit
+        def run_commit # rubocop:disable Naming/PredicateMethod
           return false if commit_info.blank?
 
           infov '  Commit info', commit_info

@@ -14,7 +14,7 @@ module Avm
         replacements.inject(input) { |a, e| e.apply(a) }
       end
 
-      def file_apply(file)
+      def file_apply(file) # rubocop:disable Naming/PredicateMethod
         file = file.to_pathname
         input = file.read
         output = apply(file.read)
