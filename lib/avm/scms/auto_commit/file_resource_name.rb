@@ -16,8 +16,14 @@ module Avm
 
         def commit_message
           r = class_name
+          r += ': *' if modified?
           r += ': remove' unless path.file?
           "#{r}."
+        end
+
+        # @return [Boolean]
+        def modified?
+          dirty_file.if_present(false, &:modify?)
         end
 
         # @return [Pathname]
