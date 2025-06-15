@@ -27,6 +27,10 @@ module Avm
 
         private
 
+        def dirty_file_uncached
+          scm.changed_files.find { |e| e.absolute_path == path.expand_path }
+        end
+
         # @return [Avm::FileFormats::Base]
         def file_format_uncached
           ::Avm::Registry.file_formats.detect(path)
