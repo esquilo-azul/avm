@@ -2,6 +2,7 @@
 
 RSpec.describe Avm::Scms::AutoCommit::FileResourceName, :git do
   let(:git) { stubbed_git_local_repo }
+  let(:scm) { Avm::Registry.scms.detect(git.root_path) }
 
   describe '#class_name' do
     {
@@ -10,7 +11,7 @@ RSpec.describe Avm::Scms::AutoCommit::FileResourceName, :git do
     }.each do |relative_path, expected_class_name|
       context "when path is \"#{relative_path}\"" do
         let(:path) { git.root_path.join(relative_path) }
-        let(:instance) { described_class.new(git, path) }
+        let(:instance) { described_class.new(scm, path) }
 
         it { expect(instance.class_name).to eq(expected_class_name) }
       end

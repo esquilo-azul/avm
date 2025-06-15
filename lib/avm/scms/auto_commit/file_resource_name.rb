@@ -6,8 +6,7 @@ module Avm
       class FileResourceName
         require_sub __FILE__, include_modules: true
         enable_simple_cache
-        common_constructor :source_root, :path do
-          self.source_root = source_root.to_pathname
+        common_constructor :scm, :path do
           self.path = path.to_pathname
         end
 
@@ -21,8 +20,9 @@ module Avm
           "#{r}."
         end
 
+        # @return [Pathname]
         def relative_path
-          path.expand_path.relative_path_from(source_root.expand_path)
+          path.expand_path.relative_path_from(scm.path.expand_path)
         end
 
         private
