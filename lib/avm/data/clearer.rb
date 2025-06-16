@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/performer'
-
 module Avm
   module Data
     class Clearer < ::Avm::Data::Performer

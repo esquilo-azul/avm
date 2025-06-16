@@ -2,8 +2,6 @@
 
 require 'eac_docker/executables'
 
-require 'avm/docker/container'
-
 module Avm
   module Instances
     class Base

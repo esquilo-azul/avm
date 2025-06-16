@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/docker/image'
-
 module Avm
   module Instances
     class DockerImage < ::Avm::Docker::Image

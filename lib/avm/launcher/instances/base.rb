@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/errors/non_project'
-require 'avm/registry'
-
 module Avm
   module Launcher
     module Instances

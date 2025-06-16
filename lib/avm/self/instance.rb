@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/instances/base'
-require 'avm/self/docker_image'
-require 'avm/self/instance/entry_keys'
-
 module Avm
   module Self
     class Instance < ::Avm::Instances::Base

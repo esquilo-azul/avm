@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/package/base_performer'
-require 'avm/data/package/build_directory'
-
 require 'minitar'
 
 module Avm

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/instances/data/unit'
-
 module Avm
   module Instances
     module Data

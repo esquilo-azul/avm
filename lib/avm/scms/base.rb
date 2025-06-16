@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/with/application_stereotype'
-
 module Avm
   module Scms
     class Base

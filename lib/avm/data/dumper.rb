@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/performer'
-require 'avm/data/rotate'
-
 module Avm
   module Data
     class Dumper < ::Avm::Data::Performer

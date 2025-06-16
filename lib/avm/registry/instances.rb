@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/instances/base'
-require 'avm/registry/from_gems'
-
 module Avm
   module Registry
     class Instances < ::Avm::Registry::FromGems

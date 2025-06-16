@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/package/base_performer'
-
 module Avm
   module Data
     class Package

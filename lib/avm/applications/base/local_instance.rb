@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/instances/ids'
-
 module Avm
   module Applications
     class Base

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/registry'
-
 module Avm
   module Applications
     class Base

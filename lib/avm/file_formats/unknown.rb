@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/file_formats/base'
-
 module Avm
   module FileFormats
     class Unknown < ::Avm::FileFormats::Base

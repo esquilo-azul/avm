@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/rspec/launcher_controller'
-
 RSpec.shared_context 'with_launcher' do
   let(:launcher_controller) { Avm::Rspec::LauncherController.new }
 

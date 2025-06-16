@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/self/instance'
-
 module Avm
   module Instances
     class Base

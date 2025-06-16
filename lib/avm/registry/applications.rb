@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/applications/base'
-
 module Avm
   module Registry
     class Applications

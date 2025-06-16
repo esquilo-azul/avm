@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/context'
-require 'avm/launcher/context/instance_collector'
-
 module Avm
   module Launcher
     module Instances

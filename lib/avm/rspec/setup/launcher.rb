@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/context'
-
 require 'tmpdir'
 
 module Avm

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'addressable'
-require 'avm/instances/entry_keys'
 
 module Avm
   module Instances

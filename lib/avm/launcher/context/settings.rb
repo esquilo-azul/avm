@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/instances/settings'
-
 require 'yaml'
 
 module Avm

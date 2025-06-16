@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/registry'
-
 RSpec.shared_examples 'not_in_avm_registry' do |registry_method = nil|
   registry_method.if_present(Avm::Registry.registries) { |v| [Avm::Registry.send(v)] }
     .each do |registry|

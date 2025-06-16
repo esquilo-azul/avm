@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/base/uri_components_entries_values/generic_component'
-
 module Avm
   module Entries
     module Base

@@ -2,8 +2,6 @@
 
 require 'eac_config/entry_path'
 
-require 'avm/entries/entry'
-
 module Avm
   module Entries
     module Base

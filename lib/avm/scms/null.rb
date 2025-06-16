@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/scms/base'
-
 module Avm
   module Scms
     class Null < ::Avm::Scms::Base

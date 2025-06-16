@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/registry'
-
 RSpec.shared_examples 'in_avm_registry' do |registry_method|
   let(:avm_registry) { Avm::Registry.send(registry_method) }
 

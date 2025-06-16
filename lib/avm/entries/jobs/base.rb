@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/jobs/with_variables_source'
-require 'avm/result'
 require 'eac_cli/core_ext'
 
 module Avm

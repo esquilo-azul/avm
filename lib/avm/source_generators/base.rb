@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/source_generators/option_list'
-require 'avm/with/application_stereotype'
-
 module Avm
   module SourceGenerators
     class Base

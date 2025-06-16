@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/scms/commit_info'
-
 module Avm
   module Scms
     module AutoCommit

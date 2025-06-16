@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'eac_ruby_utils/core_ext'
-require 'avm/files/appendable/resource_base'
 
 module Avm
   module Files

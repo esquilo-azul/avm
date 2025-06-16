@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/uri_builder'
-require 'avm/patches/eac_config/entry_path'
-
 module Avm
   module Entries
     module Base

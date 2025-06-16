@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/registry'
-require 'avm/scms/null'
-require 'avm/with/application_stereotype'
-require 'avm/with/extra_subcommands'
-
 module Avm
   module Sources
     class Base

@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/scms/auto_commit/rules/base'
-require 'avm/scms/auto_commit/file_resource_name'
-
 module Avm
   module Scms
     module AutoCommit

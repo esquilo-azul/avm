@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/instances/ids'
-require 'avm/applications/base/local_instance'
-require 'avm/with/application_stereotype'
-require 'avm/with/extra_subcommands'
-
-require 'avm/entries/base'
-
 module Avm
   module Instances
     class Base
@@ -25,7 +18,7 @@ module Avm
       class << self
         def by_id(id)
           parsed_id = ::Avm::Instances::Ids.parse!(id)
-          require 'avm/applications/base'
+
           new(::Avm::Applications::Base.new(parsed_id.application_id), parsed_id.instance_suffix)
         end
       end

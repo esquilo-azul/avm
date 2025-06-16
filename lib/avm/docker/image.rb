@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/version'
-require 'avm/entries/jobs/with_variables_source'
-
 require 'eac_docker/images/templatized'
 require 'eac_docker/registry'
 

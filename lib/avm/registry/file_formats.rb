@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/file_formats/unknown'
-require 'avm/registry/from_gems'
-
 module Avm
   module Registry
     class FileFormats < ::Avm::Registry::FromGems

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/registry'
 require 'eac_config/node'
 
 module Avm

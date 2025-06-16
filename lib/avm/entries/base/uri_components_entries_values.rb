@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/uri_builder'
-
 module Avm
   module Entries
     module Base

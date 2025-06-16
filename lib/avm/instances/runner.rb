@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/runners/base'
 require 'eac_cli/core_ext'
 
 module Avm

@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/keys_constants_set'
-require 'avm/entries/uri_builder'
-
 module Avm
   module Instances
     module EntryKeys

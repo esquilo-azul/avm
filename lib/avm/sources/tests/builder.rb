@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/sources/tests/performer'
-require 'avm/sources/tests/single'
-
 module Avm
   module Sources
     module Tests

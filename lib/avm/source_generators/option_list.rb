@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/source_generators/option'
-
 module Avm
   module SourceGenerators
     class OptionList

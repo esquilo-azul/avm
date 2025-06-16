@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/base'
-
 module Avm
   module Applications
     class Base

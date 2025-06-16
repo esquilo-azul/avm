@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/paths/real'
-require 'avm/launcher/stereotype'
-
 module Avm
   module Launcher
     module Paths

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'eac_cli/core_ext'
-require 'avm/files/text_replacer'
-require 'avm/runner_with/filesystem_traverser'
 
 module Avm
   module RunnerWith

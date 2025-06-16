@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/unit_with_commands'
-require 'avm/instances/data/loading_denied_error'
-
 module Avm
   module Instances
     module Data

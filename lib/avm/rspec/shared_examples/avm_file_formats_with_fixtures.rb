@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/file_formats/search_formatter'
-
 RSpec.shared_examples 'avm_file_formats_with_fixtures' do |the_spec_file|
   include_examples 'source_target_fixtures', the_spec_file
 

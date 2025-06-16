@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/package'
-
 module Avm
   module Instances
     module Data

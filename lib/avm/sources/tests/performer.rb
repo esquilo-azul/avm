@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/sources/tests/result'
-
 module Avm
   module Sources
     module Tests

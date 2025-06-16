@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/base/uri_components_entries_values/generic_component'
-
 module Avm
   module Entries
     module Base
@@ -17,7 +15,6 @@ module Avm
           end
 
           def auto_install_url_by_parts(entries_provider)
-            require 'avm/entries/auto_values/uri_entry'
             ::Avm::Entries::AutoValues::UriEntry.new(entries_provider, 'install').value
           end
         end

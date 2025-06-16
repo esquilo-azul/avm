@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/publish/check_result'
 require('yaml')
 
 module Avm

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/context'
 require 'eac_config/node'
 
 require 'fileutils'

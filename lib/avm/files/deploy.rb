@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'addressable'
-require 'avm/files/appendable'
+
 require 'eac_ruby_utils/core_ext'
 
 module Avm

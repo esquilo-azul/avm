@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/rotate'
-
 module Avm
   module Data
     class Performer

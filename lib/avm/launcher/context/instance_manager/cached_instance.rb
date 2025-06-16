@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/instances/base'
-
 module Avm
   module Launcher
     class Context

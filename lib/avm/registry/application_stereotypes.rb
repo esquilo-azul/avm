@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/instances/base'
-require 'avm/sources/base'
-
 module Avm
   module Registry
     class ApplicationStereotypes

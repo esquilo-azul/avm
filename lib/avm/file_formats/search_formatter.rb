@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/registry'
-
 require 'eac_fs/traversable'
 
 module Avm

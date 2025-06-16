@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/rspec/setup/launcher'
-require 'avm/rspec/setup/source_generator'
-
 module Avm
   module Rspec
     module Setup

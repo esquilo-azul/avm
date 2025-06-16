@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'ruby-progressbar'
-require 'avm/launcher/instances/base'
 
 module Avm
   module Launcher

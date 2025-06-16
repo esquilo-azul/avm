@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/entries/jobs/variables_source'
-
 module Avm
   module Entries
     module Jobs

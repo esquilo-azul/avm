@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/launcher/context/instance_manager/cached_instance'
-
 module Avm
   module Launcher
     class Context

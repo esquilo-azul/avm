@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/data/callbacks'
-require 'avm/data/unit'
-
 module Avm
   module Data
     class UnitWithCommands < ::Avm::Data::Unit

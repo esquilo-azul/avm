@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
 require 'active_support/core_ext/hash/indifferent_access'
-require 'avm/launcher/context/instance_manager'
+
 require 'eac_fs/contexts'
 require 'eac_fs/core_ext'
 
 require 'eac_cli/speaker'
-require 'avm/launcher/context/instance_discovery'
-require 'avm/launcher/context/settings'
-require 'avm/launcher/paths/logical'
-require 'avm/launcher/project'
 
 module Avm
   module Launcher

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/applications/base'
 require 'eac_config/entry_path'
 
 module Avm

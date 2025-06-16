@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'avm/applications/base'
-require 'avm/instances/base'
-
 module Avm
   module Sources
     class Base
