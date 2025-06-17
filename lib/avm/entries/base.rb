@@ -5,7 +5,7 @@ require 'eac_config/entry_path'
 module Avm
   module Entries
     module Base
-      require_sub __FILE__, require_dependency: true
+      require_sub __FILE__, require_mode: :kernel
       common_concern
 
       module ClassMethods
