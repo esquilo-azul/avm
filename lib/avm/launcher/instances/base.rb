@@ -66,6 +66,11 @@ module Avm
         def options_uncached
           ::Avm::Launcher::Context.current.settings.instance_settings(self)
         end
+
+        # @return [Avm::Sources::Base]
+        def source_uncached
+          ::Avm::Registry.sources.detect(real)
+        end
       end
     end
   end
