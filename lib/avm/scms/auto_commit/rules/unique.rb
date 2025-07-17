@@ -7,7 +7,7 @@ module Avm
         class Unique < ::Avm::Scms::AutoCommit::Rules::Base
           class WithFile < ::Avm::Scms::AutoCommit::Rules::Base::WithFile
             def commit_info
-              return nil unless file.commits.count == 1
+              return nil unless file.commits.one?
 
               new_commit_info.fixup(file.commits.first)
             end

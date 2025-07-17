@@ -61,7 +61,7 @@ module Avm
         end
 
         # @return [true, false]
-        def execute_command_and_log(command)
+        def execute_command_and_log(command) # rubocop:disable Naming/PredicateMethod
           r = command.execute
           logs[:stdout].write(r[:stdout])
           logs[:stderr].write(r[:stderr])

@@ -18,7 +18,7 @@ module Avm
           end
 
           # @return [Boolean]
-          def auto_data_allow_loading
+          def auto_data_allow_loading # rubocop:disable Naming/PredicateMethod
             local? || !production?
           end
         end
