@@ -28,7 +28,7 @@ module Avm
         stereotype.instance_class.new(self, suffix)
       end
 
-      require_sub __FILE__, include_modules: true
+      require_sub __FILE__, include_modules: true, require_mode: :kernel
     end
   end
 end
