@@ -2,9 +2,6 @@
 
 require 'active_support/core_ext/hash/indifferent_access'
 
-require 'eac_fs/contexts'
-require 'eac_fs/core_ext'
-
 require 'eac_cli/speaker'
 
 module Avm

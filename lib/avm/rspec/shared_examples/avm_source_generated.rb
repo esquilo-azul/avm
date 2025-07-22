@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_fs/comparator'
-
 RSpec.shared_examples 'avm_source_generated' do |spec_file, stereotype, options = {}|
   include_context 'spec_paths', spec_file
   block_on_each_source = options.delete(:block_on_each_source)

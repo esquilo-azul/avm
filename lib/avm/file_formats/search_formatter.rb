@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_fs/traversable'
-
 module Avm
   module FileFormats
     class SearchFormatter
