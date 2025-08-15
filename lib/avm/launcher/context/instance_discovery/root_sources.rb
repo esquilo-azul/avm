@@ -30,7 +30,12 @@ module Avm
             elsif application.user_local_source_path.directory?
               infov application,
                     "user local source found in \"#{application.user_local_source_path}\""
-              application.user_local_source_path
+              begin
+                application.user_local_source_path
+              rescue ::Avm::Registry::DetectionError => e
+                warn "Application \"#{application}\"'s detection raised the error #{e}"
+                nil
+              end
             else
               warn "Application \"#{application}\"'s local source path is not a directory"
               nil
