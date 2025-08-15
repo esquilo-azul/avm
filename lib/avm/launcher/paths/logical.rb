@@ -31,6 +31,17 @@ module Avm
           stereotypes.any?
         end
 
+        # @param name [String]
+        # @return [Avm::Launcher::Paths::Logical]
+        def build_child(name)
+          ::Avm::Launcher::Paths::Logical.new(
+            context,
+            self,
+            ::File.join(warped, name),
+            ::File.join(logical, name)
+          )
+        end
+
         def children
           r = []
           Dir.entries(warped).each do |c|
@@ -51,15 +62,6 @@ module Avm
 
         def stereotypes_uncached
           ::Avm::Launcher::Stereotype.stereotypes.select { |s| s.match?(self) } # rubocop:disable Style/SelectByRegexp
-        end
-
-        def build_child(name)
-          ::Avm::Launcher::Paths::Logical.new(
-            context,
-            self,
-            ::File.join(warped, name),
-            ::File.join(logical, name)
-          )
         end
 
         def warped_uncached
