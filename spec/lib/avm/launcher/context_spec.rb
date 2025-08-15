@@ -28,6 +28,8 @@ RSpec.describe Avm::Launcher::Context do
         r = init_remote('mylib_repos')
         wc = init_git('mylib_wc')
         touch_commit(wc, 'app.gemspec')
+        commit_file(wc, '.avm.yml',
+                    YAML.dump({ 'stereotype' => 'EacGenericBase0' }))
         wc.execute!('remote', 'add', 'origin', r)
         wc.execute!('push', 'origin', 'master')
         r
@@ -45,7 +47,11 @@ RSpec.describe Avm::Launcher::Context do
 
         before do
           app = init_git('app')
+          commit_file(app, '.avm.yml',
+                      YAML.dump({ 'subs' => { 'include_path' => 'sub1' } }))
           touch_commit(app, 'sub1/app.gemspec')
+          commit_file(app, 'sub1/.avm.yml',
+                      YAML.dump({ 'subs' => { 'include_path' => 'mylib' } }))
           app.execute!('subrepo', 'clone', mylib_repos, 'sub1/mylib')
         end
 
@@ -78,6 +84,8 @@ RSpec.describe Avm::Launcher::Context do
         context 'when subinstance not in HEAD and in git_current_revision' do
           before do
             touch_commit(app, 'file3')
+            commit_file(app, '.avm.yml',
+                        YAML.dump({ 'subs' => { 'include_path' => 'mylib' } }))
             app.execute!('branch', '-f', 'not_master')
             app.execute!('subrepo', 'clone', mylib_repos, 'mylib')
             app.execute!('checkout', 'not_master') # HEAD: not_master
