@@ -17,7 +17,8 @@ module Avm
       private
 
       def raise_not_found(*args)
-        raise("No registered module valid for #{args} " \
+        raise(::Avm::Registry::DetectionError,
+              "No registered module valid for #{args} " \
               "(Module suffix: #{module_suffix}, Available: #{available.join(', ')})")
       end
     end
