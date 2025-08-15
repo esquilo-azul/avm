@@ -8,6 +8,7 @@ module Avm
   module Launcher
     class Context
       include ::EacRubyUtils::SimpleCache
+
       enable_speaker
 
       class << self

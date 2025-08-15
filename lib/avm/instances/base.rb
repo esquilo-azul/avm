@@ -7,6 +7,7 @@ module Avm
       enable_listable
       enable_simple_cache
       include ::Avm::Entries::Base
+
       require_sub __FILE__, include_modules: true
       include ::Avm::With::ExtraSubcommands
       include ::Avm::With::ApplicationStereotype

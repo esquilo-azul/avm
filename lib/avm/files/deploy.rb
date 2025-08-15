@@ -8,6 +8,7 @@ module Avm
   module Files
     class Deploy
       include ::Avm::Files::Appendable
+
       enable_simple_cache
 
       attr_reader :build_dir, :target_env, :target_path

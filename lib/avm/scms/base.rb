@@ -7,6 +7,7 @@ module Avm
       enable_abstract_methods
       enable_simple_cache
       include ::Avm::With::ApplicationStereotype
+
       abstract_methods :update, :valid?
       common_constructor :path do
         self.path = path.to_pathname.expand_path

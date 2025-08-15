@@ -13,8 +13,10 @@ module Avm
       common_concern do
         include ::EacCli::Runner
         include ::EacFs::Traversable
+
         enable_settings_provider
         include TopMethods
+
         runner_definition do
           bool_opt '-R', '--recursive', 'Recursive.'
           bool_opt '--no-recursive', 'No recursive.'

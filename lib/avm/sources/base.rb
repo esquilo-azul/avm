@@ -6,6 +6,7 @@ module Avm
       require_sub __FILE__, include_modules: true
       include ::Avm::With::ApplicationStereotype
       include ::Avm::With::ExtraSubcommands
+
       compare_by :path
       enable_abstract_methods
       enable_simple_cache
