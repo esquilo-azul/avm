@@ -29,7 +29,7 @@ module Avm
               nil
             elsif application.user_local_source_path.directory?
               infov application,
-                    "user local source found in \"#{application.user_local_source_path}"
+                    "user local source found in \"#{application.user_local_source_path}\""
               application.user_local_source_path
             else
               warn "Application \"#{application}\"'s local source path is not a directory"
