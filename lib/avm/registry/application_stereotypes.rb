@@ -2,11 +2,13 @@
 
 module Avm
   module Registry
-    class ApplicationStereotypes
+    class ApplicationStereotypes < ::Avm::Registry::Base
       require_sub __FILE__, require_dependency: true
       enable_simple_cache
 
-      common_constructor :module_suffix
+      def available
+        @available ||= build_available
+      end
 
       def detect(obj)
         detect_optional(obj) || raise_not_found(obj)
@@ -17,10 +19,6 @@ module Avm
       end
 
       private
-
-      def available_uncached
-        build_available
-      end
 
       def detect_by_instance_class(obj)
         return nil unless obj.is_a?(::Class) && obj < ::Avm::Instances::Base
@@ -38,10 +36,6 @@ module Avm
         return nil unless obj.is_a?(::Class) && obj < ::Avm::Sources::Base
 
         available.find { |a| a.source_class == obj }
-      end
-
-      def raise_not_found(obj)
-        raise("No registered module valid for #{obj} (Available: #{available.join(', ')})")
       end
     end
   end
