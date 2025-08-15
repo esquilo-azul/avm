@@ -2,10 +2,9 @@
 
 module Avm
   module Registry
-    class FromGems
+    class FromGems < ::Avm::Registry::Base
       enable_abstract_methods
       enable_simple_cache
-      common_constructor :module_suffix
 
       def available
         registered_modules.reject(&:abstract?)
@@ -33,20 +32,11 @@ module Avm
         "#{module_suffix}::Base"
       end
 
-      def to_s
-        "#{self.class}[#{module_suffix}]"
-      end
-
       def valid_registered_module?(a_module)
         a_module.is_a?(::Class) && !a_module.abstract?
       end
 
       private
-
-      def raise_not_found(*args)
-        raise("No registered module valid for #{args} " \
-              "(Module suffix: #{module_suffix}, Available: #{available.join(', ')})")
-      end
 
       def registered_modules_uncached
         registered_gems.flat_map { |registry| modules_from_registry(registry) }
