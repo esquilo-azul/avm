@@ -63,9 +63,9 @@ module Avm
           configuration_with_filename(configuration_paths.first, false)
         end
 
-        # @return [String]
+        # @return [Enumerable<String>]
         def parent_configuration_prefix
-          PARENT_CONFIGURATION_SUFFIX + [relative_path]
+          PARENT_CONFIGURATION_SUFFIX + [relative_path.to_path.gsub(/\A\.+|\.+\z/, '')]
         end
 
         # @return [EacConfig::PrefixedPathNode]
