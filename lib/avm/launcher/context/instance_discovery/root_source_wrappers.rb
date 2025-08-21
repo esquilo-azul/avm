@@ -6,7 +6,7 @@ module Avm
   module Launcher
     class Context
       class InstanceDiscovery
-        class RootInstancePaths
+        class RootSourceWrappers
           acts_as_instance_method
           enable_speaker
 

@@ -17,7 +17,7 @@ module Avm
 
         # @return [Array<Avm::Launcher::Instances::Base>]
         def instances_uncached
-          root_instance_paths.flat_map { |path| path_instances(path, nil) }
+          root_source_wrappers.flat_map { |path| path_instances(path, nil) }
         end
 
         # @param path [Avm::Launcher::Paths::Logical]
