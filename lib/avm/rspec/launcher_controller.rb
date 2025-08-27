@@ -17,6 +17,19 @@ module Avm
           path.to_pathname.to_path
       end
 
+      # @param repos [Avm::Git::Launcher::Base]
+      # @param subpath [String]
+      # @param content [String]
+      def commit_file(repos, subpath, content)
+        require 'fileutils'
+        repos.subpath(subpath).then do |file_path|
+          FileUtils.mkdir_p(File.dirname(file_path))
+          ::File.write(file_path, content)
+          repos.execute!('add', file_path)
+          repos.execute!('commit', '-m', subpath)
+        end
+      end
+
       # @param settings_path [Pathname]
       # @param projects_root [Pathname]
       def context_set(settings_path, projects_root)
@@ -79,12 +92,10 @@ module Avm
         '../../../template/avm/rspec/launcher_controller'.to_pathname.expand_path(__dir__)
       end
 
+      # @param repos [Avm::Git::Launcher::Base]
+      # @param subpath [String]
       def touch_commit(repos, subpath)
-        require 'fileutils'
-        FileUtils.mkdir_p(File.dirname(repos.subpath(subpath)))
-        FileUtils.touch(repos.subpath(subpath))
-        repos.execute!('add', repos.subpath(subpath))
-        repos.execute!('commit', '-m', subpath)
+        commit_file(repos, subpath, '')
       end
     end
   end

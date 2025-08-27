@@ -8,6 +8,6 @@ RSpec.shared_context 'with_launcher' do
     launcher_controller.remotes_dir = temp_dir
   end
 
-  delegate :application_source_path, :context_set, :init_git, :init_remote, :temp_context,
-           :projects_root, :projects_root=, :touch_commit, to: :launcher_controller
+  delegate :application_source_path, :commit_file, :context_set, :init_git, :init_remote,
+           :temp_context, :projects_root, :projects_root=, :touch_commit, to: :launcher_controller
 end
