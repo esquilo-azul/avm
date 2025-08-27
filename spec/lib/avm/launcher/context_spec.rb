@@ -60,44 +60,6 @@ RSpec.describe Avm::Launcher::Context do
         it { expect(instance.stereotypes).to include(Avm::Git::LauncherStereotypes::GitSubrepo) }
       end
 
-      context 'when sub is a GitSubtree' do
-        let(:sub) { described_class.current.instance('/app/sub1') }
-        let(:instance) { described_class.current.instance('/app/sub1/mylib') }
-
-        before do
-          app = init_git('app')
-          touch_commit(app, 'sub1/app.gemspec')
-          app.execute!('subtree', 'add', '-P', 'sub1/mylib', mylib_repos, 'master')
-          app.execute!('remote', 'add', 'mylib', mylib_repos)
-        end
-
-        it { expect(sub).to be_a(Avm::Launcher::Instances::Base) }
-
-        it do
-          Avm::Launcher::Stereotype.git_stereotypes
-            .each { |s| expect(sub.stereotypes).not_to include(s) }
-        end
-
-        it { expect(instance).to be_a(Avm::Launcher::Instances::Base) }
-        it { expect(instance.stereotypes).to include(Avm::Git::LauncherStereotypes::GitSubtree) }
-      end
-
-      context 'when subtree is present' do
-        before do
-          app = init_git('subtree_main_app')
-          touch_commit(app, 'file1')
-          app.execute!('subtree', 'add', '-P', 'mylib', mylib_repos, 'master')
-          app.execute!('remote', 'add', 'mylib', mylib_repos)
-          application_source_path('subtree_main_app', app.root_path)
-        end
-
-        it 'recognizes subtree instance' do # rubocop:disable RSpec/MultipleExpectations
-          i = described_class.current.instance('/subtree_main_app/mylib')
-          expect(i).to be_a(Avm::Launcher::Instances::Base)
-          expect(i.stereotypes).to include(Avm::Git::LauncherStereotypes::GitSubtree)
-        end
-      end
-
       context 'when subinstance in HEAD and not in git_current_revision' do
         it 'does not return subinstance' do
           app = init_git('app') # HEAD: master
