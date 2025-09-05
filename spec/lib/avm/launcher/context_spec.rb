@@ -61,23 +61,29 @@ RSpec.describe Avm::Launcher::Context do
       end
 
       context 'when subinstances in/not in HEAD and not in/in git_current_revision' do
+        let(:app) { init_git('app') } # HEAD: master
+
         context 'when subinstance in HEAD and not in git_current_revision' do
-          it 'does not return subinstance' do
-            app = init_git('app') # HEAD: master
+          before do
             touch_commit(app, 'file2')
             app.execute!('checkout', '-b', 'not_master') # HEAD: not_master
             app.execute!('subrepo', 'clone', mylib_repos, 'mylib')
+          end
+
+          it 'does not return subinstance' do
             expect(described_class.current.instance('/app/mylib')).to be_nil
           end
         end
 
         context 'when subinstance not in HEAD and in git_current_revision' do
-          it 'returns subinstance' do # rubocop:disable RSpec/ExampleLength
-            app = init_git('app') # HEAD: master
+          before do
             touch_commit(app, 'file3')
             app.execute!('branch', '-f', 'not_master')
             app.execute!('subrepo', 'clone', mylib_repos, 'mylib')
             app.execute!('checkout', 'not_master') # HEAD: not_master
+          end
+
+          it 'returns subinstance' do
             expect(described_class.current.instance('/app/mylib'))
               .to be_a(Avm::Launcher::Instances::Base)
           end
