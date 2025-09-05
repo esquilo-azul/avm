@@ -5,7 +5,7 @@ RSpec.shared_context 'with_launcher' do
 
   before do
     Avm::Launcher::Context.current = launcher_controller.new_context
-    launcher_controller.remotes_dir = Dir.mktmpdir
+    launcher_controller.remotes_dir = temp_dir
   end
 
   delegate :application_source_path, :context_set, :init_git, :init_remote, :temp_context,
