@@ -60,16 +60,6 @@ RSpec.describe Avm::Launcher::Context do
         it { expect(instance.stereotypes).to include(Avm::Git::LauncherStereotypes::GitSubrepo) }
       end
 
-      context 'when subinstance in HEAD and not in git_current_revision' do
-        it 'does not return subinstance' do
-          app = init_git('app') # HEAD: master
-          touch_commit(app, 'file2')
-          app.execute!('checkout', '-b', 'not_master') # HEAD: not_master
-          app.execute!('subrepo', 'clone', mylib_repos, 'mylib')
-          expect(described_class.current.instance('/app/mylib')).to be_nil
-        end
-      end
-
       context 'when subinstances in/not in HEAD and not in/in git_current_revision' do
         context 'when subinstance in HEAD and not in git_current_revision' do
           it 'does not return subinstance' do
