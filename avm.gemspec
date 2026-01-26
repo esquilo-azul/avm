@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.files = Dir['{lib,locale,template}/**/{*,.*}']
   s.required_ruby_version = '>= 2.7'
 
-  s.add_dependency 'clipboard', '~> 1.4', '>= 1.4.1'
   s.add_dependency 'eac_cli', '~> 0.44', '>= 0.44.3'
   s.add_dependency 'eac_config', '~> 0.15'
   s.add_dependency 'eac_docker', '~> 0.8'
