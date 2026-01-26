@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_config/yaml_file_node'
-
 require 'shellwords'
 
 module Avm

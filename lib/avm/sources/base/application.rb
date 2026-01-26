@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_config/entry_path'
-
 module Avm
   module Sources
     class Base

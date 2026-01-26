@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_config/node'
-
 require 'fileutils'
 require 'ruby-progressbar'
 require 'tmpdir'
@@ -45,14 +43,12 @@ module Avm
       end
 
       def init_remote(name)
-        require 'avm/git/launcher/base'
         r = Avm::Git::Launcher::Base.new(File.join(remotes_dir, name))
         r.init_bare
         r
       end
 
       def init_git(subdir)
-        require 'avm/git/launcher/base'
         r = Avm::Git::Launcher::Base.new(File.join(projects_root, subdir))
         r.git
         r.execute!('config', 'user.email', 'theuser@example.net')

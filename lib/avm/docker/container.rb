@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_docker/executables'
-
 module Avm
   module Docker
     class Container

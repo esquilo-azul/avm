@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_cli/runner_with/subcommands'
-
 module Avm
   module With
     module ExtraSubcommands

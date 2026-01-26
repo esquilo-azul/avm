@@ -2,8 +2,6 @@
 
 require 'active_support/core_ext/hash/indifferent_access'
 
-require 'eac_cli/speaker'
-
 module Avm
   module Launcher
     class Context

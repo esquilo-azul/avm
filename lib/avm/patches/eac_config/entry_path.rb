@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_config/entry_path'
-
 module EacConfig
   class EntryPath
     # @return [Symbol]

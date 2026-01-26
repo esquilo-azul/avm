@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_cli/runner/context'
-
 module Avm
   module Instances
     class Base

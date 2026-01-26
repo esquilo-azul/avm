@@ -2,8 +2,6 @@
 
 require 'addressable'
 
-require 'eac_ruby_utils/core_ext'
-
 module Avm
   module Files
     class Deploy

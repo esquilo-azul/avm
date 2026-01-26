@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_cli/enum'
-
 module Avm
   module Sources
     module Tests

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_config/old_configs'
-
 require 'yaml'
 
 module Avm

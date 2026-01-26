@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_config/node'
-
 module Avm
   module Entries
     module AutoValues

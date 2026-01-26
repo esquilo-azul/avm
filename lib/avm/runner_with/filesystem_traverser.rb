@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_cli/runner'
-
-require 'eac_ruby_utils/core_ext'
-require 'eac_ruby_utils/settings_provider'
-
 module Avm
   module RunnerWith
     module FilesystemTraverser
