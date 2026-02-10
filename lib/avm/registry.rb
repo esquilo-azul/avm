@@ -2,7 +2,6 @@
 
 module Avm
   module Registry
-    require_sub __FILE__
     enable_listable
     lists.add_symbol :category, :applications, :application_scms, :application_stereotypes,
                      :config_objects, :file_formats, :instances, :launcher_stereotypes, :runners,

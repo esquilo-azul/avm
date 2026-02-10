@@ -3,8 +3,6 @@
 module Avm
   module Registry
     class WithPath < ::Avm::Registry::FromGems
-      require_sub __FILE__
-
       # @return [Object, nil]
       def class_detect(klass, detect_args)
         r = klass.new(*detect_args)

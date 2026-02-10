@@ -3,7 +3,6 @@
 module Avm
   module Files
     class TextReplacer
-      require_sub __FILE__
       enable_immutable
 
       immutable_accessor :replacement, type: :array

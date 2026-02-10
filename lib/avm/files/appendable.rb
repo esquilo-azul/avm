@@ -3,8 +3,6 @@
 module Avm
   module Files
     module Appendable
-      require_sub __FILE__
-
       attr_reader :variables_source
 
       def appended
