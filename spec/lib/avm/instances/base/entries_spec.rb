@@ -13,7 +13,7 @@ RSpec.describe Avm::Instances::Base, '#entries' do
       Avm::Instances::EntryKeys::INSTALL_HOSTNAME => 'myhost.com',
       Avm::Instances::EntryKeys::INSTALL_USERNAME => 'myuser',
       Avm::Instances::EntryKeys::INSTALL_GROUPNAME => 'myuser',
-      Avm::Instances::EntryKeys::INSTALL_URL => 'ssh://otheruser@otherhost.com',
+      Avm::Instances::EntryKeys::INSTALL_URL => 'ssh://myuser@myhost.com/fs_root/app_0',
       Avm::Instances::EntryKeys::WEB_URL => 'https://app0.net',
       Avm::Instances::EntryKeys::WEB_PATH => ''
     },

@@ -36,7 +36,7 @@ module Avm
         end
       end
 
-      common_constructor :data, default: [{}]
+      common_constructor :data, default: -> { [{}] }
 
       def avm_field_get(avm_field)
         field_get(translate_field(avm_field))
