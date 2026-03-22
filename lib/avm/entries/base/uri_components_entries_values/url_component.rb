@@ -8,9 +8,7 @@ module Avm
           def define_auto_method
             outer_self = self
             entries_provider_class.define_method(auto_method_name) do
-              inherited_entry_value(outer_self.id_component.entry_key_path.to_string,
-                                    outer_self.entry_key_path.to_string) ||
-                outer_self.auto_by_paths(self)
+              outer_self.auto_by_paths(self)
             end
           end
 
