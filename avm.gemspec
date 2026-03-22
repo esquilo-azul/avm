@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'eac_templates', '~> 0.8', '>= 0.8.3'
   s.add_dependency 'minitar', '~> 0.12', '>= 0.12.1'
 
-  s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.38', '>= 0.38.1'
+  s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.39'
   s.add_development_dependency 'avm-git', '~> 0.21', '>= 0.21.1'
   s.add_development_dependency 'eac_ruby_gem_support', '~> 0.12', '>= 0.12.1'
 end
