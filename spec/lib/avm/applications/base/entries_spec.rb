@@ -7,7 +7,7 @@ RSpec.describe Avm::Applications::Base, '#entries' do
       'organization' => nil,
       'scm.id' => 'app1',
       'scm.type' => 'ScmX',
-      'scm.url' => 'http://nowhere.net/anypath',
+      'scm.url' => 'http://nowhere.net/anypath/app0',
       'scm.repos_path' => 'mygroup/app0',
       'scm.ssh_username' => 'myuser'
     },

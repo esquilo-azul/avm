@@ -15,7 +15,7 @@ module Avm
           end
 
           def auto_by_paths(entries_provider)
-            ::Avm::Entries::AutoValues::UriEntry.new(entries_provider, 'install').value
+            ::Avm::Entries::AutoValues::UriEntry.new(entries_provider, owner.prefix).value
           end
         end
       end
