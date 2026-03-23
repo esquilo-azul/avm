@@ -10,11 +10,11 @@ module Avm
             entries_provider_class.define_method(auto_method_name) do
               inherited_entry_value(outer_self.id_component.entry_key_path.to_string,
                                     outer_self.entry_key_path.to_string) ||
-                outer_self.auto_install_url_by_parts(self)
+                outer_self.auto_by_paths(self)
             end
           end
 
-          def auto_install_url_by_parts(entries_provider)
+          def auto_by_paths(entries_provider)
             ::Avm::Entries::AutoValues::UriEntry.new(entries_provider, 'install').value
           end
         end
