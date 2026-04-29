@@ -9,6 +9,10 @@ RSpec.shared_examples 'avm_source_generated' do |spec_file, stereotype, options 
       let(:source) { avm_source(stereotype, options.merge(target_basename: target_dir.basename)) }
 
       it do
+        if ENV['WRITE_TARGET_FIXTURES'].to_bool
+          FileUtils.rm_rf(target_dir)
+          FileUtils.cp_r(source.path, target_dir)
+        end
         expect(fs_comparator.build(source.path)).to eq(fs_comparator.build(target_dir))
       end
 
