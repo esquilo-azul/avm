@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ['Eduardo H. Bogoni']
   s.summary     = 'Ruby base library for Agora Vai! Methodology (https://avm.esquiloazul.tech).'
 
-  s.files = Dir['{lib,locale,template}/**/{*,.*}']
+  s.files = Dir.glob('{lib,locale,template}/**/*', File::FNM_DOTMATCH)
+              .reject { |f| ['.', '..'].include?(File.basename(f)) }
   s.required_ruby_version = '>= 2.7'
 
   s.add_dependency 'eac_cli', '~> 0.46'
