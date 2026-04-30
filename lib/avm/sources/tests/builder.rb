@@ -38,7 +38,10 @@ module Avm
         end
 
         def available_units_from_subs
-          create_units(main_source.subs)
+          create_units(
+            ::EacRubyUtils::RecursiveBuilder.new(main_source, &:subs).result
+            .excluding(main_source)
+          )
         end
 
         # @return [Avm::Sources::Tests::Single]
