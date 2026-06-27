@@ -6,8 +6,8 @@ module Avm
       module Testing
         DEFAULT_TEST_COMMANDS = {}.freeze
         TEST_KEY = 'test'
-        TEST_COMMAND_KEY = "#{TEST_KEY}.command"
-        TEST_COMMANDS_KEY = "#{TEST_KEY}.commands"
+        TEST_COMMAND_KEY = "#{TEST_KEY}.command".freeze
+        TEST_COMMANDS_KEY = "#{TEST_KEY}.commands".freeze
 
         def configured_test_command
           read_configuration_as_env_command(TEST_COMMAND_KEY)

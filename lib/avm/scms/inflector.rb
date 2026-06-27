@@ -10,7 +10,7 @@ module Avm
       end
 
       ISSUE_POINTER_NAME_PREFIX = 'issue_'
-      POINTER_NAME_TO_ISSUE_PATTERN = /\A#{Regexp.quote(ISSUE_POINTER_NAME_PREFIX)}(\d+)\z/.freeze
+      POINTER_NAME_TO_ISSUE_PATTERN = /\A#{Regexp.quote(ISSUE_POINTER_NAME_PREFIX)}(\d+)\z/
       POINTER_NAME_TO_ISSUE_PARSER = POINTER_NAME_TO_ISSUE_PATTERN.to_parser { |m| m[1] }
 
       # @return [String, nil]

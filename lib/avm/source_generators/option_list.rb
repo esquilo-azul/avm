@@ -8,8 +8,8 @@ module Avm
 
       alias immutable_option option
 
-      def option(*args)
-        immutable_option(::Avm::SourceGenerators::Option.new(*args))
+      def option(*)
+        immutable_option(::Avm::SourceGenerators::Option.new(*))
       end
 
       # @return [Hash<Symbol, String>]

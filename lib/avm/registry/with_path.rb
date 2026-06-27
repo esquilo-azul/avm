@@ -23,8 +23,8 @@ module Avm
 
       attr_accessor :cache
 
-      def on_cache(&block)
-        cache.present? ? on_cache_with_cache(&block) : on_cache_with_no_cache(&block)
+      def on_cache(&)
+        cache.present? ? on_cache_with_cache(&) : on_cache_with_no_cache(&)
       end
 
       def on_cache_with_cache(&block)

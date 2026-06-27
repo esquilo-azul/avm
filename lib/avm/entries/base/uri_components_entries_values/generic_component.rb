@@ -31,8 +31,8 @@ module Avm
             end
           end
 
-          def define_inherited_value_proc_method(&block)
-            entries_provider_class.define_method(inherited_value_proc_name, &block)
+          def define_inherited_value_proc_method(&)
+            entries_provider_class.define_method(inherited_value_proc_name, &)
           end
 
           def entry_key_path
