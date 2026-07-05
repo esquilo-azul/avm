@@ -7,7 +7,7 @@ module Avm
     class Context
       class InstanceDiscovery
         class SourceWrapper
-          enable_simple_cache
+          enable_memoized
           enable_speaker
 
           common_constructor :owner, :logical_path, :parent_project
@@ -49,10 +49,8 @@ module Avm
             []
           end
 
-          protected
-
           # @return [Avm::Sources::Base]
-          def warped_source_uncached
+          memoize def warped_source
             ::Avm::Registry.sources.detect(logical_path.warped)
           end
         end
