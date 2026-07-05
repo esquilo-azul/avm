@@ -27,6 +27,7 @@ module Avm
           memoize def self_project
             return nil unless logical_path.project?
 
+            infov logical_path, logical_path.real
             ::Avm::Launcher::Instances::Base.instanciate(logical_path,
                                                          parent_project)
           end
