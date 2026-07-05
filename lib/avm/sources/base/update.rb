@@ -10,26 +10,24 @@ module Avm
         end
 
         def update
-          update_self
+          update_self_before_subs
           update_subs
         end
 
-        def update_self
-          scm.commit_if_change(-> { update_self_commit_message }) do
-            update_self_content
-            parent.if_present(&:on_sub_updated)
+        # @return [void]
+        def update_self_before_subs
+          update_self_changes_before_subs.each do |change|
+            scm.commit_if_change(-> { change.commit_message }) do
+              change.perform
+              parent.if_present(&:on_sub_updated)
+            end
           end
         end
 
-        # Update source self content.
-        #
-        # To override in subclasses.
-        def update_self_content
-          # Do nothing
-        end
-
-        def update_self_commit_message
-          i18n_translate(__method__)
+        # Changes for update before subs' updating.
+        # @return [Enumerable<Avm::Sources::Change>]
+        def update_self_changes_before_subs
+          []
         end
       end
     end
