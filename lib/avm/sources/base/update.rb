@@ -14,14 +14,20 @@ module Avm
           update_subs
         end
 
+        # @param changes [Enumerable<Avm::Sources::Change>]
         # @return [void]
-        def update_self_before_subs
-          update_self_changes_before_subs.each do |change|
+        def update_self(changes)
+          changes.each do |change|
             scm.commit_if_change(-> { change.commit_message }) do
               change.perform
               parent.if_present(&:on_sub_updated)
             end
           end
+        end
+
+        # @return [void]
+        def update_self_before_subs
+          update_self(update_self_changes_before_subs)
         end
 
         # Changes for update before subs' updating.
