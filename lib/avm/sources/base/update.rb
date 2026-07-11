@@ -9,9 +9,11 @@ module Avm
           # Do nothing
         end
 
+        # @return [void]
         def update
           update_self_before_subs
           update_subs
+          update_self_after_subs
         end
 
         # @param changes [Enumerable<Avm::Sources::Change>]
@@ -21,8 +23,19 @@ module Avm
         end
 
         # @return [void]
+        def update_self_after_subs
+          update_self(update_self_changes_after_subs)
+        end
+
+        # @return [void]
         def update_self_before_subs
           update_self(update_self_changes_before_subs)
+        end
+
+        # Changes for update after subs' updating.
+        # @return [Enumerable<Avm::Sources::Change>]
+        def update_self_changes_after_subs
+          []
         end
 
         # Changes for update before subs' updating.
