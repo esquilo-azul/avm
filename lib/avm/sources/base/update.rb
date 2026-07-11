@@ -17,12 +17,7 @@ module Avm
         # @param changes [Enumerable<Avm::Sources::Change>]
         # @return [void]
         def update_self(changes)
-          changes.each do |change|
-            scm.commit_if_change(-> { change.commit_message }) do
-              change.perform
-              parent.if_present(&:on_sub_updated)
-            end
-          end
+          changes.each { |change| update_self_with_change(change) }
         end
 
         # @return [void]
@@ -34,6 +29,15 @@ module Avm
         # @return [Enumerable<Avm::Sources::Change>]
         def update_self_changes_before_subs
           []
+        end
+
+        # @param change [Avm::Sources::Change]
+        # @return [void]
+        def update_self_with_change(change)
+          scm.commit_if_change(-> { change.commit_message }) do
+            change.perform
+            parent.if_present(&:on_sub_updated)
+          end
         end
       end
     end
