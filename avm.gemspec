@@ -18,11 +18,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'eac_config', '~> 0.15'
   s.add_dependency 'eac_docker', '~> 0.8'
   s.add_dependency 'eac_fs', '~> 0.20', '>= 0.20.2'
-  s.add_dependency 'eac_ruby_utils', '~> 0.131'
+  s.add_dependency 'eac_ruby_utils', '~> 0.131', '>= 0.131.1'
   s.add_dependency 'eac_templates', '~> 0.8', '>= 0.8.3'
   s.add_dependency 'minitar', '~> 0.12', '>= 0.12.1'
 
-  s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.41', '>= 0.41.1'
+  s.add_development_dependency 'avm-eac_ruby_base1', '~> 0.42'
   s.add_development_dependency 'avm-git', '~> 0.21', '>= 0.21.2'
   s.add_development_dependency 'eac_ruby_gem_support', '~> 0.13'
 end
