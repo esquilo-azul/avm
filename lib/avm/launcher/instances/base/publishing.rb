@@ -18,7 +18,7 @@ module Avm
           # @return [Boolean]
           def publish_by_context?(stereotype)
             filter = ::Avm::Launcher::Context.current.publish_options[:stereotype]
-            filter.blank? || filter == stereotype.name.demodulize
+            filter.blank? || filter == stereotype.stereotype_name
           end
 
           # @return [Boolean]
