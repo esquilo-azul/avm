@@ -71,12 +71,14 @@ module Avm
           ::File.join(context.cache_root, 'instances.yml')
         end
 
+        # @param instance [Avm::Launcher::Paths::Logical]
+        # @return [Boolean]
         def pending_instance?(instance)
-          data = cached_instances_file_content
-          return false unless data[instance.logical]
-          return false unless data[instance.logical][:publish_state].is_a?(Hash)
+          data = cached_instances_obj.by_logical_path(instance.logical).data
+          return false unless data
+          return false unless data[:publish_state].is_a?(Hash)
 
-          data[instance.logical][:publish_state].any? do |_k, v|
+          data[:publish_state].any? do |_k, v|
             ::Avm::Launcher::Publish::CheckResult.pending_status?(v)
           end
         end
