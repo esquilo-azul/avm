@@ -33,8 +33,7 @@ module Avm
 
         # @return [Avm::Launcher::Context::InstanceManager::CachedInstances]
         memoize def cached_instances_obj
-          Avm::Launcher::Context::InstanceManager::CachedInstances
-            .new(self, cached_instances_file_content)
+          Avm::Launcher::Context::InstanceManager::CachedInstances.new(self)
         end
 
         private
