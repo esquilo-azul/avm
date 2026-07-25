@@ -44,9 +44,7 @@ module Avm
         instances.find { |i| i.name == name }
       end
 
-      delegate :instances, to: :@instance_manager
-
-      delegate :pending_instances, to: :@instance_manager
+      delegate :instances, :pending_instances, to: :@instance_manager
 
       private
 
