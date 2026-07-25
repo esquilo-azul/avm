@@ -6,11 +6,19 @@ module Avm
   module Launcher
     class Context
       class InstanceManager
-        enable_simple_cache
+        enable_memoized
         common_constructor :context
 
+        memoize def cached_instances_file_content
+          cached_instances_file_content_unmemoized
+        end
+
+        memoize def instances
+          (cached_instances || search_instances).select(&:included?)
+        end
+
         def publish_state_set(instance, stereotype_name, check_status)
-          data = cached_instances_file_content_uncached
+          data = cached_instances_file_content_unmemoized
           data[instance.logical] ||= {}
           data[instance.logical][:publish_state] ||= {}
           data[instance.logical][:publish_state][stereotype_name] = check_status
@@ -23,10 +31,6 @@ module Avm
 
         private
 
-        def instances_uncached
-          (cached_instances || search_instances).select(&:included?)
-        end
-
         def search_instances
           cache_instances(::Avm::Launcher::Context::InstanceDiscovery.new(context).instances)
         end
@@ -38,7 +42,7 @@ module Avm
           CachedInstances.new(self, cached_instances_file_content).instances
         end
 
-        def cached_instances_file_content_uncached
+        def cached_instances_file_content_unmemoized
           r = YAML.load_file(cache_file_path)
           r.is_a?(::Hash) ? r : nil
         rescue Errno::ENOENT
