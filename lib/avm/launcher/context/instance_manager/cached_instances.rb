@@ -6,7 +6,7 @@ module Avm
       class InstanceManager
         class CachedInstances
           enable_memoized
-          common_constructor :context, :content
+          common_constructor :instance_manager, :content
 
           memoize def cached_instances
             {}
