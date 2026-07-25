@@ -50,7 +50,7 @@ module Avm
         end
 
         def cached_instances_file_content_unmemoized
-          r = YAML.load_file(cache_file_path)
+          r = YAML.load_file(cached_instances_obj.root_file_path)
           r.is_a?(::Hash) ? r : nil
         rescue Errno::ENOENT
           nil
@@ -62,12 +62,8 @@ module Avm
         end
 
         def write_cache_file(data)
-          cache_file_path.to_pathname.parent.mkpath
-          ::File.write(cache_file_path, data.to_yaml)
-        end
-
-        def cache_file_path
-          ::File.join(context.cache_root, 'instances.yml')
+          cached_instances_obj.root_file_path.to_pathname.parent.mkpath
+          ::File.write(cached_instances_obj.root_file_path, data.to_yaml)
         end
 
         # @param instance [Avm::Launcher::Paths::Logical]

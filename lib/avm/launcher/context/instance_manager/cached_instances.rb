@@ -24,6 +24,11 @@ module Avm
               )
             end
           end
+
+          # @return [String]
+          def root_file_path
+            ::File.join(instance_manager.context.cache_root, 'instances.yml')
+          end
         end
       end
     end
