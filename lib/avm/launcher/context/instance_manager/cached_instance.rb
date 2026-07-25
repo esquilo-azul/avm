@@ -45,6 +45,15 @@ module Avm
           memoize def path
             ::Avm::Launcher::Paths::Logical.from_h(cached_instances.instance_manager, data)
           end
+
+          # @param stereotype_name [String]
+          # @param check_status [String]
+          def publish_state_set(stereotype_name, check_status)
+            new_data = data
+            new_data[:publish_state] ||= {}
+            new_data[:publish_state][stereotype_name] = check_status
+            self.data = new_data
+          end
         end
       end
     end

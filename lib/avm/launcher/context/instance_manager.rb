@@ -17,12 +17,12 @@ module Avm
           (cached_instances || search_instances).select(&:included?)
         end
 
+        # @param instance [Avm::Launcher::Paths::Logical]
+        # @param stereotype_name [String]
+        # @param check_status [String]
         def publish_state_set(instance, stereotype_name, check_status)
-          data = cached_instances_obj.content_unmemoized
-          data[instance.logical] ||= {}
-          data[instance.logical][:publish_state] ||= {}
-          data[instance.logical][:publish_state][stereotype_name] = check_status
-          write_cache_file(data)
+          cached_instances_obj.by_logical_path(instance.logical)
+            .publish_state_set(stereotype_name, check_status)
         end
 
         def pending_instances
