@@ -7,10 +7,22 @@ module Avm
         class CachedInstances
           enable_memoized
           common_constructor :instance_manager
-          delegate :content, to: :instance_manager
 
           memoize def cached_instances
             {}
+          end
+
+          # @return [Hash, nil]
+          memoize def content
+            content_unmemoized
+          end
+
+          # @return [Hash, nil]
+          def content_unmemoized
+            r = YAML.load_file(root_file_path)
+            r.is_a?(::Hash) ? r : nil
+          rescue Errno::ENOENT
+            nil
           end
 
           def instances

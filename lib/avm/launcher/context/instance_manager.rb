@@ -18,7 +18,7 @@ module Avm
         end
 
         def publish_state_set(instance, stereotype_name, check_status)
-          data = cached_instances_file_content_unmemoized
+          data = cached_instances_obj.content_unmemoized
           data[instance.logical] ||= {}
           data[instance.logical][:publish_state] ||= {}
           data[instance.logical][:publish_state][stereotype_name] = check_status
@@ -44,16 +44,9 @@ module Avm
 
         def cached_instances
           return nil if context.recache
-          return nil unless cached_instances_file_content
+          return nil unless cached_instances_obj.content
 
           cached_instances_obj.instances
-        end
-
-        def cached_instances_file_content_unmemoized
-          r = YAML.load_file(cached_instances_obj.root_file_path)
-          r.is_a?(::Hash) ? r : nil
-        rescue Errno::ENOENT
-          nil
         end
 
         def cache_instances(instances)
