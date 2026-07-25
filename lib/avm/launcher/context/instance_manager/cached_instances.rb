@@ -51,11 +51,24 @@ module Avm
 
           protected
 
+          # @param logical_path [Avm::Launcher::Paths::Logical]
+          # @param instance_data [Hash]
+          # @return [String]
+          def write_instance(logical_path, instance_data)
+            cached_instance = by_logical_path(logical_path)
+            cached_instance.data = instance_data
+            cached_instance.data_path.to_path
+          end
+
           # @param data [Hash<Avm::Launcher::Paths::Logical, Hash>]
           # @return [void]
           def write_root_file(data)
             root_file_path.to_pathname.parent.mkpath
-            ::File.write(root_file_path, data.to_yaml)
+            cache_file_data = {}
+            data.each do |logical_path, instance_data|
+              cache_file_data[logical_path] = write_instance(logical_path, instance_data)
+            end
+            ::File.write(root_file_path, cache_file_data.to_yaml)
           end
         end
       end
