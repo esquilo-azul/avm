@@ -14,6 +14,12 @@ module Avm
             ::YAML.load_file(data_path)
           end
 
+          # @param value [Hash]
+          def data=(value)
+            data_path.assert_parent.write(value.to_yaml)
+            unmemoize_all
+          end
+
           # @return [Pathname]
           def data_path
             cached_instances.instance_manager.context.cache_root.to_pathname
