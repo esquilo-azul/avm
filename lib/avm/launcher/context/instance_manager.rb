@@ -29,6 +29,14 @@ module Avm
           instances.select { |instance| pending_instance?(instance) }
         end
 
+        protected
+
+        # @return [Avm::Launcher::Context::InstanceManager::CachedInstances]
+        memoize def cached_instances_obj
+          Avm::Launcher::Context::InstanceManager::CachedInstances
+            .new(self, cached_instances_file_content)
+        end
+
         private
 
         def search_instances
@@ -39,7 +47,7 @@ module Avm
           return nil if context.recache
           return nil unless cached_instances_file_content
 
-          CachedInstances.new(self, cached_instances_file_content).instances
+          cached_instances_obj.instances
         end
 
         def cached_instances_file_content_unmemoized
