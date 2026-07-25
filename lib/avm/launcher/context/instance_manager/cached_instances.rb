@@ -5,8 +5,12 @@ module Avm
     class Context
       class InstanceManager
         class CachedInstances
-          enable_simple_cache
+          enable_memoized
           common_constructor :context, :content
+
+          memoize def cached_instances
+            {}
+          end
 
           def instances
             content.keys.map { |k| by_logical_path(k).instance }.compact_blank
@@ -18,12 +22,6 @@ module Avm
                 self, content.fetch(key)
               )
             end
-          end
-
-          private
-
-          def cached_instances_uncached
-            {}
           end
         end
       end
