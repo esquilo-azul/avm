@@ -7,7 +7,12 @@ module Avm
         class CachedInstance
           enable_memoized
           enable_speaker
-          common_constructor :cached_instances, :data
+          common_constructor :cached_instances, :logical_path
+
+          # @return [Hash]
+          memoize def data
+            content.fetch(logical_path)
+          end
 
           # @return [Hash, nil]
           memoize def instance

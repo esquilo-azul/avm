@@ -32,7 +32,7 @@ module Avm
           def by_logical_path(key)
             cached_instances[key].if_blank do
               cached_instances[key] = ::Avm::Launcher::Context::InstanceManager::CachedInstance.new(
-                self, content.fetch(key)
+                self, key
               )
             end
           end
