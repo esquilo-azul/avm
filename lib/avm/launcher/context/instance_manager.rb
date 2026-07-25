@@ -39,7 +39,9 @@ module Avm
         private
 
         def search_instances
-          cache_instances(::Avm::Launcher::Context::InstanceDiscovery.new(context).instances)
+          cached_instances_obj.write_instances(
+            ::Avm::Launcher::Context::InstanceDiscovery.new(context).instances
+          )
         end
 
         def cached_instances
@@ -47,16 +49,6 @@ module Avm
           return nil unless cached_instances_obj.content
 
           cached_instances_obj.instances
-        end
-
-        def cache_instances(instances)
-          write_cache_file(instances.to_h { |i| [i.logical, i.to_h] })
-          instances
-        end
-
-        def write_cache_file(data)
-          cached_instances_obj.root_file_path.to_pathname.parent.mkpath
-          ::File.write(cached_instances_obj.root_file_path, data.to_yaml)
         end
 
         # @param instance [Avm::Launcher::Paths::Logical]

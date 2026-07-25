@@ -41,6 +41,22 @@ module Avm
           def root_file_path
             ::File.join(instance_manager.context.cache_root, 'instances.yml')
           end
+
+          # @param instances []
+          # @return []
+          def write_instances(instances)
+            write_root_file(instances.to_h { |i| [i.logical, i.to_h] })
+            instances
+          end
+
+          protected
+
+          # @param data [Hash<Avm::Launcher::Paths::Logical, Hash>]
+          # @return [void]
+          def write_root_file(data)
+            root_file_path.to_pathname.parent.mkpath
+            ::File.write(root_file_path, data.to_yaml)
+          end
         end
       end
     end
