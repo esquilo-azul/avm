@@ -11,7 +11,13 @@ module Avm
 
           # @return [Hash]
           memoize def data
-            content.fetch(logical_path)
+            ::YAML.load_file(data_path)
+          end
+
+          # @return [Pathname]
+          def data_path
+            cached_instances.instance_manager.context.cache_root.to_pathname
+              .join('instances', "#{logical_path.parameterize}.yaml")
           end
 
           # @return [Hash, nil]
