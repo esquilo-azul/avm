@@ -62,7 +62,7 @@ module Avm
 
       # @return [EacTemlates::Modules::Base]
       def root_template
-        template
+        eac_template
       end
     end
   end
