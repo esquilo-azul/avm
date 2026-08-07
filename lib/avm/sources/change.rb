@@ -17,6 +17,11 @@ module Avm
       def perform
         raise_abstract_method __method__
       end
+
+      # @return [String]
+      def to_s
+        "#{source}[#{self.class}]"
+      end
     end
   end
 end
