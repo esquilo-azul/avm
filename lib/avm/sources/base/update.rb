@@ -28,13 +28,11 @@ module Avm
 
         # @return [void]
         def update_self_after_subs
-          infov __method__, self
           update_self(update_self_changes_after_subs)
         end
 
         # @return [void]
         def update_self_before_subs
-          infov __method__, self
           update_self(update_self_changes_before_subs)
         end
 
@@ -53,7 +51,7 @@ module Avm
         # @param change [Avm::Sources::Change]
         # @return [void]
         def update_self_with_change(change)
-          infov 'Performing change', change
+          infov "Change[#{change.class}]", change.source
           scm.commit_if_change(-> { change.commit_message }) do
             change.perform
             parent.if_present(&:on_sub_updated)
