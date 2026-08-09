@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.files = Dir['{exe,lib}/**/*', 'Gemfile', 'MIT-LICENSE', 'README.rdoc']
-  s.required_ruby_version = '>= 3.2'
+  s.required_ruby_version = '>= 3.2' # rubocop:disable Gemspec/RequiredRubyVersion
   s.bindir = 'exe'
   s.executables = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
 
