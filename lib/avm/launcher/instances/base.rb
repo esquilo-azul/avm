@@ -68,8 +68,9 @@ module Avm
           ::Avm::Launcher::Context.current.settings.excluded_projects.exclude?(project_name)
         end
 
+        # @return [Hash]
         def to_h
-          super.to_h.merge(parent: parent&.logical)
+          super.to_h.merge(commit_id: commit_id, parent: parent&.logical)
         end
 
         private
