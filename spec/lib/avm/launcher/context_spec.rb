@@ -69,6 +69,10 @@ RSpec.describe Avm::Launcher::Context do
       context 'when subinstances in/not in HEAD and not in/in git_current_revision' do
         let(:app) { init_git('app') } # HEAD: master
 
+        before do
+          commit_file(app, '.avm.yml', YAML.dump({ 'subs' => { 'include_path' => 'mylib' } }))
+        end
+
         context 'when subinstance in HEAD and not in git_current_revision' do
           before do
             touch_commit(app, 'file2')
@@ -84,8 +88,7 @@ RSpec.describe Avm::Launcher::Context do
         context 'when subinstance not in HEAD and in git_current_revision' do
           before do
             touch_commit(app, 'file3')
-            commit_file(app, '.avm.yml',
-                        YAML.dump({ 'subs' => { 'include_path' => 'mylib' } }))
+
             app.execute!('branch', '-f', 'not_master')
             app.execute!('subrepo', 'clone', mylib_repos, 'mylib')
             app.execute!('checkout', 'not_master') # HEAD: not_master
