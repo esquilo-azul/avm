@@ -31,6 +31,17 @@ module Avm
           @application ||= ::Avm::Registry.applications.detect(project_name)
         end
 
+        # @return [String, nil]
+        def commit_id
+          if parent.blank? && source.scm.respond_to?(:git_repo)
+            source.scm.git_repo.rev_parse(options.git_current_revision)
+          else
+            source.scm.head_commit.id
+          end
+        rescue ::Avm::Registry::DetectionError
+          nil
+        end
+
         def name
           logical
         end
