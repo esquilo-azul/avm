@@ -13,9 +13,10 @@ module Avm
           # Do nothing
         end
 
+        # @param selection [Avm::Sources::Update::Selection]
         # @return [void]
-        def update
-          ::Avm::Sources::Update::Base.new(self).perform
+        def update(selection = ::Avm::Sources::Update::Selection.new)
+          ::Avm::Sources::Update::Base.new(self, selection).perform
         end
 
         # Identifiers of the changes selectable by a {Avm::Sources::Update::Selection}, in

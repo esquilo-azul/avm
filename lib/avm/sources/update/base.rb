@@ -7,14 +7,16 @@ module Avm
       class Base
         enable_speaker
 
-        # @!method initialize(source)
+        # @!method initialize(source, selection = Avm::Sources::Update::Selection.new)
         #   @param source [Avm::Sources::Base]
-        common_constructor :source
+        #   @param selection [Avm::Sources::Update::Selection]
+        common_constructor :source, :selection,
+                           default: [::Avm::Sources::Update::Selection.new]
 
         # @return [void]
         def perform
           update_self_before_subs
-          source.update_subs
+          source.update_subs if selection.subs?
           update_self_after_subs
         end
 
@@ -23,7 +25,8 @@ module Avm
         # @param changes [Enumerable<Avm::Sources::Change>]
         # @return [void]
         def update_self(changes)
-          changes.each { |change| update_self_with_change(change) }
+          changes.select { |change| selection.selected?(change.id) }
+            .each { |change| update_self_with_change(change) }
         end
 
         # @return [void]
