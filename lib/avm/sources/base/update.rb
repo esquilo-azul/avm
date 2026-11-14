@@ -36,6 +36,13 @@ module Avm
           update_self(update_self_changes_before_subs)
         end
 
+        # Identifiers of the changes selectable by a {Avm::Sources::Update::Selection}, in
+        # execution order.
+        # @return [Array<String>]
+        def update_changes_ids
+          (update_self_changes_before_subs + update_self_changes_after_subs).map(&:id)
+        end
+
         # Changes for update after subs' updating.
         # @return [Enumerable<Avm::Sources::Change>]
         def update_self_changes_after_subs
