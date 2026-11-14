@@ -12,6 +12,11 @@ module Avm
         i18n_translate(__method__)
       end
 
+      # @return [String]
+      def id
+        self.class.name.demodulize.underscore
+      end
+
       # Apply the changes to the source.
       # @return [void]
       def perform
