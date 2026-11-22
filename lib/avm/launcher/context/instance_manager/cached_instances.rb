@@ -45,7 +45,7 @@ module Avm
           # @param instances []
           # @return []
           def write_instances(instances)
-            write_root_file(instances.to_h { |i| [i.logical, i.to_h] })
+            write_root_file(write_instances_files(instances))
             instances
           end
 
@@ -60,14 +60,16 @@ module Avm
             cached_instance.data_path.to_path
           end
 
-          # @param data [Hash<Avm::Launcher::Paths::Logical, Hash>]
+          # @param instances [Enumerable<Avm::Launcher::Instances::Base>]
+          # @return [Hash<String, String>]
+          def write_instances_files(instances)
+            instances.to_h { |i| [i.logical, write_instance(i.logical, i.to_h)] }
+          end
+
+          # @param cache_file_data [Hash<String, String>]
           # @return [void]
-          def write_root_file(data)
+          def write_root_file(cache_file_data)
             root_file_path.to_pathname.parent.mkpath
-            cache_file_data = {}
-            data.each do |logical_path, instance_data|
-              cache_file_data[logical_path] = write_instance(logical_path, instance_data)
-            end
             ::File.write(root_file_path, cache_file_data.to_yaml)
           end
         end
