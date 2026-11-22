@@ -4,19 +4,14 @@ module Avm
   module Launcher
     class Context
       class InstanceDiscovery
-        enable_simple_cache
-
-        # @!method instances
-        #   @return [Array<Avm::Launcher::Instances::Base>]
+        enable_memoized
 
         # @!method initialize(context)
         #   @param context [Avm::Launcher::Context]
         common_constructor :context
 
-        private
-
         # @return [Array<Avm::Launcher::Instances::Base>]
-        def instances_uncached
+        memoize def instances
           root_source_wrappers.flat_map(&:projects)
         end
 
