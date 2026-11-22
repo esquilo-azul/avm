@@ -34,6 +34,11 @@ module Avm
             nil
           end
 
+          # @return [Boolean]
+          def outdated?
+            instance.present? && instance.commit_id != data[:commit_id]
+          end
+
           # @return [Hash, nil]
           memoize def parent_instance
             data[:parent]
