@@ -15,25 +15,7 @@ module Avm
 
         # @return [void]
         def update
-          update_self_before_subs
-          update_subs
-          update_self_after_subs
-        end
-
-        # @param changes [Enumerable<Avm::Sources::Change>]
-        # @return [void]
-        def update_self(changes)
-          changes.each { |change| update_self_with_change(change) }
-        end
-
-        # @return [void]
-        def update_self_after_subs
-          update_self(update_self_changes_after_subs)
-        end
-
-        # @return [void]
-        def update_self_before_subs
-          update_self(update_self_changes_before_subs)
+          ::Avm::Sources::Update::Base.new(self).perform
         end
 
         # Identifiers of the changes selectable by a {Avm::Sources::Update::Selection}, in
@@ -53,16 +35,6 @@ module Avm
         # @return [Enumerable<Avm::Sources::Change>]
         def update_self_changes_before_subs
           []
-        end
-
-        # @param change [Avm::Sources::Change]
-        # @return [void]
-        def update_self_with_change(change)
-          infov "Change[#{change.class}]", change.source
-          scm.commit_if_change(-> { change.commit_message }) do
-            change.perform
-            parent.if_present(&:on_sub_updated)
-          end
         end
       end
     end
