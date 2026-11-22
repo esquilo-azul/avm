@@ -15,6 +15,15 @@ module Avm
           root_source_wrappers.flat_map(&:projects)
         end
 
+        # @param logical_path [Avm::Launcher::Paths::Logical]
+        # @param parent_project [Avm::Launcher::Instances::Base, nil]
+        # @return [Array<Avm::Launcher::Instances::Base>]
+        def instances_from(logical_path, parent_project)
+          ::Avm::Launcher::Context::InstanceDiscovery::SourceWrapper.new(
+            self, logical_path, parent_project
+          ).projects
+        end
+
         require_sub __FILE__, require_mode: :kernel
       end
     end
