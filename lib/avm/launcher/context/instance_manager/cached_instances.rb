@@ -25,7 +25,9 @@ module Avm
             nil
           end
 
+          # @return [Array<Avm::Launcher::Instances::Base>]
           def instances
+            refresh_outdated_instances
             content.keys.map { |k| by_logical_path(k).instance }.compact_blank
           end
 
@@ -50,6 +52,45 @@ module Avm
           end
 
           protected
+
+          # @param cached_instance [Avm::Launcher::Context::InstanceManager::CachedInstance]
+          # @return [Array<Avm::Launcher::Instances::Base>]
+          def rediscovered_instances(cached_instance)
+            ::Avm::Launcher::Context::InstanceDiscovery.new(instance_manager.context)
+              .instances_from(
+                ::Avm::Launcher::Paths::Logical.new(
+                  instance_manager.context, nil, cached_instance.path.real,
+                  cached_instance.logical_path
+                ),
+                cached_instance.parent_instance
+              )
+          end
+
+          # @param cached_instance [Avm::Launcher::Context::InstanceManager::CachedInstance]
+          # @return [void]
+          def refresh_instance(cached_instance)
+            write_root_file(
+              content.reject { |key, _| subtree_key?(cached_instance.logical_path, key) }
+                .merge(write_instances_files(rediscovered_instances(cached_instance)))
+            )
+            unmemoize(:content)
+          end
+
+          # @return [void]
+          def refresh_outdated_instances
+            content.keys.sort.each do |key|
+              next unless content.key?(key)
+
+              by_logical_path(key).then { |v| refresh_instance(v) if v.outdated? }
+            end
+          end
+
+          # @param root_key [String]
+          # @param key [String]
+          # @return [Boolean]
+          def subtree_key?(root_key, key)
+            key == root_key || key.start_with?("#{root_key}/")
+          end
 
           # @param logical_path [Avm::Launcher::Paths::Logical]
           # @param instance_data [Hash]

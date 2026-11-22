@@ -100,6 +100,75 @@ RSpec.describe Avm::Launcher::Context do
           end
         end
       end
+
+      context 'when instances change after the cache is already written' do
+        let(:cache_root) { Dir.mktmpdir }
+        let(:app) { init_git('app') }
+
+        # Points "Context.current" to a brand new Context, simulating a new launcher run, but
+        # keeping the same "cache_root" (so it reads whatever a previous run wrote).
+        def new_run
+          described_class.current = described_class.new(
+            settings_file: File.join(__dir__, 'context_spec.yml'), cache_root: cache_root
+          )
+        end
+
+        before do
+          new_run
+          commit_file(app, '.avm.yml', YAML.dump({ 'subs' => { 'include_path' => 'sub1' } }))
+          touch_commit(app, 'sub1/app.gemspec')
+          commit_file(app, 'sub1/.avm.yml',
+                      YAML.dump({ 'subs' => { 'include_path' => 'mylib*' } }))
+          app.execute!('subrepo', 'clone', mylib_repos, 'sub1/mylib')
+          described_class.current.instances # discovers instances and writes the cache
+        end
+
+        context 'when a sub is added afterwards' do
+          before do
+            app.execute!('subrepo', 'clone', mylib_repos, 'sub1/mylib2')
+            new_run
+          end
+
+          it 'is found without needing --recache' do
+            expect(described_class.current.instance('/app/sub1/mylib2'))
+              .to be_a(Avm::Launcher::Instances::Base)
+          end
+        end
+
+        context 'when a sub is added afterwards only in git_current_revision' do
+          before do
+            app.execute!('branch', 'not_master')
+            app.execute!('subrepo', 'clone', mylib_repos, 'sub1/mylib2')
+            app.execute!('checkout', 'not_master') # HEAD: not_master
+            new_run
+          end
+
+          it 'is found without needing --recache' do
+            expect(described_class.current.instance('/app/sub1/mylib2'))
+              .to be_a(Avm::Launcher::Instances::Base)
+          end
+        end
+
+        context 'when a sub is removed afterwards' do
+          before do
+            app.execute!('subrepo', 'clone', mylib_repos, 'sub1/mylib2')
+            described_class.current.instances # discovers/caches "mylib2" too
+            FileUtils.rm_rf(File.join(projects_root, 'app', 'sub1', 'mylib2'))
+            app.execute!('add', '-A')
+            app.execute!('commit', '-m', 'Removes sub1/mylib2')
+            new_run
+          end
+
+          it 'is not returned anymore' do
+            expect(described_class.current.instance('/app/sub1/mylib2')).to be_nil
+          end
+
+          it 'is not listed among instances anymore' do
+            expect(described_class.current.instances.map(&:name))
+              .not_to include('/app/sub1/mylib2')
+          end
+        end
+      end
     end
   end
 end
